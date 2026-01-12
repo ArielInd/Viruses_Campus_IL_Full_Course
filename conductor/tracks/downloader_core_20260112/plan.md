@@ -10,10 +10,10 @@
 - [x] Task: Verify successful login and navigation to the course homepage. <!-- id: 4 --> <!-- 544fdfb -->
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Authentication and Basic Navigation' (Protocol in workflow.md) <!-- id: 5 --> <!-- 7810e0e -->
 
-## Phase 3: Course Structure Traversal
+## Phase 3: Course Structure Traversal [checkpoint: b3efdab]
 - [x] Task: Implement logic to extract the course hierarchy (modules, sections, lectures). <!-- id: 6 --> <!-- 8dd0c61 -->
 - [x] Task: Create corresponding local directory structure. <!-- id: 7 --> <!-- d1a3d1a -->
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Course Structure Traversal' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Course Structure Traversal' (Protocol in workflow.md) <!-- id: 8 --> <!-- b3efdab -->
 
 ## Phase 4: Transcript Extraction and Saving
 - [ ] Task: Implement logic to identify and download transcripts for each lecture.
