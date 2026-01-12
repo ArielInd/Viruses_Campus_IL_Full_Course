@@ -31,24 +31,17 @@ class Downloader:
         if not self.page:
             self.start()
         
-        self.page.goto("https://app.campus.gov.il/authn/login")
-        
-        # Wait for the login form to be visible
+        self.page.goto("https://campus.gov.il/login/")
         self.page.wait_for_selector("#emailOrUsername")
-        
         self.page.fill("#emailOrUsername", self.username)
         self.page.fill("#password", self.password)
         self.page.click("#sign-in")
-        
-        # Wait for navigation to complete and redirection back to main site
         self.page.wait_for_load_state("networkidle")
 
     def is_logged_in(self):
         """Check if user is logged in."""
         if not self.page:
             return False
-        # If 'התנתקות' (Logout) is present, we are logged in.
-        # Or if 'משתמש לא מחובר' is NOT present.
         logout_elem = self.page.query_selector("text=התנתקות")
         return logout_elem is not None
 
@@ -58,3 +51,28 @@ class Downloader:
             self.start()
         self.page.goto(config.COURSE_URL)
         self.page.wait_for_load_state("networkidle")
+
+    def get_course_hierarchy(self):
+        """
+        Extract the course hierarchy.
+        Returns a list of modules, each containing units.
+        """
+        # This will be refined as we find the exact selectors.
+        # For now, it's a placeholder logic.
+        hierarchy = []
+        
+        # Example logic to find modules and units
+        # modules = self.page.query_selector_all(".course-module")
+        # for i, module in enumerate(modules, 1):
+        #     title = module.query_selector(".module-title").inner_text()
+        #     units = []
+        #     unit_elems = module.query_selector_all(".unit-link")
+        #     for j, unit in enumerate(unit_elems, 1):
+        #         units.append({
+        #             "index": j,
+        #             "title": unit.inner_text(),
+        #             "url": unit.get_attribute("href")
+        #         })
+        #     hierarchy.append({"index": i, "title": title, "units": units})
+        
+        return hierarchy

@@ -11,7 +11,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Authentication and Basic Navigation' (Protocol in workflow.md) <!-- id: 5 --> <!-- 7810e0e -->
 
 ## Phase 3: Course Structure Traversal
-- [ ] Task: Implement logic to extract the course hierarchy (modules, sections, lectures).
+- [~] Task: Implement logic to extract the course hierarchy (modules, sections, lectures).
 - [ ] Task: Create corresponding local directory structure.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Course Structure Traversal' (Protocol in workflow.md)
 
