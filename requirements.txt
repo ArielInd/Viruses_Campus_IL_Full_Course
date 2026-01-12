@@ -2,4 +2,5 @@ playwright
 python-dotenv
 pytest
 pytest-cov
+pytest-mock
 ruff
