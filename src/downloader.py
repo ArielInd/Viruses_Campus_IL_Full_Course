@@ -1,4 +1,5 @@
 from playwright.sync_api import sync_playwright
+from src.config import config
 import time
 
 class Downloader:
@@ -32,12 +33,28 @@ class Downloader:
         
         self.page.goto("https://campus.gov.il/login/")
         
-        # Wait for the login form to be visible (it redirects)
+        # Wait for the login form to be visible
         self.page.wait_for_selector("#emailOrUsername")
         
         self.page.fill("#emailOrUsername", self.username)
         self.page.fill("#password", self.password)
         self.page.click("#sign-in")
         
-        # Optional: wait for navigation to complete
+        # Wait for navigation to complete and redirection back to main site
+        self.page.wait_for_load_state("networkidle")
+
+    def is_logged_in(self):
+        """Check if user is logged in."""
+        if not self.page:
+            return False
+        # If 'התנתקות' (Logout) is present, we are logged in.
+        # Or if 'משתמש לא מחובר' is NOT present.
+        logout_elem = self.page.query_selector("text=התנתקות")
+        return logout_elem is not None
+
+    def navigate_to_course(self):
+        """Navigate to the course homepage."""
+        if not self.page:
+            self.start()
+        self.page.goto(config.COURSE_URL)
         self.page.wait_for_load_state("networkidle")

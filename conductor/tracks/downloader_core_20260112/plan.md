@@ -7,7 +7,7 @@
 
 ## Phase 2: Authentication and Basic Navigation
 - [x] Task: Implement Playwright-based login flow for Campus IL. <!-- id: 3 --> <!-- bccdeed -->
-- [ ] Task: Verify successful login and navigation to the course homepage.
+- [~] Task: Verify successful login and navigation to the course homepage.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Authentication and Basic Navigation' (Protocol in workflow.md)
 
 ## Phase 3: Course Structure Traversal
