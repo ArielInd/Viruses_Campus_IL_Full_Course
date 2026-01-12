@@ -1,0 +1,8 @@
+{
+  "track_id": "downloader_core_20260112",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-01-12T09:30:00Z",
+  "updated_at": "2026-01-12T09:30:00Z",
+  "description": "Build the core functionality of the downloader, including Campus IL authentication, course structure traversal, and bulk transcript extraction into nested folders with a summary report."
+}
