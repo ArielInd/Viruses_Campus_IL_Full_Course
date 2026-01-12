@@ -1,7 +1,7 @@
 # Implementation Plan: Downloader Core
 
 ## Phase 1: Environment and Project Structure
-- [~] Task: Set up Python project structure and install dependencies (Playwright, python-dotenv).
+- [x] Task: Set up Python project structure and install dependencies (Playwright, python-dotenv). <!-- id: 0 --> <!-- bae449d -->
 - [ ] Task: Configure environment variables for Campus IL credentials.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Environment and Project Structure' (Protocol in workflow.md)
 
