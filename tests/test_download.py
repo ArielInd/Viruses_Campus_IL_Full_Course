@@ -1,5 +1,6 @@
 import pytest
 import os
+import shutil
 from unittest.mock import MagicMock, patch
 from src.downloader import Downloader
 
@@ -15,7 +16,6 @@ def test_download_transcript_success(mocker):
     mock_page = MagicMock()
     downloader.page = mock_page
     
-    # Mock finding a transcript link
     mock_link = MagicMock()
     mock_link.get_attribute.return_value = "https://example.com/transcript.txt"
     mock_page.query_selector.return_value = mock_link
@@ -47,3 +47,30 @@ def test_save_transcript(temp_output_dir):
     assert os.path.exists(file_path)
     with open(file_path, "r", encoding="utf-8") as f:
         assert f.read() == content
+
+def test_bulk_download_skip_existing(temp_output_dir, mocker):
+    """Verify that existing files are skipped during bulk download."""
+    downloader = Downloader(username="user", password="pass")
+    
+    hierarchy = [
+        {
+            "index": 1,
+            "title": "Module 1",
+            "path": temp_output_dir,
+            "units": [
+                {"index": 1, "title": "Unit 1", "url": "url1", "filename": "01_Unit_1.txt"}
+            ]
+        }
+    ]
+    
+    # Pre-create the file
+    existing_file = os.path.join(temp_output_dir, "01_Unit_1.txt")
+    with open(existing_file, "w") as f:
+        f.write("existing content")
+        
+    mock_download = mocker.patch.object(Downloader, "download_transcript")
+    
+    downloader.bulk_download(hierarchy, temp_output_dir)
+    
+    # Should NOT have called download_transcript
+    mock_download.assert_not_called()

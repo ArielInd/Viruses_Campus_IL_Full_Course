@@ -119,3 +119,29 @@ class Downloader:
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content)
         return file_path
+
+    def bulk_download(self, hierarchy, output_dir):
+        """Iterate through hierarchy and download missing transcripts."""
+        results = {"downloaded": [], "skipped": [], "failed": []}
+        
+        for module in hierarchy:
+            module_path = module.get('path')
+            if not module_path:
+                module_name = f"{module['index']:02d}_{self.sanitize_filename(module['title'])}"
+                module_path = os.path.join(output_dir, module_name)
+                
+            for unit in module['units']:
+                file_path = os.path.join(module_path, unit['filename'])
+                
+                if os.path.exists(file_path):
+                    results["skipped"].append(unit)
+                    continue
+                
+                content = self.download_transcript(unit['url'])
+                if content:
+                    self.save_transcript(content, module_path, unit['filename'])
+                    results["downloaded"].append(unit)
+                else:
+                    results["failed"].append(unit)
+        
+        return results
