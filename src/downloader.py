@@ -31,7 +31,7 @@ class Downloader:
         if not self.page:
             self.start()
         
-        self.page.goto("https://campus.gov.il/login/")
+        self.page.goto("https://app.campus.gov.il/authn/login")
         
         # Wait for the login form to be visible
         self.page.wait_for_selector("#emailOrUsername")
