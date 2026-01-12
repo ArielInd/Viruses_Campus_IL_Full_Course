@@ -4,6 +4,7 @@ import time
 import os
 import re
 import logging
+from datetime import datetime
 
 # Configure logger
 logger = logging.getLogger(__name__)
@@ -169,3 +170,39 @@ class Downloader:
         
         self.logger.info(f"Bulk download complete. Summary: {len(results['downloaded'])} downloaded, {len(results['skipped'])} skipped, {len(results['failed'])} failed.")
         return results
+
+    def generate_summary_report(self, results, output_dir):
+        """Generate a summary.txt report file."""
+        report_path = os.path.join(output_dir, "summary.txt")
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        with open(report_path, "w", encoding="utf-8") as f:
+            f.write(f"Course Transcript Downloader - Summary Report\n")
+            f.write(f"Generated at: {now}\n")
+            f.write(f"{ '='*45}\n\n")
+            
+            f.write(f"Statistics:\n")
+            f.write(f"- Downloaded: {len(results['downloaded'])}\n")
+            f.write(f"- Skipped: {len(results['skipped'])}\n")
+            f.write(f"- Failed: {len(results['failed'])}\n\n")
+            
+            if results["downloaded"]:
+                f.write(f"Downloaded Transcripts:\n")
+                for unit in results["downloaded"]:
+                    f.write(f"- {unit['title']} ({unit['filename']})\n")
+                f.write("\n")
+                
+            if results["skipped"]:
+                f.write(f"Skipped (Already Exists):\n")
+                for unit in results["skipped"]:
+                    f.write(f"- {unit['title']} ({unit['filename']})\n")
+                f.write("\n")
+                
+            if results["failed"]:
+                f.write(f"Failed Downloads:\n")
+                for unit in results["failed"]:
+                    f.write(f"- {unit['title']}\n")
+                f.write("\n")
+                
+        self.logger.info(f"Summary report generated at: {report_path}")
+        return report_path

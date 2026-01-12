@@ -1,4 +1,5 @@
 import logging
+import os
 from src.downloader import Downloader
 
 def test_logging_bulk_download(caplog, mocker):
@@ -46,3 +47,25 @@ def test_logging_bulk_download_failed(caplog, mocker):
         downloader.bulk_download(hierarchy, "output")
         
     assert "Failed to download: Unit 1" in caplog.text
+
+def test_generate_summary_report(tmp_path):
+    """Verify that summary.txt is generated correctly."""
+    downloader = Downloader(username="user", password="pass")
+    output_dir = str(tmp_path)
+    results = {
+        "downloaded": [{"title": "Unit 1", "filename": "01_Unit_1.txt"}],
+        "skipped": [{"title": "Unit 2", "filename": "02_Unit_2.txt"}],
+        "failed": [{"title": "Unit 3", "filename": "03_Unit_3.txt"}]
+    }
+    
+    report_path = downloader.generate_summary_report(results, output_dir)
+    
+    assert os.path.exists(report_path)
+    with open(report_path, "r", encoding="utf-8") as f:
+        content = f.read()
+        assert "Downloaded: 1" in content
+        assert "Skipped: 1" in content
+        assert "Failed: 1" in content
+        assert "Unit 1" in content
+        assert "Unit 2" in content
+        assert "Unit 3" in content
