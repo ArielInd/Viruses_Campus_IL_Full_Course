@@ -56,11 +56,9 @@ class Downloader:
 
     def sanitize_filename(self, filename):
         """Sanitize filename to be safe for the filesystem."""
-        # Replace forbidden characters with underscores
         forbidden_chars = r'[\\/*?:"<<>>|"]'
         sanitized = re.sub(forbidden_chars, '_', filename)
         sanitized = sanitized.replace(' ', '_')
-        # Remove consecutive underscores
         sanitized = re.sub(r'_+', '_', sanitized)
         return sanitized.strip('_')
 
@@ -87,3 +85,37 @@ class Downloader:
             for unit in module['units']:
                 unit_name = f"{unit['index']:02d}_{self.sanitize_filename(unit['title'])}"
                 unit['filename'] = unit_name + ".txt"
+
+    def download_transcript(self, unit_url):
+        """Download transcript from a unit page."""
+        if not self.page:
+            self.start()
+            
+        self.page.goto(unit_url)
+        # Try to find a download link for transcript
+        # edX often uses 'download-transcript' or similar
+        transcript_link = self.page.query_selector("a[href*='transcript'][href$='.txt']")
+        if not transcript_link:
+            transcript_link = self.page.query_selector("a:has-text('Transcript')")
+            
+        if transcript_link:
+            url = transcript_link.get_attribute("href")
+            return self._download_file_from_url(url)
+        return None
+
+    def _download_file_from_url(self, url):
+        """Download file content from URL using the browser's context."""
+        # Use page.request to share authentication state
+        response = self.page.request.get(url)
+        if response.status == 200:
+            return response.text()
+        return None
+
+    def save_transcript(self, content, folder_path, filename):
+        """Save transcript content to a file."""
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        file_path = os.path.join(folder_path, filename)
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return file_path

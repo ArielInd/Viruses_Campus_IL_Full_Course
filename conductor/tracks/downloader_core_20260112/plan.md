@@ -16,7 +16,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Course Structure Traversal' (Protocol in workflow.md) <!-- id: 8 --> <!-- b3efdab -->
 
 ## Phase 4: Transcript Extraction and Saving
-- [ ] Task: Implement logic to identify and download transcripts for each lecture.
+- [~] Task: Implement logic to identify and download transcripts for each lecture.
 - [ ] Task: Apply standardized naming convention to saved `.txt` files.
 - [ ] Task: Implement "skip if exists" check.
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Transcript Extraction and Saving' (Protocol in workflow.md)
