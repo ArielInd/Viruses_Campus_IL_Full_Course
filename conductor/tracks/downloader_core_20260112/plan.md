@@ -1,9 +1,9 @@
 # Implementation Plan: Downloader Core
 
-## Phase 1: Environment and Project Structure
+## Phase 1: Environment and Project Structure [checkpoint: 2093313]
 - [x] Task: Set up Python project structure and install dependencies (Playwright, python-dotenv). <!-- id: 0 --> <!-- bae449d -->
 - [x] Task: Configure environment variables for Campus IL credentials. <!-- id: 1 --> <!-- 986acba -->
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Environment and Project Structure' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Environment and Project Structure' (Protocol in workflow.md) <!-- id: 2 --> <!-- 2093313 -->
 
 ## Phase 2: Authentication and Basic Navigation
 - [ ] Task: Implement Playwright-based login flow for Campus IL.
