@@ -6,7 +6,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Environment and Project Structure' (Protocol in workflow.md) <!-- id: 2 --> <!-- 2093313 -->
 
 ## Phase 2: Authentication and Basic Navigation
-- [~] Task: Implement Playwright-based login flow for Campus IL.
+- [x] Task: Implement Playwright-based login flow for Campus IL. <!-- id: 3 --> <!-- bccdeed -->
 - [ ] Task: Verify successful login and navigation to the course homepage.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Authentication and Basic Navigation' (Protocol in workflow.md)
 
