@@ -2,7 +2,7 @@
 
 ## Phase 1: Environment and Project Structure
 - [x] Task: Set up Python project structure and install dependencies (Playwright, python-dotenv). <!-- id: 0 --> <!-- bae449d -->
-- [~] Task: Configure environment variables for Campus IL credentials.
+- [x] Task: Configure environment variables for Campus IL credentials. <!-- id: 1 --> <!-- 986acba -->
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Environment and Project Structure' (Protocol in workflow.md)
 
 ## Phase 2: Authentication and Basic Navigation
