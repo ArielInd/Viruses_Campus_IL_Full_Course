@@ -3,6 +3,16 @@ from src.config import config
 import time
 import os
 import re
+import logging
+
+# Configure logger
+logger = logging.getLogger(__name__)
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    formatter = logging.Formatter('%(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
 
 class Downloader:
     def __init__(self, username, password, headless=True):
@@ -13,9 +23,11 @@ class Downloader:
         self.context = None
         self.page = None
         self.playwright = None
+        self.logger = logger
 
     def start(self):
         """Initialize playwright and browser."""
+        self.logger.info("Initializing browser...")
         self.playwright = sync_playwright().start()
         self.browser = self.playwright.chromium.launch(headless=self.headless)
         self.context = self.browser.new_context()
@@ -24,6 +36,7 @@ class Downloader:
     def stop(self):
         """Close browser and stop playwright."""
         if self.browser:
+            self.logger.info("Closing browser.")
             self.browser.close()
         if self.playwright:
             self.playwright.stop()
@@ -33,12 +46,18 @@ class Downloader:
         if not self.page:
             self.start()
         
+        self.logger.info(f"Logging in as {self.username}...")
         self.page.goto("https://campus.gov.il/login/")
         self.page.wait_for_selector("#emailOrUsername")
         self.page.fill("#emailOrUsername", self.username)
         self.page.fill("#password", self.password)
         self.page.click("#sign-in")
         self.page.wait_for_load_state("networkidle")
+        
+        if self.is_logged_in():
+            self.logger.info("Successfully logged in.")
+        else:
+            self.logger.error("Login failed.")
 
     def is_logged_in(self):
         """Check if user is logged in."""
@@ -51,6 +70,7 @@ class Downloader:
         """Navigate to the course homepage."""
         if not self.page:
             self.start()
+        self.logger.info(f"Navigating to course: {config.COURSE_URL}")
         self.page.goto(config.COURSE_URL)
         self.page.wait_for_load_state("networkidle")
 
@@ -92,8 +112,6 @@ class Downloader:
             self.start()
             
         self.page.goto(unit_url)
-        # Try to find a download link for transcript
-        # edX often uses 'download-transcript' or similar
         transcript_link = self.page.query_selector("a[href*='transcript'][href$='.txt']")
         if not transcript_link:
             transcript_link = self.page.query_selector("a:has-text('Transcript')")
@@ -105,7 +123,6 @@ class Downloader:
 
     def _download_file_from_url(self, url):
         """Download file content from URL using the browser's context."""
-        # Use page.request to share authentication state
         response = self.page.request.get(url)
         if response.status == 200:
             return response.text()
@@ -124,6 +141,8 @@ class Downloader:
         """Iterate through hierarchy and download missing transcripts."""
         results = {"downloaded": [], "skipped": [], "failed": []}
         
+        self.logger.info("Starting bulk download...")
+        
         for module in hierarchy:
             module_path = module.get('path')
             if not module_path:
@@ -134,14 +153,19 @@ class Downloader:
                 file_path = os.path.join(module_path, unit['filename'])
                 
                 if os.path.exists(file_path):
+                    self.logger.info(f"Skipping (already exists): {unit['filename']}")
                     results["skipped"].append(unit)
                     continue
                 
+                self.logger.info(f"Downloading: {unit['filename']}...")
                 content = self.download_transcript(unit['url'])
                 if content:
                     self.save_transcript(content, module_path, unit['filename'])
+                    self.logger.info(f"Successfully downloaded: {unit['title']}")
                     results["downloaded"].append(unit)
                 else:
+                    self.logger.error(f"Failed to download: {unit['title']}")
                     results["failed"].append(unit)
         
+        self.logger.info(f"Bulk download complete. Summary: {len(results['downloaded'])} downloaded, {len(results['skipped'])} skipped, {len(results['failed'])} failed.")
         return results
