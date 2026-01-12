@@ -23,5 +23,5 @@
 
 ## Phase 5: Logging and Summary Reporting
 - [x] Task: Implement functional console logging for progress tracking. <!-- id: 13 --> <!-- d44ffbc -->
-- [~] Task: Implement generation of the `summary.txt` report.
+- [x] Task: Implement generation of the `summary.txt` report. <!-- id: 14 --> <!-- 597ec25 -->
 - [ ] Task: Conductor - User Manual Verification 'Phase 5: Logging and Summary Reporting' (Protocol in workflow.md)
