@@ -1,6 +1,8 @@
 from playwright.sync_api import sync_playwright
 from src.config import config
 import time
+import os
+import re
 
 class Downloader:
     def __init__(self, username, password, headless=True):
@@ -52,27 +54,36 @@ class Downloader:
         self.page.goto(config.COURSE_URL)
         self.page.wait_for_load_state("networkidle")
 
+    def sanitize_filename(self, filename):
+        """Sanitize filename to be safe for the filesystem."""
+        # Replace forbidden characters with underscores
+        forbidden_chars = r'[\\/*?:"<<>>|"]'
+        sanitized = re.sub(forbidden_chars, '_', filename)
+        sanitized = sanitized.replace(' ', '_')
+        # Remove consecutive underscores
+        sanitized = re.sub(r'_+', '_', sanitized)
+        return sanitized.strip('_')
+
     def get_course_hierarchy(self):
         """
         Extract the course hierarchy.
         Returns a list of modules, each containing units.
         """
-        # This will be refined as we find the exact selectors.
-        # For now, it's a placeholder logic.
         hierarchy = []
-        
-        # Example logic to find modules and units
-        # modules = self.page.query_selector_all(".course-module")
-        # for i, module in enumerate(modules, 1):
-        #     title = module.query_selector(".module-title").inner_text()
-        #     units = []
-        #     unit_elems = module.query_selector_all(".unit-link")
-        #     for j, unit in enumerate(unit_elems, 1):
-        #         units.append({
-        #             "index": j,
-        #             "title": unit.inner_text(),
-        #             "url": unit.get_attribute("href")
-        #         })
-        #     hierarchy.append({"index": i, "title": title, "units": units})
-        
         return hierarchy
+
+    def create_directories(self, hierarchy, output_dir):
+        """Create the directory structure based on the hierarchy."""
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+            
+        for module in hierarchy:
+            module_name = f"{module['index']:02d}_{self.sanitize_filename(module['title'])}"
+            module_path = os.path.join(output_dir, module_name)
+            if not os.path.exists(module_path):
+                os.makedirs(module_path)
+            module['path'] = module_path
+            
+            for unit in module['units']:
+                unit_name = f"{unit['index']:02d}_{self.sanitize_filename(unit['title'])}"
+                unit['filename'] = unit_name + ".txt"
