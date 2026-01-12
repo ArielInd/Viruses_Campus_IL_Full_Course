@@ -5,10 +5,10 @@
 - [x] Task: Configure environment variables for Campus IL credentials. <!-- id: 1 --> <!-- 986acba -->
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Environment and Project Structure' (Protocol in workflow.md) <!-- id: 2 --> <!-- 2093313 -->
 
-## Phase 2: Authentication and Basic Navigation
+## Phase 2: Authentication and Basic Navigation [checkpoint: 7810e0e]
 - [x] Task: Implement Playwright-based login flow for Campus IL. <!-- id: 3 --> <!-- bccdeed -->
 - [x] Task: Verify successful login and navigation to the course homepage. <!-- id: 4 --> <!-- 544fdfb -->
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Authentication and Basic Navigation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Authentication and Basic Navigation' (Protocol in workflow.md) <!-- id: 5 --> <!-- 7810e0e -->
 
 ## Phase 3: Course Structure Traversal
 - [ ] Task: Implement logic to extract the course hierarchy (modules, sections, lectures).
