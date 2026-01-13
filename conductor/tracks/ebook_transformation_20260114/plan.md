@@ -6,21 +6,13 @@
 - [x] Task: Create Book Outline & Manifest 1aa11fd
 - [x] Task: Conductor - User Manual Verification 'Analysis & Organization' 0dde0d1
 
-## Phase 2: Core Content Generation (Chapters 1-4)
+## Phase 2: Core Content Generation (Chapters 1-4) [checkpoint: c01770d]
 
 - [x] Task: Draft Chapter 1 (Introduction & The Cell) 6ff6292
-    - [ ] Sub-task: Synthesize transcripts for Lesson 1 into `chapters/01_chapter_intro_cell.md`.
-    - [ ] Sub-task: Apply standard template (objectives, sidebars, questions).
 - [x] Task: Draft Chapter 2 (Macromolecules & DNA) df3331a
-    - [ ] Sub-task: Synthesize transcripts for Lesson 2 into `chapters/02_chapter_macromolecules.md`.
-    - [ ] Sub-task: Ensure bilingual terminology emphasis.
 - [x] Task: Draft Chapter 3 (Viruses - Structure & Function) 6c3524e
-    - [ ] Sub-task: Synthesize transcripts for Lesson 3 into `chapters/03_chapter_viruses_intro.md`.
-    - [ ] Sub-task: Summarize lab demonstrations in sidebars.
 - [x] Task: Draft Chapter 4 (Human Viral Diseases) 5c1ff4c
-    - [ ] Sub-task: Synthesize transcripts for Lesson 4 into `chapters/04_chapter_human_diseases.md`.
-    - [ ] Sub-task: Include interview summaries as Expert Perspective sidebars.
-- [ ] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 1-4)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 1-4)' c01770d
 
 ## Phase 3: Core Content Generation (Chapters 5-8)
 
