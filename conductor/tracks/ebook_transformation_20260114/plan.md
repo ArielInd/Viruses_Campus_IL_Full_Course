@@ -11,7 +11,7 @@
 - [x] Task: Draft Chapter 1 (Introduction & The Cell) 6ff6292
     - [ ] Sub-task: Synthesize transcripts for Lesson 1 into `chapters/01_chapter_intro_cell.md`.
     - [ ] Sub-task: Apply standard template (objectives, sidebars, questions).
-- [ ] Task: Draft Chapter 2 (Macromolecules & DNA)
+- [x] Task: Draft Chapter 2 (Macromolecules & DNA) df3331a
     - [ ] Sub-task: Synthesize transcripts for Lesson 2 into `chapters/02_chapter_macromolecules.md`.
     - [ ] Sub-task: Ensure bilingual terminology emphasis.
 - [ ] Task: Draft Chapter 3 (Viruses - Structure & Function)
