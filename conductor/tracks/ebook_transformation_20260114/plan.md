@@ -14,17 +14,13 @@
 - [x] Task: Draft Chapter 4 (Human Viral Diseases) 5c1ff4c
 - [x] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 1-4)' c01770d
 
-## Phase 3: Core Content Generation (Chapters 5-8)
+## Phase 3: Core Content Generation (Chapters 5-8) [checkpoint: 9698971]
 
 - [x] Task: Draft Chapter 5 (Innate Immunity) 03f5c92
-    - [ ] Sub-task: Synthesize transcripts for Lesson 5 into `chapters/05_chapter_innate_immunity.md`.
 - [x] Task: Draft Chapter 6 (Adaptive Immunity) 64bf418
-    - [ ] Sub-task: Synthesize transcripts for Lesson 6 into `chapters/06_chapter_adaptive_immunity.md`.
 - [x] Task: Draft Chapter 7 (Vaccines) 2c555aa
-    - [ ] Sub-task: Synthesize transcripts for Lesson 7 into `chapters/07_chapter_vaccines.md`.
 - [x] Task: Draft Chapter 8 (Coronaviruses & COVID-19) 220207b
-    - [ ] Sub-task: Synthesize transcripts for Lesson 8 into `chapters/08_chapter_coronavirus.md`.
-- [ ] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 5-8)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 5-8)' 9698971
 
 ## Phase 4: Supporting Materials & Finalization
 
