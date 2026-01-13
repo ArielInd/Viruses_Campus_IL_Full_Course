@@ -16,7 +16,7 @@
 
 ## Phase 3: Core Content Generation (Chapters 5-8)
 
-- [ ] Task: Draft Chapter 5 (Innate Immunity)
+- [x] Task: Draft Chapter 5 (Innate Immunity) 03f5c92
     - [ ] Sub-task: Synthesize transcripts for Lesson 5 into `chapters/05_chapter_innate_immunity.md`.
 - [ ] Task: Draft Chapter 6 (Adaptive Immunity)
     - [ ] Sub-task: Synthesize transcripts for Lesson 6 into `chapters/06_chapter_adaptive_immunity.md`.
