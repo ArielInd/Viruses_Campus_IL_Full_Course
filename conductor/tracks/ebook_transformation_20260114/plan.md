@@ -24,7 +24,7 @@
 
 ## Phase 4: Supporting Materials & Finalization
 
-- [ ] Task: Create Front Matter
+- [x] Task: Create Front Matter 2ccd356
     - [ ] Sub-task: Write `00_front_matter.md` with title, disclaimer, and TOC.
 - [ ] Task: Compile Glossary
     - [ ] Sub-task: Aggregate key terms from all chapters into `90_glossary.md`.
