@@ -17,7 +17,7 @@
 - [x] Task: Draft Chapter 3 (Viruses - Structure & Function) 6c3524e
     - [ ] Sub-task: Synthesize transcripts for Lesson 3 into `chapters/03_chapter_viruses_intro.md`.
     - [ ] Sub-task: Summarize lab demonstrations in sidebars.
-- [ ] Task: Draft Chapter 4 (Human Viral Diseases)
+- [x] Task: Draft Chapter 4 (Human Viral Diseases) 5c1ff4c
     - [ ] Sub-task: Synthesize transcripts for Lesson 4 into `chapters/04_chapter_human_diseases.md`.
     - [ ] Sub-task: Include interview summaries as Expert Perspective sidebars.
 - [ ] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 1-4)' (Protocol in workflow.md)
