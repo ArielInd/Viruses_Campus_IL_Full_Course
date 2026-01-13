@@ -1,0 +1,58 @@
+# Plan: Hebrew Virology Study Ebook Transformation
+
+## Phase 1: Analysis & Organization
+
+- [~] Task: Scan and analyze all transcripts
+    - [ ] Sub-task: Create a Python script to scan all 72 transcript files.
+    - [ ] Sub-task: Extract key metadata (filename, apparent topic) for each file.
+    - [ ] Sub-task: Create concise per-file notes (main claims, definitions, mechanisms).
+- [ ] Task: Create Book Outline & Manifest
+    - [ ] Sub-task: Create `/book` directory structure.
+    - [ ] Sub-task: Develop `01_outline.md` defining the Lesson-based chapter grouping.
+    - [ ] Sub-task: Generate `manifest.json` mapping transcript files to planned chapters.
+- [ ] Task: Conductor - User Manual Verification 'Analysis & Organization' (Protocol in workflow.md)
+
+## Phase 2: Core Content Generation (Chapters 1-4)
+
+- [ ] Task: Draft Chapter 1 (Introduction & The Cell)
+    - [ ] Sub-task: Synthesize transcripts for Lesson 1 into `chapters/01_chapter_intro_cell.md`.
+    - [ ] Sub-task: Apply standard template (objectives, sidebars, questions).
+- [ ] Task: Draft Chapter 2 (Macromolecules & DNA)
+    - [ ] Sub-task: Synthesize transcripts for Lesson 2 into `chapters/02_chapter_macromolecules.md`.
+    - [ ] Sub-task: Ensure bilingual terminology emphasis.
+- [ ] Task: Draft Chapter 3 (Viruses - Structure & Function)
+    - [ ] Sub-task: Synthesize transcripts for Lesson 3 into `chapters/03_chapter_viruses_intro.md`.
+    - [ ] Sub-task: Summarize lab demonstrations in sidebars.
+- [ ] Task: Draft Chapter 4 (Human Viral Diseases)
+    - [ ] Sub-task: Synthesize transcripts for Lesson 4 into `chapters/04_chapter_human_diseases.md`.
+    - [ ] Sub-task: Include interview summaries as Expert Perspective sidebars.
+- [ ] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 1-4)' (Protocol in workflow.md)
+
+## Phase 3: Core Content Generation (Chapters 5-8)
+
+- [ ] Task: Draft Chapter 5 (Innate Immunity)
+    - [ ] Sub-task: Synthesize transcripts for Lesson 5 into `chapters/05_chapter_innate_immunity.md`.
+- [ ] Task: Draft Chapter 6 (Adaptive Immunity)
+    - [ ] Sub-task: Synthesize transcripts for Lesson 6 into `chapters/06_chapter_adaptive_immunity.md`.
+- [ ] Task: Draft Chapter 7 (Vaccines)
+    - [ ] Sub-task: Synthesize transcripts for Lesson 7 into `chapters/07_chapter_vaccines.md`.
+- [ ] Task: Draft Chapter 8 (Coronaviruses & COVID-19)
+    - [ ] Sub-task: Synthesize transcripts for Lesson 8 into `chapters/08_chapter_coronavirus.md`.
+- [ ] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 5-8)' (Protocol in workflow.md)
+
+## Phase 4: Supporting Materials & Finalization
+
+- [ ] Task: Create Front Matter
+    - [ ] Sub-task: Write `00_front_matter.md` with title, disclaimer, and TOC.
+- [ ] Task: Compile Glossary
+    - [ ] Sub-task: Aggregate key terms from all chapters into `90_glossary.md`.
+    - [ ] Sub-task: Ensure consistent Hebrew definitions with English parentheses.
+- [ ] Task: Compile Exam Review & Question Bank
+    - [ ] Sub-task: Create `91_exam_review.md` with high-yield summaries.
+    - [ ] Sub-task: Aggregate all chapter questions into `92_question_bank.md` with rationales.
+- [ ] Task: Final Consistency Pass
+    - [ ] Sub-task: Review full text for duplicates, terminology consistency, and missing definitions.
+    - [ ] Sub-task: Generate final report (chapter count, reading time).
+- [ ] Task: Create README
+    - [ ] Sub-task: Write `/book/README.md` with organization and build instructions.
+- [ ] Task: Conductor - User Manual Verification 'Supporting Materials & Finalization' (Protocol in workflow.md)
