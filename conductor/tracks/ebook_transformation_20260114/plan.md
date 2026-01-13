@@ -6,7 +6,7 @@
     - [ ] Sub-task: Create a Python script to scan all 72 transcript files.
     - [ ] Sub-task: Extract key metadata (filename, apparent topic) for each file.
     - [ ] Sub-task: Create concise per-file notes (main claims, definitions, mechanisms).
-- [ ] Task: Create Book Outline & Manifest
+- [x] Task: Create Book Outline & Manifest 1aa11fd
     - [ ] Sub-task: Create `/book` directory structure.
     - [ ] Sub-task: Develop `01_outline.md` defining the Lesson-based chapter grouping.
     - [ ] Sub-task: Generate `manifest.json` mapping transcript files to planned chapters.
