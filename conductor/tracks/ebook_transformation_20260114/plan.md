@@ -18,7 +18,7 @@
 
 - [x] Task: Draft Chapter 5 (Innate Immunity) 03f5c92
     - [ ] Sub-task: Synthesize transcripts for Lesson 5 into `chapters/05_chapter_innate_immunity.md`.
-- [ ] Task: Draft Chapter 6 (Adaptive Immunity)
+- [x] Task: Draft Chapter 6 (Adaptive Immunity) 64bf418
     - [ ] Sub-task: Synthesize transcripts for Lesson 6 into `chapters/06_chapter_adaptive_immunity.md`.
 - [ ] Task: Draft Chapter 7 (Vaccines)
     - [ ] Sub-task: Synthesize transcripts for Lesson 7 into `chapters/07_chapter_vaccines.md`.
