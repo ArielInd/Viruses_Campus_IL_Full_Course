@@ -14,7 +14,7 @@
 - [x] Task: Draft Chapter 2 (Macromolecules & DNA) df3331a
     - [ ] Sub-task: Synthesize transcripts for Lesson 2 into `chapters/02_chapter_macromolecules.md`.
     - [ ] Sub-task: Ensure bilingual terminology emphasis.
-- [ ] Task: Draft Chapter 3 (Viruses - Structure & Function)
+- [x] Task: Draft Chapter 3 (Viruses - Structure & Function) 6c3524e
     - [ ] Sub-task: Synthesize transcripts for Lesson 3 into `chapters/03_chapter_viruses_intro.md`.
     - [ ] Sub-task: Summarize lab demonstrations in sidebars.
 - [ ] Task: Draft Chapter 4 (Human Viral Diseases)
