@@ -8,7 +8,7 @@
 
 ## Phase 2: Core Content Generation (Chapters 1-4)
 
-- [ ] Task: Draft Chapter 1 (Introduction & The Cell)
+- [x] Task: Draft Chapter 1 (Introduction & The Cell) 6ff6292
     - [ ] Sub-task: Synthesize transcripts for Lesson 1 into `chapters/01_chapter_intro_cell.md`.
     - [ ] Sub-task: Apply standard template (objectives, sidebars, questions).
 - [ ] Task: Draft Chapter 2 (Macromolecules & DNA)
