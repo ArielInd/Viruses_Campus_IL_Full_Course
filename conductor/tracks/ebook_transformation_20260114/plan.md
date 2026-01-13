@@ -22,19 +22,11 @@
 - [x] Task: Draft Chapter 8 (Coronaviruses & COVID-19) 220207b
 - [x] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 5-8)' 9698971
 
-## Phase 4: Supporting Materials & Finalization
+## Phase 4: Supporting Materials & Finalization [checkpoint: 6d65dea]
 
 - [x] Task: Create Front Matter 2ccd356
-    - [ ] Sub-task: Write `00_front_matter.md` with title, disclaimer, and TOC.
 - [x] Task: Compile Glossary eee0fcd
-    - [ ] Sub-task: Aggregate key terms from all chapters into `90_glossary.md`.
-    - [ ] Sub-task: Ensure consistent Hebrew definitions with English parentheses.
 - [x] Task: Compile Exam Review & Question Bank 789acbb
-    - [ ] Sub-task: Create `91_exam_review.md` with high-yield summaries.
-    - [ ] Sub-task: Aggregate all chapter questions into `92_question_bank.md` with rationales.
 - [x] Task: Final Consistency Pass 4d029d0
-    - [ ] Sub-task: Review full text for duplicates, terminology consistency, and missing definitions.
-    - [ ] Sub-task: Generate final report (chapter count, reading time).
 - [x] Task: Create README 294e51c
-    - [ ] Sub-task: Write `/book/README.md` with organization and build instructions.
-- [ ] Task: Conductor - User Manual Verification 'Supporting Materials & Finalization' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Supporting Materials & Finalization' 6d65dea
