@@ -22,7 +22,7 @@
     - [ ] Sub-task: Synthesize transcripts for Lesson 6 into `chapters/06_chapter_adaptive_immunity.md`.
 - [x] Task: Draft Chapter 7 (Vaccines) 2c555aa
     - [ ] Sub-task: Synthesize transcripts for Lesson 7 into `chapters/07_chapter_vaccines.md`.
-- [ ] Task: Draft Chapter 8 (Coronaviruses & COVID-19)
+- [x] Task: Draft Chapter 8 (Coronaviruses & COVID-19) 220207b
     - [ ] Sub-task: Synthesize transcripts for Lesson 8 into `chapters/08_chapter_coronavirus.md`.
 - [ ] Task: Conductor - User Manual Verification 'Core Content Generation (Chapters 5-8)' (Protocol in workflow.md)
 
