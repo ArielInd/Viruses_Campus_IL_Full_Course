@@ -26,7 +26,7 @@
 
 - [x] Task: Create Front Matter 2ccd356
     - [ ] Sub-task: Write `00_front_matter.md` with title, disclaimer, and TOC.
-- [ ] Task: Compile Glossary
+- [x] Task: Compile Glossary eee0fcd
     - [ ] Sub-task: Aggregate key terms from all chapters into `90_glossary.md`.
     - [ ] Sub-task: Ensure consistent Hebrew definitions with English parentheses.
 - [ ] Task: Compile Exam Review & Question Bank
