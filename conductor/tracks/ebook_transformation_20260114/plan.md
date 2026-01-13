@@ -20,7 +20,7 @@
     - [ ] Sub-task: Synthesize transcripts for Lesson 5 into `chapters/05_chapter_innate_immunity.md`.
 - [x] Task: Draft Chapter 6 (Adaptive Immunity) 64bf418
     - [ ] Sub-task: Synthesize transcripts for Lesson 6 into `chapters/06_chapter_adaptive_immunity.md`.
-- [ ] Task: Draft Chapter 7 (Vaccines)
+- [x] Task: Draft Chapter 7 (Vaccines) 2c555aa
     - [ ] Sub-task: Synthesize transcripts for Lesson 7 into `chapters/07_chapter_vaccines.md`.
 - [ ] Task: Draft Chapter 8 (Coronaviruses & COVID-19)
     - [ ] Sub-task: Synthesize transcripts for Lesson 8 into `chapters/08_chapter_coronavirus.md`.
