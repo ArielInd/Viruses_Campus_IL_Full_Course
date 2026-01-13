@@ -1,4 +1,4 @@
-# Tech Stack: Course Transcript Downloader
+# Tech Stack: Course Transcript Downloader & Ebook Generator
 
 ## Core Technologies
 - **Language:** Python 3.x
@@ -14,3 +14,4 @@
 
 ## Development Tools
 - **Linter/Formatter:** Ruff (recommended for fast and comprehensive Python linting)
+- **Ebook Build Tool:** Pandoc (for converting Markdown sources to EPUB/HTML)
