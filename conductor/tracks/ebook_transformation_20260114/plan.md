@@ -32,9 +32,9 @@
 - [x] Task: Compile Exam Review & Question Bank 789acbb
     - [ ] Sub-task: Create `91_exam_review.md` with high-yield summaries.
     - [ ] Sub-task: Aggregate all chapter questions into `92_question_bank.md` with rationales.
-- [ ] Task: Final Consistency Pass
+- [x] Task: Final Consistency Pass 4d029d0
     - [ ] Sub-task: Review full text for duplicates, terminology consistency, and missing definitions.
     - [ ] Sub-task: Generate final report (chapter count, reading time).
-- [ ] Task: Create README
+- [x] Task: Create README 294e51c
     - [ ] Sub-task: Write `/book/README.md` with organization and build instructions.
 - [ ] Task: Conductor - User Manual Verification 'Supporting Materials & Finalization' (Protocol in workflow.md)
