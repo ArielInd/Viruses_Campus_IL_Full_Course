@@ -29,7 +29,7 @@
 - [x] Task: Compile Glossary eee0fcd
     - [ ] Sub-task: Aggregate key terms from all chapters into `90_glossary.md`.
     - [ ] Sub-task: Ensure consistent Hebrew definitions with English parentheses.
-- [ ] Task: Compile Exam Review & Question Bank
+- [x] Task: Compile Exam Review & Question Bank 789acbb
     - [ ] Sub-task: Create `91_exam_review.md` with high-yield summaries.
     - [ ] Sub-task: Aggregate all chapter questions into `92_question_bank.md` with rationales.
 - [ ] Task: Final Consistency Pass
