@@ -1,16 +1,10 @@
 # Plan: Hebrew Virology Study Ebook Transformation
 
-## Phase 1: Analysis & Organization
+## Phase 1: Analysis & Organization [checkpoint: 0dde0d1]
 
 - [x] Task: Scan and analyze all transcripts 166a2a1
-    - [ ] Sub-task: Create a Python script to scan all 72 transcript files.
-    - [ ] Sub-task: Extract key metadata (filename, apparent topic) for each file.
-    - [ ] Sub-task: Create concise per-file notes (main claims, definitions, mechanisms).
 - [x] Task: Create Book Outline & Manifest 1aa11fd
-    - [ ] Sub-task: Create `/book` directory structure.
-    - [ ] Sub-task: Develop `01_outline.md` defining the Lesson-based chapter grouping.
-    - [ ] Sub-task: Generate `manifest.json` mapping transcript files to planned chapters.
-- [ ] Task: Conductor - User Manual Verification 'Analysis & Organization' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Analysis & Organization' 0dde0d1
 
 ## Phase 2: Core Content Generation (Chapters 1-4)
 
