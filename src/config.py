@@ -4,17 +4,22 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
+    def __init__(self):
+        self._username = os.getenv("CAMPUS_IL_USERNAME")
+        self._password = os.getenv("CAMPUS_IL_PASSWORD")
+        self._course_url = os.getenv("COURSE_URL")
+
     @property
     def USERNAME(self):
-        return os.getenv("CAMPUS_IL_USERNAME")
+        return self._username
 
     @property
     def PASSWORD(self):
-        return os.getenv("CAMPUS_IL_PASSWORD")
+        return self._password
 
     @property
     def COURSE_URL(self):
-        return os.getenv("COURSE_URL")
+        return self._course_url
 
     def validate(self):
         """Validate that all required environment variables are set."""
