@@ -10,8 +10,8 @@ This plan executes the refactoring strategy defined in the review phase.
 ## Phase 2: Infrastructure Hardening
 - [x] Task: Upgrade `src/config.py` to use `pydantic-settings` for validation. 88788d1
 - [x] Task: Refactor `LLMClient` to be an asynchronous context manager (`__aenter__`/`__aexit__`) for safe resource cleanup. 6772c8a
-- [~] Task: Centralize file path generation logic (move from agents to `PipelineContext` or `schemas.py`).
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Infrastructure Hardening' (Protocol in workflow.md)
+- [x] Task: Centralize file path generation logic (move from agents to `PipelineContext` or `schemas.py`). 219bbb9
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Infrastructure Hardening' (Protocol in workflow.md)
 
 ## Phase 3: Architectural Refactoring (Granularity)
 - [ ] Task: Refactor `BriefBuilder` to accept `chapter_id` argument and process a single chapter.
