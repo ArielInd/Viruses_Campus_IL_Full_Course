@@ -3,8 +3,8 @@
 This plan outlines the steps to perform a comprehensive architectural and code quality review of the agent pipeline, identifying issues and defining refactoring tasks.
 
 ## Phase 1: Preparation and Environment Audit
-- [~] Task: Verify environment and dependency health (Run `pip check`, `ruff check .`)
-- [ ] Task: Ensure all existing tests pass before starting the review (Run `pytest`)
+- [x] Task: Verify environment and dependency health (Run `pip check`, `ruff check .`) 3f46d1e
+- [x] Task: Ensure all existing tests pass before starting the review (Run `pytest`) 3f46d1e
 
 ## Phase 2: Structural and Architectural Review
 - [ ] Task: Analyze `pipeline_orchestrator.py` for orchestration logic, error handling, and state management.
