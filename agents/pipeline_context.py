@@ -1,6 +1,7 @@
-"Pipeline Context Manager: Shared state and caching for the multi-agent pipeline.
+"""
+Pipeline Context Manager: Shared state and caching for the multi-agent pipeline.
 Eliminates redundant file loading and provides efficient data access.
-"
+"""
 
 import os
 import re
