@@ -1,10 +1,12 @@
 from playwright.sync_api import sync_playwright
+from playwright.async_api import async_playwright
 from src.config import config
 import time
 import os
 import re
 import logging
 from datetime import datetime
+import asyncio
 
 # Configure logger
 logger = logging.getLogger(__name__)
@@ -138,28 +140,31 @@ class Downloader:
             f.write(content)
         return file_path
 
-    def bulk_download(self, hierarchy, output_dir):
-        """Iterate through hierarchy and download missing transcripts."""
-        results = {"downloaded": [], "skipped": [], "failed": []}
-        
-        self.logger.info("Starting bulk download...")
-        
-        for module in hierarchy:
-            module_path = module.get('path')
-            if not module_path:
-                module_name = f"{module['index']:02d}_{self.sanitize_filename(module['title'])}"
-                module_path = os.path.join(output_dir, module_name)
-                
-            for unit in module['units']:
-                file_path = os.path.join(module_path, unit['filename'])
-                
-                if os.path.exists(file_path):
-                    self.logger.info(f"Skipping (already exists): {unit['filename']}")
-                    results["skipped"].append(unit)
-                    continue
-                
+    async def _download_unit_async(self, context, unit, module_path, semaphore, results):
+        """Async version of download transcript logic for single unit."""
+        async with semaphore:
+            file_path = os.path.join(module_path, unit['filename'])
+            if os.path.exists(file_path):
+                self.logger.info(f"Skipping (already exists): {unit['filename']}")
+                results["skipped"].append(unit)
+                return
+
+            page = await context.new_page()
+            try:
                 self.logger.info(f"Downloading: {unit['filename']}...")
-                content = self.download_transcript(unit['url'])
+                await page.goto(unit['url'])
+                
+                transcript_link = await page.query_selector("a[href*='transcript'][href$='.txt']")
+                if not transcript_link:
+                    transcript_link = await page.query_selector("a:has-text('Transcript')")
+                
+                content = None
+                if transcript_link:
+                    url = await transcript_link.get_attribute("href")
+                    response = await page.request.get(url)
+                    if response.status == 200:
+                        content = await response.text()
+                
                 if content:
                     self.save_transcript(content, module_path, unit['filename'])
                     self.logger.info(f"Successfully downloaded: {unit['title']}")
@@ -167,9 +172,60 @@ class Downloader:
                 else:
                     self.logger.error(f"Failed to download: {unit['title']}")
                     results["failed"].append(unit)
+            except Exception as e:
+                 self.logger.error(f"Error downloading {unit['title']}: {e}")
+                 results["failed"].append(unit)
+            finally:
+                await page.close()
+
+    async def _run_bulk_download_async(self, hierarchy, output_dir):
+        """Async implementation of bulk download."""
+        results = {"downloaded": [], "skipped": [], "failed": []}
         
-        self.logger.info(f"Bulk download complete. Summary: {len(results['downloaded'])} downloaded, {len(results['skipped'])} skipped, {len(results['failed'])} failed.")
+        storage_state = None
+        if self.context:
+            storage_state = self.context.storage_state()
+
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=self.headless)
+            if storage_state:
+                context = await browser.new_context(storage_state=storage_state)
+            else:
+                context = await browser.new_context()
+
+            semaphore = asyncio.Semaphore(5) # Limit concurrency
+
+            # Pre-create directories to prevent race conditions during concurrent save
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir, exist_ok=True)
+
+            for module in hierarchy:
+                module_path = module.get('path')
+                if not module_path:
+                    module_name = f"{module['index']:02d}_{self.sanitize_filename(module['title'])}"
+                    module_path = os.path.join(output_dir, module_name)
+                    # Update the module dict with the path for tasks to use
+                    module['path'] = module_path
+
+                if not os.path.exists(module_path):
+                    os.makedirs(module_path, exist_ok=True)
+
+            tasks = []
+            for module in hierarchy:
+                module_path = module['path'] # Guaranteed to be set now
+                for unit in module['units']:
+                    task = asyncio.create_task(self._download_unit_async(context, unit, module_path, semaphore, results))
+                    tasks.append(task)
+
+            await asyncio.gather(*tasks)
+            await browser.close()
+
         return results
+
+    def bulk_download(self, hierarchy, output_dir):
+        """Iterate through hierarchy and download missing transcripts."""
+        self.logger.info("Starting bulk download...")
+        return asyncio.run(self._run_bulk_download_async(hierarchy, output_dir))
 
     def generate_summary_report(self, results, output_dir):
         """Generate a summary.txt report file."""
