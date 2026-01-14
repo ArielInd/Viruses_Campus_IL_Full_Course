@@ -121,7 +121,7 @@ class PipelineOrchestrator:
 
         try:
             # Log start
-            self.logger.log_start(task.agent_name)
+            st_dt = self.logger.log_start(task.agent_name)
 
             # Execute agent function
             if asyncio.iscoroutinefunction(task.function):
@@ -133,7 +133,7 @@ class PipelineOrchestrator:
             duration = time.time() - start_time
 
             # Log end
-            self.logger.log_end(task.agent_name, start_time, [], [], [])
+            self.logger.log_end(task.agent_name, st_dt, [], [], [])
 
             result = StageResult(
                 stage=task.stage,
@@ -143,6 +143,7 @@ class PipelineOrchestrator:
                 output=output
             )
 
+            self.results.append(result)
             print(f"  ✓ {task.agent_name} completed ({duration:.2f}s)")
 
             return result
@@ -161,6 +162,7 @@ class PipelineOrchestrator:
                 error=error_msg
             )
 
+            self.results.append(result)
             print(f"  ✗ {task.agent_name} failed: {error_msg}")
 
             return result
