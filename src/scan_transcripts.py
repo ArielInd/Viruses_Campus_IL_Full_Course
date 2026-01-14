@@ -11,8 +11,22 @@ def scan_directory(root_path):
     
     # Sort to ensure consistent order (though os.walk order isn't guaranteed, we sort after)
     for path in sorted(root.rglob('*.txt')):
-        content = path.read_text(encoding='utf-8', errors='replace')
-        metadata = analyze_file_content(content)
+        # Optimization: Read line-by-line to avoid loading full file into memory
+        summary = "No content"
+        with path.open('r', encoding='utf-8', errors='replace') as f:
+            for line in f:
+                stripped = line.strip()
+                if stripped:
+                    summary = stripped
+                    break
+
+        # Use file size in bytes for length to avoid full file read
+        length = path.stat().st_size
+
+        metadata = {
+            'summary': summary,
+            'length': length
+        }
         
         results.append({
             'filename': path.name,
