@@ -6,7 +6,6 @@ Produces detailed briefs for each chapter to guide writing.
 import os
 import json
 from typing import List, Dict
-from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from .schemas import (
@@ -392,7 +391,7 @@ class ChapterBriefBuilder:
         if brief.lab_demo_conceptual:
             md += "## הדגמת מעבדה (קונספטואלית בלבד!)\n\n"
             md += f"- כותרת: {brief.lab_demo_conceptual.get('demo_title', 'N/A')}\n"
-            md += f"- **הערה: ללא פרוטוקול מעשי!**\n\n"
+            md += "- **הערה: ללא פרוטוקול מעשי!**\n\n"
         
         md += "## טעויות נפוצות לכסות\n\n"
         for mistake in brief.common_mistakes:

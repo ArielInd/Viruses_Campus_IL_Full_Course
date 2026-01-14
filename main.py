@@ -41,7 +41,7 @@ def main():
         logger.info("Step 5: Generating summary report...")
         report_path = downloader.generate_summary_report(results, output_dir)
         
-        logger.info(f"Process complete!")
+        logger.info("Process complete!")
         logger.info(f"Summary report: {report_path}")
         logger.info(f"Transcripts stored in: {output_dir}")
         

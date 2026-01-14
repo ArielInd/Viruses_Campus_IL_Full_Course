@@ -35,18 +35,18 @@
 
 ## מונחים להדגשה (bold בהופעה ראשונה)
 
-- covid
-- Covid
-- ובקוביד
-- SARS
-- multi
-- post
-- אקזו
-- long
 - Quartets
 - world
-- men
+- post
+- covid
+- ובקוביד
+- SARS
 - pre
+- multi
+- אקזו
+- Covid
+- long
+- men
 
 ## טבלאות נדרשות
 

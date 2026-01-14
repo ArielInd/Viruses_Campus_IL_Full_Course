@@ -1,6 +1,5 @@
 from src.downloader import Downloader
 from src.config import config
-import os
 
 downloader = Downloader(config.USERNAME, config.PASSWORD, headless=True)
 unit_url = "https://app.campus.gov.il/learning/course/course-v1:TAU+ACD_RFP1_HowToBeatViruses_HE+2022_1/block-v1:TAU+ACD_RFP1_HowToBeatViruses_HE+2022_1+type@sequential+block@232e4e6fc42440f58c95c154f94e07d6"

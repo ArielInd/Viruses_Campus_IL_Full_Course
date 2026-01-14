@@ -9,7 +9,6 @@ This script demonstrates the improved pipeline architecture with:
 - Multi-provider LLM support
 """
 
-import os
 import asyncio
 import sys
 from pathlib import Path
@@ -305,7 +304,7 @@ async def run_optimized_pipeline():
     print(f"📝 TODO items saved to: {OPS_DIR / 'todos.md'}")
 
     # Show cache statistics
-    print(f"\n💾 Cache statistics:")
+    print("\n💾 Cache statistics:")
     print(context)
 
     return orchestrator
@@ -318,10 +317,10 @@ def main():
         orchestrator = asyncio.run(run_optimized_pipeline())
 
         print("\n✅ Pipeline completed successfully!")
-        print(f"\nNext steps:")
-        print(f"1. Review generated book in: book/chapters/")
-        print(f"2. Check performance metrics: ops/performance_metrics.json")
-        print(f"3. Review TODOs: ops/todos.md")
+        print("\nNext steps:")
+        print("1. Review generated book in: book/chapters/")
+        print("2. Check performance metrics: ops/performance_metrics.json")
+        print("3. Review TODOs: ops/todos.md")
 
         return 0
 

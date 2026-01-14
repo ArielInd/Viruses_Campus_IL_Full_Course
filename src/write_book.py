@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 import os
 import json
-import time
 from pathlib import Path
-from typing import List, Dict
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv

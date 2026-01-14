@@ -39,15 +39,15 @@
 
 ## מונחים להדגשה (bold בהופעה ראשונה)
 
-- גראם
-- points
-- non
-- עיקריות
 - action
-- types
 - whip
 - lysosomes-
 - cells-
+- types
+- עיקריות
+- points
+- non
+- גראם
 
 ## טבלאות נדרשות
 

@@ -1,6 +1,5 @@
 from src.downloader import Downloader
 from src.config import config
-import os
 
 # WARNING: This will launch a real browser (if headless=False) 
 # and attempt to log in using the credentials in your .env

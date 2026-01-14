@@ -53,8 +53,8 @@ def check_dependencies():
         
         print("\nInstall with:")
         if sys.platform == "darwin":  # macOS
-            print(f"  brew install pandoc basictex")
-            print(f"  # OR ensure Google Chrome is in /Applications/")
+            print("  brew install pandoc basictex")
+            print("  # OR ensure Google Chrome is in /Applications/")
         
         return False
 
@@ -194,7 +194,7 @@ def convert_to_pdf(book_dir: Path, output_path: Path, chapters: list, metadata_p
             print(f"\n✅ PDF created successfully via xelatex: {output_path}")
             return True
         except subprocess.CalledProcessError as e:
-            print(f"\n❌ xelatex conversion failed, falling back to Chrome...")
+            print("\n❌ xelatex conversion failed, falling back to Chrome...")
             print(e.stderr)
 
     # Step 2: Fallback to Chrome Headless via intermediate HTML
@@ -295,17 +295,17 @@ def main():
     # Cleanup
     if metadata_path.exists():
         metadata_path.unlink()
-        print(f"✓ Cleaned up temporary files")
+        print("✓ Cleaned up temporary files")
 
     if success:
-        print(f"\n🎉 Done! Your ebook is ready:")
+        print("\n🎉 Done! Your ebook is ready:")
         print(f"   {output_path}")
-        print(f"\nOpen with:")
+        print("\nOpen with:")
         print(f"   open {output_path}  # macOS")
         print(f"   xdg-open {output_path}  # Linux")
         return 0
     else:
-        print(f"\n❌ PDF conversion failed. See errors above.")
+        print("\n❌ PDF conversion failed. See errors above.")
         return 1
 
 

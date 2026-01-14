@@ -4,11 +4,8 @@ Writes initial chapter drafts using Gemini API for high-quality Hebrew content.
 """
 
 import os
-import re
-import json
 import time
-from typing import List, Dict, Optional
-from datetime import datetime
+from typing import List, Dict
 
 try:
     import google.generativeai as genai
@@ -351,7 +348,7 @@ class DraftWriter:
             md += "   ב. אפשרות 2\n"
             md += "   ג. אפשרות 3\n"
             md += "   ד. אפשרות 4\n\n"
-            md += f"   **תשובה:** ג – רציונל לתשובה.\n\n"
+            md += "   **תשובה:** ג – רציונל לתשובה.\n\n"
         
         md += "### שאלות קצרות\n\n"
         for i, target in enumerate(brief.get("short_answer_targets", [])[:2], 1):

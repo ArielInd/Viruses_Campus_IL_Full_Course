@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-import re
 
 def generate_book_manifest(scan_data):
     """

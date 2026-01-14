@@ -1,4 +1,3 @@
-import pytest
 import importlib
 
 def test_playwright_installed():

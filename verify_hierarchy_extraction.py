@@ -12,7 +12,7 @@ try:
     hierarchy = downloader.get_course_hierarchy()
     
     print(f"\n{'='*60}")
-    print(f"COURSE HIERARCHY EXTRACTION RESULTS")
+    print("COURSE HIERARCHY EXTRACTION RESULTS")
     print(f"{'='*60}\n")
     
     print(f"Total Modules: {len(hierarchy)}")

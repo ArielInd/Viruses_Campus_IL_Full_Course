@@ -1,0 +1,2056 @@
+F401 [*] `glob` imported but unused
+  --> agents/agent_a_corpus_librarian.py:8:8
+   |
+ 6 | import os
+ 7 | import re
+ 8 | import glob
+   |        ^^^^
+ 9 | from typing import List, Dict, Tuple
+10 | from datetime import datetime
+   |
+help: Remove unused import: `glob`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_a_corpus_librarian.py:10:22
+   |
+ 8 | import glob
+ 9 | from typing import List, Dict, Tuple
+10 | from datetime import datetime
+   |                      ^^^^^^^^
+11 |
+12 | from .schemas import (
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `json` imported but unused
+ --> agents/agent_b_curriculum_architect.py:7:8
+  |
+6 | import os
+7 | import json
+  |        ^^^^
+8 | from typing import List, Dict
+9 | from datetime import datetime
+  |
+help: Remove unused import: `json`
+
+F841 Local variable `corpus_index` is assigned to but never used
+   --> agents/agent_b_curriculum_architect.py:108:13
+    |
+106 |                 raise FileNotFoundError(error_msg)
+107 |
+108 |             corpus_index = load_json(corpus_index_path)
+    |             ^^^^^^^^^^^^
+109 |
+110 |             # Load all file notes
+    |
+help: Remove assignment to unused variable `corpus_index`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_c_brief_builder.py:9:22
+   |
+ 7 | import json
+ 8 | from typing import List, Dict
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 | from concurrent.futures import ThreadPoolExecutor, as_completed
+   |
+help: Remove unused import: `datetime.datetime`
+
+F541 [*] f-string without any placeholders
+   --> agents/agent_c_brief_builder.py:395:19
+    |
+393 |             md += "## הדגמת מעבדה (קונספטואלית בלבד!)\n\n"
+394 |             md += f"- כותרת: {brief.lab_demo_conceptual.get('demo_title', 'N/A')}\n"
+395 |             md += f"- **הערה: ללא פרוטוקול מעשי!**\n\n"
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+396 |         
+397 |         md += "## טעויות נפוצות לכסות\n\n"
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `re` imported but unused
+ --> agents/agent_d_draft_writer.py:7:8
+  |
+6 | import os
+7 | import re
+  |        ^^
+8 | import json
+9 | import time
+  |
+help: Remove unused import: `re`
+
+F401 [*] `json` imported but unused
+  --> agents/agent_d_draft_writer.py:8:8
+   |
+ 6 | import os
+ 7 | import re
+ 8 | import json
+   |        ^^^^
+ 9 | import time
+10 | from typing import List, Dict, Optional
+   |
+help: Remove unused import: `json`
+
+F401 [*] `typing.Optional` imported but unused
+  --> agents/agent_d_draft_writer.py:10:32
+   |
+ 8 | import json
+ 9 | import time
+10 | from typing import List, Dict, Optional
+   |                                ^^^^^^^^
+11 | from datetime import datetime
+   |
+help: Remove unused import: `typing.Optional`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_d_draft_writer.py:11:22
+   |
+ 9 | import time
+10 | from typing import List, Dict, Optional
+11 | from datetime import datetime
+   |                      ^^^^^^^^
+12 |
+13 | try:
+   |
+help: Remove unused import: `datetime.datetime`
+
+F541 [*] f-string without any placeholders
+   --> agents/agent_d_draft_writer.py:354:19
+    |
+352 |             md += "   ג. אפשרות 3\n"
+353 |             md += "   ד. אפשרות 4\n\n"
+354 |             md += f"   **תשובה:** ג – רציונל לתשובה.\n\n"
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+355 |         
+356 |         md += "### שאלות קצרות\n\n"
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `shutil` imported but unused
+ --> agents/agent_e_dev_editor.py:7:8
+  |
+6 | import os
+7 | import shutil
+  |        ^^^^^^
+8 | from typing import List, Dict
+9 | from datetime import datetime
+  |
+help: Remove unused import: `shutil`
+
+F401 [*] `typing.List` imported but unused
+ --> agents/agent_e_dev_editor.py:8:20
+  |
+6 | import os
+7 | import shutil
+8 | from typing import List, Dict
+  |                    ^^^^
+9 | from datetime import datetime
+  |
+help: Remove unused import: `typing.List`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_e_dev_editor.py:9:22
+   |
+ 7 | import shutil
+ 8 | from typing import List, Dict
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 |
+11 | from .schemas import (
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_e_developmental_editor.py:8:22
+   |
+ 6 | import os
+ 7 | from typing import Dict, List
+ 8 | from datetime import datetime
+   |                      ^^^^^^^^
+ 9 |
+10 | from .schemas import (
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `.schemas.load_json` imported but unused
+  --> agents/agent_e_developmental_editor.py:12:31
+   |
+10 | from .schemas import (
+11 |     EditedChapter, PipelineLogger, TodoTracker,
+12 |     save_json, save_markdown, load_json, read_file
+   |                               ^^^^^^^^^
+13 | )
+   |
+help: Remove unused import: `.schemas.load_json`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_f_assessment.py:9:22
+   |
+ 7 | import re
+ 8 | from typing import List, Dict
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 |
+11 | from .schemas import (
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `re` imported but unused
+ --> agents/agent_f_assessment_designer.py:7:8
+  |
+6 | import os
+7 | import re
+  |        ^^
+8 | from typing import Dict, List
+9 | from datetime import datetime
+  |
+help: Remove unused import: `re`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_f_assessment_designer.py:9:22
+   |
+ 7 | import re
+ 8 | from typing import Dict, List
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 |
+11 | from .schemas import PipelineLogger, TodoTracker, save_markdown, read_file
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `re` imported but unused
+ --> agents/agent_g_terminology.py:7:8
+  |
+6 | import os
+7 | import re
+  |        ^^
+8 | import yaml
+9 | from typing import List, Dict, Set
+  |
+help: Remove unused import: `re`
+
+F401 [*] `typing.List` imported but unused
+  --> agents/agent_g_terminology.py:9:20
+   |
+ 7 | import re
+ 8 | import yaml
+ 9 | from typing import List, Dict, Set
+   |                    ^^^^
+10 | from datetime import datetime
+   |
+help: Remove unused import
+
+F401 [*] `typing.Set` imported but unused
+  --> agents/agent_g_terminology.py:9:32
+   |
+ 7 | import re
+ 8 | import yaml
+ 9 | from typing import List, Dict, Set
+   |                                ^^^
+10 | from datetime import datetime
+   |
+help: Remove unused import
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_g_terminology.py:10:22
+   |
+ 8 | import yaml
+ 9 | from typing import List, Dict, Set
+10 | from datetime import datetime
+   |                      ^^^^^^^^
+11 |
+12 | from .schemas import (
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `.schemas.load_json` imported but unused
+  --> agents/agent_g_terminology.py:14:20
+   |
+12 | from .schemas import (
+13 |     ConsistencyReport, PipelineLogger, TodoTracker,
+14 |     save_markdown, load_json, read_file
+   |                    ^^^^^^^^^
+15 | )
+   |
+help: Remove unused import: `.schemas.load_json`
+
+F541 [*] f-string without any placeholders
+   --> agents/agent_g_terminology.py:155:15
+    |
+153 |         md += "---\n\n"
+154 |         
+155 |         md += f"## סיכום\n\n"
+    |               ^^^^^^^^^^^^^^^
+156 |         md += f"- מונחים שנבדקו: {report.total_terms_checked}\n"
+157 |         md += f"- חוסר עקביות שנמצא: {report.inconsistencies_found}\n\n"
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `re` imported but unused
+ --> agents/agent_g_terminology_keeper.py:7:8
+  |
+6 | import os
+7 | import re
+  |        ^^
+8 | from typing import Dict, List, Tuple
+9 | from datetime import datetime
+  |
+help: Remove unused import: `re`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_g_terminology_keeper.py:9:22
+   |
+ 7 | import re
+ 8 | from typing import Dict, List, Tuple
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 |
+11 | from .schemas import PipelineLogger, TodoTracker, save_markdown, read_file
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_h_copyeditor.py:9:22
+   |
+ 7 | import re
+ 8 | from typing import Dict, List
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 |
+11 | from .schemas import PipelineLogger, TodoTracker, save_markdown, read_file
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_h_proofreader.py:9:22
+   |
+ 7 | import re
+ 8 | from typing import List, Dict
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 |
+11 | from .schemas import (
+   |
+help: Remove unused import: `datetime.datetime`
+
+F541 [*] f-string without any placeholders
+   --> agents/agent_h_proofreader.py:132:15
+    |
+130 |         md += "---\n\n"
+131 |         
+132 |         md += f"## סיכום\n\n"
+    |               ^^^^^^^^^^^^^^^
+133 |         md += f"- קבצים שנבדקו: {files_checked}\n"
+134 |         md += f"- בעיות שנמצאו: {len(issues)}\n\n"
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_i_safety.py:9:22
+   |
+ 7 | import re
+ 8 | from typing import List, Dict
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 |
+11 | from .schemas import (
+   |
+help: Remove unused import: `datetime.datetime`
+
+F541 [*] f-string without any placeholders
+   --> agents/agent_i_safety.py:202:15
+    |
+200 |             md += f"{failed} קבצים דורשים בדיקה ידנית.\n\n"
+201 |         
+202 |         md += f"## סיכום\n\n"
+    |               ^^^^^^^^^^^^^^^
+203 |         md += f"| מדד | ערך |\n"
+204 |         md += f"|-----|-----|\n"
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> agents/agent_i_safety.py:203:15
+    |
+202 |         md += f"## סיכום\n\n"
+203 |         md += f"| מדד | ערך |\n"
+    |               ^^^^^^^^^^^^^^^^^^
+204 |         md += f"|-----|-----|\n"
+205 |         md += f"| קבצים שנבדקו | {total} |\n"
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> agents/agent_i_safety.py:204:15
+    |
+202 |         md += f"## סיכום\n\n"
+203 |         md += f"| מדד | ערך |\n"
+204 |         md += f"|-----|-----|\n"
+    |               ^^^^^^^^^^^^^^^^^^
+205 |         md += f"| קבצים שנבדקו | {total} |\n"
+206 |         md += f"| עברו ✅ | {passed} |\n"
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `datetime.datetime` imported but unused
+  --> agents/agent_i_safety_reviewer.py:9:22
+   |
+ 7 | import re
+ 8 | from typing import Dict, List
+ 9 | from datetime import datetime
+   |                      ^^^^^^^^
+10 |
+11 | from .schemas import PipelineLogger, TodoTracker, save_markdown, read_file
+   |
+help: Remove unused import: `datetime.datetime`
+
+F401 [*] `json` imported but unused
+  --> agents/llm_client.py:9:8
+   |
+ 7 | import time
+ 8 | import asyncio
+ 9 | import json
+   |        ^^^^
+10 | from typing import Optional, Dict, List
+11 | from dataclasses import dataclass
+   |
+help: Remove unused import: `json`
+
+F401 [*] `typing.Dict` imported but unused
+  --> agents/llm_client.py:10:30
+   |
+ 8 | import asyncio
+ 9 | import json
+10 | from typing import Optional, Dict, List
+   |                              ^^^^
+11 | from dataclasses import dataclass
+12 | from enum import Enum
+   |
+help: Remove unused import: `typing.Dict`
+
+F401 [*] `functools.lru_cache` imported but unused
+  --> agents/pipeline_context.py:10:23
+   |
+ 8 | from typing import Dict, List, Optional, Any
+ 9 | from dataclasses import dataclass, field
+10 | from functools import lru_cache
+   |                       ^^^^^^^^^
+11 | import json
+   |
+help: Remove unused import: `functools.lru_cache`
+
+F541 [*] f-string without any placeholders
+   --> agents/pipeline_context.py:100:15
+    |
+ 98 |             self._corpus_index_cache = json.load(f)
+ 99 |
+100 |         print(f"[PipelineContext] Loaded corpus index (cached)")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+101 |
+102 |         return self._corpus_index_cache
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `concurrent.futures.ThreadPoolExecutor` imported but unused
+  --> agents/pipeline_orchestrator.py:11:32
+   |
+ 9 | from dataclasses import dataclass, field
+10 | from enum import Enum
+11 | from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+   |                                ^^^^^^^^^^^^^^^^^^
+12 | import json
+   |
+help: Remove unused import
+
+F401 [*] `concurrent.futures.ProcessPoolExecutor` imported but unused
+  --> agents/pipeline_orchestrator.py:11:52
+   |
+ 9 | from dataclasses import dataclass, field
+10 | from enum import Enum
+11 | from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+   |                                                    ^^^^^^^^^^^^^^^^^^^
+12 | import json
+   |
+help: Remove unused import
+
+F841 Local variable `f` is assigned to but never used
+   --> agents/schemas.py:142:59
+    |
+140 |         # Ensure file exists
+141 |         if not os.path.exists(log_path):
+142 |             with open(log_path, 'w', encoding='utf-8') as f:
+    |                                                           ^
+143 |                 pass
+    |
+help: Remove assignment to unused variable `f`
+
+F401 [*] `typing.Dict` imported but unused
+  --> agents/version_manager.py:10:26
+   |
+ 8 | import hashlib
+ 9 | import difflib
+10 | from typing import List, Dict, Optional, Tuple
+   |                          ^^^^
+11 | from datetime import datetime
+12 | from dataclasses import dataclass, asdict
+   |
+help: Remove unused import: `typing.Dict`
+
+F401 [*] `os` imported but unused
+  --> convert_to_html.py:12:8
+   |
+10 | """
+11 |
+12 | import os
+   |        ^^
+13 | import json
+14 | from pathlib import Path
+   |
+help: Remove unused import: `os`
+
+F541 [*] f-string without any placeholders
+   --> convert_to_html.py:347:11
+    |
+345 |     print(f"\n✅ HTML created: {output_path}")
+346 |     print(f"📄 Size: {output_path.stat().st_size / 1024:.2f} KB")
+347 |     print(f"\n💡 To convert to PDF:")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+348 |     print(f"   1. Open in browser: open {output_path}")
+349 |     print(f"   2. Print (Cmd+P / Ctrl+P)")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> convert_to_html.py:349:11
+    |
+347 |     print(f"\n💡 To convert to PDF:")
+348 |     print(f"   1. Open in browser: open {output_path}")
+349 |     print(f"   2. Print (Cmd+P / Ctrl+P)")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+350 |     print(f"   3. Save as PDF")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> convert_to_html.py:350:11
+    |
+348 |     print(f"   1. Open in browser: open {output_path}")
+349 |     print(f"   2. Print (Cmd+P / Ctrl+P)")
+350 |     print(f"   3. Save as PDF")
+    |           ^^^^^^^^^^^^^^^^^^^^
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> convert_to_html.py:379:11
+    |
+377 |     create_html(book_dir, output_path, chapters, manifest)
+378 |
+379 |     print(f"\n🎉 Done! Your ebook is ready:")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+380 |     print(f"   {output_path}")
+    |
+help: Remove extraneous `f` prefix
+
+E722 Do not use bare `except`
+  --> convert_to_pdf.py:39:5
+   |
+37 |         xelatex_installed = True
+38 |         print("✓ xelatex is installed")
+39 |     except:
+   |     ^^^^^^
+40 |         print("✗ xelatex is NOT installed")
+   |
+
+F541 [*] f-string without any placeholders
+  --> convert_to_pdf.py:56:19
+   |
+54 |         print("\nInstall with:")
+55 |         if sys.platform == "darwin":  # macOS
+56 |             print(f"  brew install pandoc basictex")
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+57 |             print(f"  # OR ensure Google Chrome is in /Applications/")
+   |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+  --> convert_to_pdf.py:57:19
+   |
+55 |         if sys.platform == "darwin":  # macOS
+56 |             print(f"  brew install pandoc basictex")
+57 |             print(f"  # OR ensure Google Chrome is in /Applications/")
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+58 |         
+59 |         return False
+   |
+help: Remove extraneous `f` prefix
+
+E722 Do not use bare `except`
+   --> convert_to_pdf.py:172:5
+    |
+170 |         subprocess.run(["xelatex", "--version"], capture_output=True, check=True)
+171 |         xelatex_available = True
+172 |     except:
+    |     ^^^^^^
+173 |         pass
+    |
+
+F541 [*] f-string without any placeholders
+   --> convert_to_pdf.py:197:19
+    |
+195 |             return True
+196 |         except subprocess.CalledProcessError as e:
+197 |             print(f"\n❌ xelatex conversion failed, falling back to Chrome...")
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+198 |             print(e.stderr)
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> convert_to_pdf.py:298:15
+    |
+296 |     if metadata_path.exists():
+297 |         metadata_path.unlink()
+298 |         print(f"✓ Cleaned up temporary files")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+299 |
+300 |     if success:
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> convert_to_pdf.py:301:15
+    |
+300 |     if success:
+301 |         print(f"\n🎉 Done! Your ebook is ready:")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+302 |         print(f"   {output_path}")
+303 |         print(f"\nOpen with:")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> convert_to_pdf.py:303:15
+    |
+301 |         print(f"\n🎉 Done! Your ebook is ready:")
+302 |         print(f"   {output_path}")
+303 |         print(f"\nOpen with:")
+    |               ^^^^^^^^^^^^^^^
+304 |         print(f"   open {output_path}  # macOS")
+305 |         print(f"   xdg-open {output_path}  # Linux")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> convert_to_pdf.py:308:15
+    |
+306 |         return 0
+307 |     else:
+308 |         print(f"\n❌ PDF conversion failed. See errors above.")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+309 |         return 1
+    |
+help: Remove extraneous `f` prefix
+
+E701 Multiple statements on one line (colon)
+   --> generate_manifest.py:109:42
+    |
+107 |             else:
+108 |                 # Special cases
+109 |                 if "8.0" in expected_name: unit = 8 # handle 8.0 special case if regex fails
+    |                                          ^
+110 |                 elif "וירוס_הקורונה" in expected_name: unit = 1
+111 |                 elif "אחרית_דבר" in expected_name: unit = 9 
+    |
+
+E701 Multiple statements on one line (colon)
+   --> generate_manifest.py:110:54
+    |
+108 |                 # Special cases
+109 |                 if "8.0" in expected_name: unit = 8 # handle 8.0 special case if regex fails
+110 |                 elif "וירוס_הקורונה" in expected_name: unit = 1
+    |                                                      ^
+111 |                 elif "אחרית_דבר" in expected_name: unit = 9 
+112 |                 elif "דברי_סיום" in expected_name: unit = 9
+    |
+
+E701 Multiple statements on one line (colon)
+   --> generate_manifest.py:111:50
+    |
+109 |                 if "8.0" in expected_name: unit = 8 # handle 8.0 special case if regex fails
+110 |                 elif "וירוס_הקורונה" in expected_name: unit = 1
+111 |                 elif "אחרית_דבר" in expected_name: unit = 9 
+    |                                                  ^
+112 |                 elif "דברי_סיום" in expected_name: unit = 9
+113 |                 else: unit = 0 # Front matter or unknown
+    |
+
+E701 Multiple statements on one line (colon)
+   --> generate_manifest.py:112:50
+    |
+110 |                 elif "וירוס_הקורונה" in expected_name: unit = 1
+111 |                 elif "אחרית_דבר" in expected_name: unit = 9 
+112 |                 elif "דברי_סיום" in expected_name: unit = 9
+    |                                                  ^
+113 |                 else: unit = 0 # Front matter or unknown
+    |
+
+E701 Multiple statements on one line (colon)
+   --> generate_manifest.py:113:21
+    |
+111 |                 elif "אחרית_דבר" in expected_name: unit = 9 
+112 |                 elif "דברי_סיום" in expected_name: unit = 9
+113 |                 else: unit = 0 # Front matter or unknown
+    |                     ^
+114 |                 
+115 |             manifest_item = {
+    |
+
+F401 [*] `json` imported but unused
+ --> get_one_url.py:3:8
+  |
+1 | from src.downloader import Downloader
+2 | from src.config import config
+3 | import json
+  |        ^^^^
+4 |
+5 | downloader = Downloader(config.USERNAME, config.PASSWORD, headless=True)
+  |
+help: Remove unused import: `json`
+
+F541 [*] f-string without any placeholders
+  --> main.py:44:21
+   |
+42 |         report_path = downloader.generate_summary_report(results, output_dir)
+43 |         
+44 |         logger.info(f"Process complete!")
+   |                     ^^^^^^^^^^^^^^^^^^^^
+45 |         logger.info(f"Summary report: {report_path}")
+46 |         logger.info(f"Transcripts stored in: {output_dir}")
+   |
+help: Remove extraneous `f` prefix
+
+F401 [*] `os` imported but unused
+  --> run_full_pipeline.py:8:8
+   |
+ 6 | """
+ 7 |
+ 8 | import os
+   |        ^^
+ 9 | import sys
+10 | import time
+   |
+help: Remove unused import: `os`
+
+F401 [*] `os` imported but unused
+  --> run_optimized_pipeline.py:12:8
+   |
+10 | """
+11 |
+12 | import os
+   |        ^^
+13 | import asyncio
+14 | import sys
+   |
+help: Remove unused import: `os`
+
+F841 Local variable `llm_client` is assigned to but never used
+  --> run_optimized_pipeline.py:70:5
+   |
+68 |     # Initialize LLM client (supports Gemini + OpenRouter)
+69 |     print("[Setup] Initializing LLM client...")
+70 |     llm_client = get_llm_client()
+   |     ^^^^^^^^^^
+71 |
+72 |     # Initialize orchestrator
+   |
+help: Remove assignment to unused variable `llm_client`
+
+F841 Local variable `stage1_results` is assigned to but never used
+   --> run_optimized_pipeline.py:114:5
+    |
+112 |     ]
+113 |
+114 |     stage1_results = await orchestrator.run_stage(AgentStage.CORPUS_ANALYSIS, stage1_tasks)
+    |     ^^^^^^^^^^^^^^
+115 |
+116 |     # =========================================================================
+    |
+help: Remove assignment to unused variable `stage1_results`
+
+F841 Local variable `stage2_results` is assigned to but never used
+   --> run_optimized_pipeline.py:142:5
+    |
+140 |     ]
+141 |
+142 |     stage2_results = await orchestrator.run_stage(AgentStage.CURRICULUM_DESIGN, stage2_tasks)
+    |     ^^^^^^^^^^^^^^
+143 |
+144 |     # =========================================================================
+    |
+help: Remove assignment to unused variable `stage2_results`
+
+F841 Local variable `stage3_results` is assigned to but never used
+   --> run_optimized_pipeline.py:174:5
+    |
+172 |     ]
+173 |
+174 |     stage3_results = await orchestrator.run_stage(AgentStage.BRIEF_GENERATION, stage3_tasks)
+    |     ^^^^^^^^^^^^^^
+175 |
+176 |     # =========================================================================
+    |
+help: Remove assignment to unused variable `stage3_results`
+
+F841 Local variable `prompt` is assigned to but never used
+   --> run_optimized_pipeline.py:191:13
+    |
+189 |         async def write_chapter_draft(chapter_id):
+190 |             # Simulate LLM API call with automatic rate limiting
+191 |             prompt = f"Write chapter {chapter_id} about virology in Hebrew"
+    |             ^^^^^^
+192 |             # response = await llm_client.generate_async(prompt)
+193 |             await asyncio.sleep(1)  # Simulate API call
+    |
+help: Remove assignment to unused variable `prompt`
+
+F841 Local variable `stage4_results` is assigned to but never used
+   --> run_optimized_pipeline.py:209:5
+    |
+207 |     ]
+208 |
+209 |     stage4_results = await orchestrator.run_stage(AgentStage.DRAFT_WRITING, stage4_tasks)
+    |     ^^^^^^^^^^^^^^
+210 |
+211 |     # =========================================================================
+    |
+help: Remove assignment to unused variable `stage4_results`
+
+F841 Local variable `stage5_results` is assigned to but never used
+   --> run_optimized_pipeline.py:239:5
+    |
+237 |     ]
+238 |
+239 |     stage5_results = await orchestrator.run_stage(AgentStage.EDITING, stage5_tasks)
+    |     ^^^^^^^^^^^^^^
+240 |
+241 |     # =========================================================================
+    |
+help: Remove assignment to unused variable `stage5_results`
+
+F841 Local variable `stage6_results` is assigned to but never used
+   --> run_optimized_pipeline.py:284:5
+    |
+282 |     ]
+283 |
+284 |     stage6_results = await orchestrator.run_stage(AgentStage.VALIDATION, stage6_tasks)
+    |     ^^^^^^^^^^^^^^
+285 |
+286 |     # =========================================================================
+    |
+help: Remove assignment to unused variable `stage6_results`
+
+F541 [*] f-string without any placeholders
+   --> run_optimized_pipeline.py:308:11
+    |
+307 |     # Show cache statistics
+308 |     print(f"\n💾 Cache statistics:")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+309 |     print(context)
+    |
+help: Remove extraneous `f` prefix
+
+F841 Local variable `orchestrator` is assigned to but never used
+   --> run_optimized_pipeline.py:318:9
+    |
+316 |     try:
+317 |         # Run async pipeline
+318 |         orchestrator = asyncio.run(run_optimized_pipeline())
+    |         ^^^^^^^^^^^^
+319 |
+320 |         print("\n✅ Pipeline completed successfully!")
+    |
+help: Remove assignment to unused variable `orchestrator`
+
+F541 [*] f-string without any placeholders
+   --> run_optimized_pipeline.py:321:15
+    |
+320 |         print("\n✅ Pipeline completed successfully!")
+321 |         print(f"\nNext steps:")
+    |               ^^^^^^^^^^^^^^^^
+322 |         print(f"1. Review generated book in: book/chapters/")
+323 |         print(f"2. Check performance metrics: ops/performance_metrics.json")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> run_optimized_pipeline.py:322:15
+    |
+320 |         print("\n✅ Pipeline completed successfully!")
+321 |         print(f"\nNext steps:")
+322 |         print(f"1. Review generated book in: book/chapters/")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+323 |         print(f"2. Check performance metrics: ops/performance_metrics.json")
+324 |         print(f"3. Review TODOs: ops/todos.md")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> run_optimized_pipeline.py:323:15
+    |
+321 |         print(f"\nNext steps:")
+322 |         print(f"1. Review generated book in: book/chapters/")
+323 |         print(f"2. Check performance metrics: ops/performance_metrics.json")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+324 |         print(f"3. Review TODOs: ops/todos.md")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> run_optimized_pipeline.py:324:15
+    |
+322 |         print(f"1. Review generated book in: book/chapters/")
+323 |         print(f"2. Check performance metrics: ops/performance_metrics.json")
+324 |         print(f"3. Review TODOs: ops/todos.md")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+325 |
+326 |         return 0
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `os` imported but unused
+ --> run_pipeline.py:7:8
+  |
+5 | """
+6 |
+7 | import os
+  |        ^^
+8 | import sys
+9 | import json
+  |
+help: Remove unused import: `os`
+
+E402 Module level import not at top of file
+  --> run_pipeline.py:17:1
+   |
+15 |   sys.path.insert(0, str(PROJECT_ROOT))
+16 |
+17 | / from agents import (
+18 | |     PipelineLogger, TodoTracker,
+19 | |     CorpusLibrarian,
+20 | |     CurriculumArchitect,
+21 | |     ChapterBriefBuilder,
+22 | |     DraftWriter,
+23 | |     DevelopmentalEditor,
+24 | |     AssessmentDesigner,
+25 | |     TerminologyConsistencyKeeper,
+26 | |     CopyeditorProofreader,
+27 | |     SafetyScopeReviewer,
+28 | |     save_markdown
+29 | | )
+   | |_^
+30 |
+31 |   # Configuration
+   |
+
+F541 [*] f-string without any placeholders
+   --> run_pipeline.py:144:11
+    |
+143 |     print(f"\n⏱️  Total time: {duration:.1f} seconds")
+144 |     print(f"\n📁 Files processed:")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^
+145 |     print(f"   - Transcripts: {results.get('corpus', {}).get('total_files', 'N/A')}")
+146 |     print(f"   - Chapters created: {results.get('editor', {}).get('num_chapters', 'N/A')}")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> run_pipeline.py:148:11
+    |
+146 |     print(f"   - Chapters created: {results.get('editor', {}).get('num_chapters', 'N/A')}")
+147 |     
+148 |     print(f"\n✅ Quality checks:")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^
+149 |     print(f"   - Terminology issues: {results.get('terminology', {}).get('inconsistencies', 'N/A')}")
+150 |     print(f"   - Proofreading issues: {results.get('proofreader', {}).get('issues_found', 'N/A')}")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> run_pipeline.py:154:15
+    |
+152 |     safety = results.get('safety', {})
+153 |     if safety.get('all_passed', False):
+154 |         print(f"   - Safety review: ✅ PASSED")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+155 |     else:
+156 |         print(f"   - Safety review: ⚠️ {safety.get('failed', 0)} files need review")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> run_pipeline.py:158:11
+    |
+156 |         print(f"   - Safety review: ⚠️ {safety.get('failed', 0)} files need review")
+157 |     
+158 |     print(f"\n📂 Output locations:")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+159 |     print(f"   - Book: {BOOK_DIR}")
+160 |     print(f"   - Logs: {OPS_DIR / 'logs'}")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> run_pipeline.py:164:11
+    |
+163 |     # Highest yield chapters (based on word count)
+164 |     print(f"\n📈 Ready for review!")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+165 |     print("=" * 60 + "\n")
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `time` imported but unused
+  --> run_production.py:12:8
+   |
+10 | import asyncio
+11 | import sys
+12 | import time
+   |        ^^^^
+13 | import subprocess
+14 | from pathlib import Path
+   |
+help: Remove unused import: `time`
+
+F401 [*] `typing.Dict` imported but unused
+  --> run_production.py:15:20
+   |
+13 | import subprocess
+14 | from pathlib import Path
+15 | from typing import Dict, List, Any
+   |                    ^^^^
+16 | from dotenv import load_dotenv
+   |
+help: Remove unused import
+
+F401 [*] `typing.List` imported but unused
+  --> run_production.py:15:26
+   |
+13 | import subprocess
+14 | from pathlib import Path
+15 | from typing import Dict, List, Any
+   |                          ^^^^
+16 | from dotenv import load_dotenv
+   |
+help: Remove unused import
+
+F401 [*] `typing.Any` imported but unused
+  --> run_production.py:15:32
+   |
+13 | import subprocess
+14 | from pathlib import Path
+15 | from typing import Dict, List, Any
+   |                                ^^^
+16 | from dotenv import load_dotenv
+   |
+help: Remove unused import
+
+E402 Module level import not at top of file
+  --> run_production.py:32:1
+   |
+30 | print(f"[Diagnostics] GEMINI_API_KEY set: {'Yes' if os.environ.get('GEMINI_API_KEY') else 'No'}")
+31 |
+32 | from agents.pipeline_context import PipelineContext
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 | from agents.pipeline_orchestrator import PipelineOrchestrator, AgentStage, AgentTask
+34 | from agents.schemas import PipelineLogger, TodoTracker, load_json
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:33:1
+   |
+32 | from agents.pipeline_context import PipelineContext
+33 | from agents.pipeline_orchestrator import PipelineOrchestrator, AgentStage, AgentTask
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+34 | from agents.schemas import PipelineLogger, TodoTracker, load_json
+35 | from agents.llm_client import get_llm_client
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:34:1
+   |
+32 | from agents.pipeline_context import PipelineContext
+33 | from agents.pipeline_orchestrator import PipelineOrchestrator, AgentStage, AgentTask
+34 | from agents.schemas import PipelineLogger, TodoTracker, load_json
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+35 | from agents.llm_client import get_llm_client
+   |
+
+F401 [*] `agents.schemas.load_json` imported but unused
+  --> run_production.py:34:57
+   |
+32 | from agents.pipeline_context import PipelineContext
+33 | from agents.pipeline_orchestrator import PipelineOrchestrator, AgentStage, AgentTask
+34 | from agents.schemas import PipelineLogger, TodoTracker, load_json
+   |                                                         ^^^^^^^^^
+35 | from agents.llm_client import get_llm_client
+   |
+help: Remove unused import: `agents.schemas.load_json`
+
+E402 Module level import not at top of file
+  --> run_production.py:35:1
+   |
+33 | from agents.pipeline_orchestrator import PipelineOrchestrator, AgentStage, AgentTask
+34 | from agents.schemas import PipelineLogger, TodoTracker, load_json
+35 | from agents.llm_client import get_llm_client
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+36 |
+37 | # Import Real Agents
+   |
+
+F401 [*] `agents.llm_client.get_llm_client` imported but unused
+  --> run_production.py:35:31
+   |
+33 | from agents.pipeline_orchestrator import PipelineOrchestrator, AgentStage, AgentTask
+34 | from agents.schemas import PipelineLogger, TodoTracker, load_json
+35 | from agents.llm_client import get_llm_client
+   |                               ^^^^^^^^^^^^^^
+36 |
+37 | # Import Real Agents
+   |
+help: Remove unused import: `agents.llm_client.get_llm_client`
+
+E402 Module level import not at top of file
+  --> run_production.py:38:1
+   |
+37 | # Import Real Agents
+38 | from agents.agent_a_corpus_librarian import CorpusLibrarian
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | from agents.agent_b_curriculum_architect import CurriculumArchitect
+40 | from agents.agent_c_brief_builder import ChapterBriefBuilder
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:39:1
+   |
+37 | # Import Real Agents
+38 | from agents.agent_a_corpus_librarian import CorpusLibrarian
+39 | from agents.agent_b_curriculum_architect import CurriculumArchitect
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 | from agents.agent_c_brief_builder import ChapterBriefBuilder
+41 | from agents.agent_d_draft_writer import DraftWriter
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:40:1
+   |
+38 | from agents.agent_a_corpus_librarian import CorpusLibrarian
+39 | from agents.agent_b_curriculum_architect import CurriculumArchitect
+40 | from agents.agent_c_brief_builder import ChapterBriefBuilder
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+41 | from agents.agent_d_draft_writer import DraftWriter
+42 | from agents.agent_e_developmental_editor import DevelopmentalEditor
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:41:1
+   |
+39 | from agents.agent_b_curriculum_architect import CurriculumArchitect
+40 | from agents.agent_c_brief_builder import ChapterBriefBuilder
+41 | from agents.agent_d_draft_writer import DraftWriter
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 | from agents.agent_e_developmental_editor import DevelopmentalEditor
+43 | from agents.agent_f_assessment_designer import AssessmentDesigner
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:42:1
+   |
+40 | from agents.agent_c_brief_builder import ChapterBriefBuilder
+41 | from agents.agent_d_draft_writer import DraftWriter
+42 | from agents.agent_e_developmental_editor import DevelopmentalEditor
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 | from agents.agent_f_assessment_designer import AssessmentDesigner
+44 | from agents.agent_g_terminology_keeper import TerminologyConsistencyKeeper
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:43:1
+   |
+41 | from agents.agent_d_draft_writer import DraftWriter
+42 | from agents.agent_e_developmental_editor import DevelopmentalEditor
+43 | from agents.agent_f_assessment_designer import AssessmentDesigner
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 | from agents.agent_g_terminology_keeper import TerminologyConsistencyKeeper
+45 | from agents.agent_h_proofreader import CopyeditorProofreader
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:44:1
+   |
+42 | from agents.agent_e_developmental_editor import DevelopmentalEditor
+43 | from agents.agent_f_assessment_designer import AssessmentDesigner
+44 | from agents.agent_g_terminology_keeper import TerminologyConsistencyKeeper
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 | from agents.agent_h_proofreader import CopyeditorProofreader
+46 | from agents.agent_i_safety_reviewer import SafetyScopeReviewer
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:45:1
+   |
+43 | from agents.agent_f_assessment_designer import AssessmentDesigner
+44 | from agents.agent_g_terminology_keeper import TerminologyConsistencyKeeper
+45 | from agents.agent_h_proofreader import CopyeditorProofreader
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 | from agents.agent_i_safety_reviewer import SafetyScopeReviewer
+   |
+
+E402 Module level import not at top of file
+  --> run_production.py:46:1
+   |
+44 | from agents.agent_g_terminology_keeper import TerminologyConsistencyKeeper
+45 | from agents.agent_h_proofreader import CopyeditorProofreader
+46 | from agents.agent_i_safety_reviewer import SafetyScopeReviewer
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |
+48 | async def run_production():
+   |
+
+F541 [*] f-string without any placeholders
+   --> run_production.py:181:11
+    |
+180 |     todos.save()
+181 |     print(f"\n📂 Results preserved in:")
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+182 |     print(f"- Book:  {BOOK_DIR}/build/")
+183 |     print(f"- Logs:  {OPS_DIR}/pipeline.jsonl")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+  --> separate_answers.py:63:15
+   |
+61 |         new_content = separate_answers_in_chapter(chapter_file)
+62 |         chapter_file.write_text(new_content, encoding='utf-8')
+63 |         print(f"  ✓ Completed\n")
+   |               ^^^^^^^^^^^^^^^^^^
+64 |
+65 |     print("✅ All chapters processed!")
+   |
+help: Remove extraneous `f` prefix
+
+F401 [*] `glob` imported but unused
+ --> src/assemble_extras.py:2:8
+  |
+1 | #!/usr/bin/env python3
+2 | import glob
+  |        ^^^^
+3 | import re
+4 | from pathlib import Path
+  |
+help: Remove unused import: `glob`
+
+F401 [*] `collections.Counter` imported but unused
+ --> src/consistency.py:4:25
+  |
+2 | import json
+3 | from pathlib import Path
+4 | from collections import Counter
+  |                         ^^^^^^^
+5 | import yaml
+  |
+help: Remove unused import: `collections.Counter`
+
+E722 Do not use bare `except`
+  --> src/consistency.py:21:13
+   |
+19 |             try:
+20 |                 entities.append(json.loads(line))
+21 |             except:
+   |             ^^^^^^
+22 |                 pass
+   |
+
+F841 Local variable `course_slug` is assigned to but never used
+   --> src/downloader.py:106:13
+    |
+104 |         if 'campus.gov.il/course/' in course_url:
+105 |             # Extract course slug from marketing URL
+106 |             course_slug = course_url.rstrip('/').split('/')[-1]
+    |             ^^^^^^^^^^^
+107 |             # Convert to learning URL format
+108 |             # This is a heuristic - may need adjustment based on actual URL pattern
+    |
+help: Remove assignment to unused variable `course_slug`
+
+F541 [*] f-string without any placeholders
+   --> src/downloader.py:109:28
+    |
+107 |             # Convert to learning URL format
+108 |             # This is a heuristic - may need adjustment based on actual URL pattern
+109 |             learning_url = f"https://app.campus.gov.il/learning/course/course-v1:TAU+ACD_RFP1_HowToBeatViruses_HE+2022_1/home"
+    |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+110 |             self.logger.info(f"Navigating to course home: {learning_url}")
+111 |             self.page.goto(learning_url)
+    |
+help: Remove extraneous `f` prefix
+
+F841 [*] Local variable `e` is assigned to but never used
+   --> src/downloader.py:259:45
+    |
+257 |                                 # Clean up temporary file if possible? Playwright manages it.
+258 |                                 return ('content', content)
+259 |                         except Exception as e:
+    |                                             ^
+260 |                             # self.logger.warning(f"Button check failed: {e}")
+261 |                             continue
+    |
+help: Remove assignment to unused variable `e`
+
+E722 Do not use bare `except`
+   --> src/downloader.py:271:13
+    |
+269 |             try:
+270 |                 self.page.wait_for_selector("iframe", state="attached", timeout=10000)
+271 |             except:
+    |             ^^^^^^
+272 |                 pass
+    |
+
+F841 Local variable `tab_title` is assigned to but never used
+   --> src/downloader.py:292:17
+    |
+291 |             for i, tab in enumerate(tabs):
+292 |                 tab_title = tab.get_attribute("title")
+    |                 ^^^^^^^^^
+293 |                 # self.logger.info(f"Checking tab {i+1}: {tab_title}")
+    |
+help: Remove assignment to unused variable `tab_title`
+
+E722 Do not use bare `except`
+   --> src/downloader.py:298:17
+    |
+296 |                 try:
+297 |                     self.page.wait_for_load_state("domcontentloaded", timeout=5000)
+298 |                 except:
+    |                 ^^^^^^
+299 |                     pass
+300 |                 time.sleep(1) 
+    |
+
+F541 [*] f-string without any placeholders
+   --> src/downloader.py:372:21
+    |
+371 |         with open(report_path, "w", encoding="utf-8") as f:
+372 |             f.write(f"Course Transcript Downloader - Summary Report\n")
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+373 |             f.write(f"Generated at: {now}\n")
+374 |             f.write(f"{ '='*45}\n\n")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/downloader.py:376:21
+    |
+374 |             f.write(f"{ '='*45}\n\n")
+375 |             
+376 |             f.write(f"Statistics:\n")
+    |                     ^^^^^^^^^^^^^^^^
+377 |             f.write(f"- Downloaded: {len(results['downloaded'])}\n")
+378 |             f.write(f"- Skipped: {len(results['skipped'])}\n")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/downloader.py:382:25
+    |
+381 |             if results["downloaded"]:
+382 |                 f.write(f"Downloaded Transcripts:\n")
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+383 |                 for unit in results["downloaded"]:
+384 |                     f.write(f"- {unit['title']} ({unit['filename']})\n")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/downloader.py:388:25
+    |
+387 |             if results["skipped"]:
+388 |                 f.write(f"Skipped (Already Exists):\n")
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+389 |                 for unit in results["skipped"]:
+390 |                     f.write(f"- {unit['title']} ({unit['filename']})\n")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/downloader.py:394:25
+    |
+393 |             if results["failed"]:
+394 |                 f.write(f"Failed Downloads:\n")
+    |                         ^^^^^^^^^^^^^^^^^^^^^^
+395 |                 for unit in results["failed"]:
+396 |                     f.write(f"- {unit['title']}\n")
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `random` imported but unused
+ --> src/extract.py:5:8
+  |
+3 | import json
+4 | import time
+5 | import random
+  |        ^^^^^^
+6 | from pathlib import Path
+7 | from tqdm import tqdm
+  |
+help: Remove unused import: `random`
+
+E722 Do not use bare `except`
+  --> src/extract.py:53:17
+   |
+51 |                     if data.get("status") == "success":
+52 |                         ids.add(data.get("chunk_id"))
+53 |                 except:
+   |                 ^^^^^^
+54 |                     pass
+55 |     return ids
+   |
+
+F401 [*] `re` imported but unused
+ --> src/generate_manifest.py:3:8
+  |
+1 | import json
+2 | from pathlib import Path
+3 | import re
+  |        ^^
+4 |
+5 | def generate_book_manifest(scan_data):
+  |
+help: Remove unused import: `re`
+
+F401 [*] `os` imported but unused
+ --> src/ingest.py:2:8
+  |
+1 | #!/usr/bin/env python3
+2 | import os
+  |        ^^
+3 | import glob
+4 | import json
+  |
+help: Remove unused import: `os`
+
+F401 [*] `glob` imported but unused
+ --> src/ingest.py:3:8
+  |
+1 | #!/usr/bin/env python3
+2 | import os
+3 | import glob
+  |        ^^^^
+4 | import json
+5 | import re
+  |
+help: Remove unused import: `glob`
+
+F401 [*] `typing.Optional` imported but unused
+  --> src/multi_agent_writer.py:44:32
+   |
+42 | import time
+43 | from pathlib import Path
+44 | from typing import List, Dict, Optional, Tuple
+   |                                ^^^^^^^^
+45 | from dataclasses import dataclass, field, asdict
+46 | from datetime import datetime
+   |
+help: Remove unused import: `typing.Optional`
+
+F401 [*] `dataclasses.field` imported but unused
+  --> src/multi_agent_writer.py:45:36
+   |
+43 | from pathlib import Path
+44 | from typing import List, Dict, Optional, Tuple
+45 | from dataclasses import dataclass, field, asdict
+   |                                    ^^^^^
+46 | from datetime import datetime
+47 | from enum import Enum
+   |
+help: Remove unused import
+
+F401 [*] `dataclasses.asdict` imported but unused
+  --> src/multi_agent_writer.py:45:43
+   |
+43 | from pathlib import Path
+44 | from typing import List, Dict, Optional, Tuple
+45 | from dataclasses import dataclass, field, asdict
+   |                                           ^^^^^^
+46 | from datetime import datetime
+47 | from enum import Enum
+   |
+help: Remove unused import
+
+F401 [*] `datetime.datetime` imported but unused
+  --> src/multi_agent_writer.py:46:22
+   |
+44 | from typing import List, Dict, Optional, Tuple
+45 | from dataclasses import dataclass, field, asdict
+46 | from datetime import datetime
+   |                      ^^^^^^^^
+47 | from enum import Enum
+   |
+help: Remove unused import: `datetime.datetime`
+
+E722 Do not use bare `except`
+   --> src/multi_agent_writer.py:146:9
+    |
+144 |             if json_start >= 0 and json_end > json_start:
+145 |                 return json.loads(response[json_start:json_end])
+146 |         except:
+    |         ^^^^^^
+147 |             pass
+148 |         return default
+    |
+
+E722 Do not use bare `except`
+   --> src/multi_agent_writer.py:519:21
+    |
+517 |                         data["claim_id"] = claim_id
+518 |                         self.claims_map[claim_id] = data
+519 |                     except:
+    |                     ^^^^^^
+520 |                         pass
+    |
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:554:15
+    |
+552 |         # PHASE 1: Initial Draft from SME
+553 |         # =========================================================
+554 |         print(f"\n📝 PHASE 1: Initial Draft")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+555 |         print(f"   → Assigning to Subject Matter Expert...")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:555:15
+    |
+553 |         # =========================================================
+554 |         print(f"\n📝 PHASE 1: Initial Draft")
+555 |         print(f"   → Assigning to Subject Matter Expert...")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+556 |         
+557 |         start = time.time()
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:577:15
+    |
+575 |         # PHASE 2: Developmental Review (with possible revision loop)
+576 |         # =========================================================
+577 |         print(f"\n🎓 PHASE 2: Developmental Review")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+578 |         
+579 |         for round_num in range(MAX_REVISION_ROUNDS + 1):
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:601:23
+    |
+599 |             elif round_num < MAX_REVISION_ROUNDS:
+600 |                 print(f"   ↺ Revision requested: {len(feedback.comments)} issues")
+601 |                 print(f"   → Sending back to SME...")
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+602 |                 time.sleep(2)
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:618:23
+    |
+616 |                 ))
+617 |                 
+618 |                 print(f"   ✓ SME revised draft")
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+619 |                 revision_round = round_num + 1
+620 |             time.sleep(2)
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:625:15
+    |
+623 |         # PHASE 3: Fact Checking (with possible revision loop)
+624 |         # =========================================================
+625 |         print(f"\n🔍 PHASE 3: Fact Checking")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+626 |         
+627 |         for round_num in range(MAX_REVISION_ROUNDS + 1):
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:649:23
+    |
+647 |             elif round_num < MAX_REVISION_ROUNDS:
+648 |                 print(f"   ↺ Corrections needed: {len(feedback.specific_fixes)} major issues")
+649 |                 print(f"   → Sending back to SME...")
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+650 |                 time.sleep(2)
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:666:23
+    |
+664 |                 ))
+665 |                 
+666 |                 print(f"   ✓ SME corrected content")
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+667 |             time.sleep(2)
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:672:15
+    |
+670 |         # PHASE 4: Copy Editing (polish, no revision loop)
+671 |         # =========================================================
+672 |         print(f"\n✏️  PHASE 4: Copy Editing")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+673 |         print(f"   → Copy Editor polishing...")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:673:15
+    |
+671 |         # =========================================================
+672 |         print(f"\n✏️  PHASE 4: Copy Editing")
+673 |         print(f"   → Copy Editor polishing...")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+674 |         
+675 |         start = time.time()
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:695:15
+    |
+693 |         # PHASE 5: Assessment Creation
+694 |         # =========================================================
+695 |         print(f"\n📋 PHASE 5: Assessment Creation")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+696 |         print(f"   → Assessment Designer creating questions...")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:696:15
+    |
+694 |         # =========================================================
+695 |         print(f"\n📋 PHASE 5: Assessment Creation")
+696 |         print(f"   → Assessment Designer creating questions...")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+697 |         
+698 |         start = time.time()
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:717:15
+    |
+715 |         # PHASE 6: Senior Editor Final Integration
+716 |         # =========================================================
+717 |         print(f"\n👔 PHASE 6: Senior Editor Final Review")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+718 |         
+719 |         # Integrate questions into content
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:740:15
+    |
+739 |         print(f"\n{'─'*50}")
+740 |         print(f"   ✅ CHAPTER COMPLETE")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+741 |         print(f"   Final scores:")
+742 |         print(f"      Content:    {final_scores['content']:.0%}")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:741:15
+    |
+739 |         print(f"\n{'─'*50}")
+740 |         print(f"   ✅ CHAPTER COMPLETE")
+741 |         print(f"   Final scores:")
+    |               ^^^^^^^^^^^^^^^^^^^
+742 |         print(f"      Content:    {final_scores['content']:.0%}")
+743 |         print(f"      Pedagogy:   {final_scores['pedagogy']:.0%}")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:747:15
+    |
+745 |         print(f"      Language:   {final_scores['language']:.0%}")
+746 |         print(f"      Assessment: {final_scores['assessment']:.0%}")
+747 |         print(f"      ─────────────────")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+748 |         print(f"      OVERALL:    {final_scores['overall']:.0%}")
+749 |         print(f"   Total revisions: {revision_round}")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:794:15
+    |
+793 |         print(f"\n{'='*70}")
+794 |         print(f"📖 EDUCATIONAL PUBLISHING PIPELINE")
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+795 |         print(f"   Chapters to process: {len(plans)}")
+796 |         print(f"   Max revision rounds: {MAX_REVISION_ROUNDS}")
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:838:23
+    |
+837 |                 # Wait between chapters
+838 |                 print(f"⏳ Waiting 10s before next chapter...")
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+839 |                 time.sleep(10)
+    |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+   --> src/multi_agent_writer.py:852:19
+    |
+851 |             print(f"\n{'='*70}")
+852 |             print(f"📊 PIPELINE COMPLETE")
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^
+853 |             print(f"   Chapters processed: {len(results)}/{len(plans)}")
+854 |             print(f"   Average quality: {avg_overall:.0%}")
+    |
+help: Remove extraneous `f` prefix
+
+F401 [*] `os` imported but unused
+ --> src/plan.py:2:8
+  |
+1 | #!/usr/bin/env python3
+2 | import os
+  |        ^^
+3 | import json
+4 | import re
+  |
+help: Remove unused import: `os`
+
+E722 Do not use bare `except`
+  --> src/plan.py:78:17
+   |
+76 |                         data["claim_id"] = claim_id
+77 |                         claims_by_chunk[evidence].append(data)
+78 |                 except:
+   |                 ^^^^^^
+79 |                     pass
+80 |     return claims_by_chunk
+   |
+
+F841 Local variable `result` is assigned to but never used
+  --> src/run_all.py:49:9
+   |
+47 |         env = os.environ.copy()
+48 |         
+49 |         result = subprocess.run(
+   |         ^^^^^^
+50 |             cmd,
+51 |             env=env,
+   |
+help: Remove assignment to unused variable `result`
+
+F401 [*] `glob` imported but unused
+ --> src/verify.py:3:8
+  |
+1 | #!/usr/bin/env python3
+2 | import json
+3 | import glob
+  |        ^^^^
+4 | from pathlib import Path
+  |
+help: Remove unused import: `glob`
+
+F401 [*] `time` imported but unused
+ --> src/write_book.py:4:8
+  |
+2 | import os
+3 | import json
+4 | import time
+  |        ^^^^
+5 | from pathlib import Path
+6 | from typing import List, Dict
+  |
+help: Remove unused import: `time`
+
+F401 [*] `typing.List` imported but unused
+ --> src/write_book.py:6:20
+  |
+4 | import time
+5 | from pathlib import Path
+6 | from typing import List, Dict
+  |                    ^^^^
+7 | from google import genai
+8 | from google.genai import types
+  |
+help: Remove unused import
+
+F401 [*] `typing.Dict` imported but unused
+ --> src/write_book.py:6:26
+  |
+4 | import time
+5 | from pathlib import Path
+6 | from typing import List, Dict
+  |                          ^^^^
+7 | from google import genai
+8 | from google.genai import types
+  |
+help: Remove unused import
+
+E722 Do not use bare `except`
+  --> src/write_book.py:32:17
+   |
+30 |                     data["claim_id"] = claim_id
+31 |                     claims[claim_id] = data
+32 |                 except:
+   |                 ^^^^^^
+33 |                     pass
+34 |     return claims
+   |
+
+F401 [*] `os` imported but unused
+ --> test_button_download.py:4:8
+  |
+2 | from src.config import config
+3 | import logging
+4 | import os
+  |        ^^
+5 |
+6 | logging.basicConfig(level=logging.INFO)
+  |
+help: Remove unused import: `os`
+
+E701 Multiple statements on one line (colon)
+  --> test_button_download.py:53:32
+   |
+51 |                         button_found = True
+52 |                         break
+53 |                 if button_found: break
+   |                                ^
+54 |             except Exception as e:
+55 |                 logger.error(f"Error in frame: {e}")
+   |
+
+F401 [*] `shutil` imported but unused
+ --> tests/test_download.py:3:8
+  |
+1 | import pytest
+2 | import os
+3 | import shutil
+  |        ^^^^^^
+4 | from unittest.mock import MagicMock, patch
+5 | from src.downloader import Downloader
+  |
+help: Remove unused import: `shutil`
+
+F401 [*] `pytest` imported but unused
+ --> tests/test_environment.py:1:8
+  |
+1 | import pytest
+  |        ^^^^^^
+2 | import importlib
+  |
+help: Remove unused import: `pytest`
+
+F401 [*] `json` imported but unused
+ --> tests/test_generate_manifest.py:1:8
+  |
+1 | import json
+  |        ^^^^
+2 | from pathlib import Path
+3 | import pytest
+  |
+help: Remove unused import: `json`
+
+F401 [*] `pathlib.Path` imported but unused
+ --> tests/test_generate_manifest.py:2:21
+  |
+1 | import json
+2 | from pathlib import Path
+  |                     ^^^^
+3 | import pytest
+4 | from src.generate_manifest import generate_book_manifest
+  |
+help: Remove unused import: `pathlib.Path`
+
+F401 [*] `pytest` imported but unused
+ --> tests/test_generate_manifest.py:3:8
+  |
+1 | import json
+2 | from pathlib import Path
+3 | import pytest
+  |        ^^^^^^
+4 | from src.generate_manifest import generate_book_manifest
+  |
+help: Remove unused import: `pytest`
+
+F841 Local variable `scan_data` is assigned to but never used
+  --> tests/test_generate_manifest.py:29:5
+   |
+27 |     book_dir.mkdir()
+28 |     
+29 |     scan_data = []
+   |     ^^^^^^^^^
+30 |     from src.generate_manifest import save_manifest
+31 |     save_manifest(book_dir, {'title': 'Test Book'})
+   |
+help: Remove assignment to unused variable `scan_data`
+
+F401 [*] `shutil` imported but unused
+ --> tests/test_hierarchy.py:3:8
+  |
+1 | import pytest
+2 | import os
+3 | import shutil
+  |        ^^^^^^
+4 | from unittest.mock import MagicMock, patch
+5 | from src.downloader import Downloader
+  |
+help: Remove unused import: `shutil`
+
+F401 [*] `os` imported but unused
+ --> tests/test_scan_transcripts.py:1:8
+  |
+1 | import os
+  |        ^^
+2 | import shutil
+3 | import tempfile
+  |
+help: Remove unused import: `os`
+
+F401 [*] `shutil` imported but unused
+ --> tests/test_scan_transcripts.py:2:8
+  |
+1 | import os
+2 | import shutil
+  |        ^^^^^^
+3 | import tempfile
+4 | from pathlib import Path
+  |
+help: Remove unused import: `shutil`
+
+F401 [*] `dataclasses.asdict` imported but unused
+  --> tests/test_schemas.py:10:25
+   |
+ 8 | import shutil
+ 9 | import json
+10 | from dataclasses import asdict
+   |                         ^^^^^^
+11 | from agents.schemas import (
+12 |     FileNote, CorpusIndex, ChapterPlan, ChapterBrief, DraftChapter,
+   |
+help: Remove unused import: `dataclasses.asdict`
+
+F401 [*] `agents.schemas.DraftChapter` imported but unused
+  --> tests/test_schemas.py:12:55
+   |
+10 | from dataclasses import asdict
+11 | from agents.schemas import (
+12 |     FileNote, CorpusIndex, ChapterPlan, ChapterBrief, DraftChapter,
+   |                                                       ^^^^^^^^^^^^
+13 |     PipelineLogger, TodoTracker, LogEvent,
+14 |     save_json, load_json, save_markdown, read_file
+   |
+help: Remove unused import: `agents.schemas.DraftChapter`
+
+F841 Local variable `logger` is assigned to but never used
+   --> tests/test_schemas.py:116:9
+    |
+114 |         """Test logger creates file."""
+115 |         log_path = os.path.join(temp_dir, "test.jsonl")
+116 |         logger = PipelineLogger(log_path)
+    |         ^^^^^^
+117 |         assert os.path.exists(log_path)
+    |
+help: Remove assignment to unused variable `logger`
+
+F401 [*] `agents.version_manager.VersionMetadata` imported but unused
+ --> tests/test_version_manager.py:9:52
+  |
+7 | import tempfile
+8 | import shutil
+9 | from agents.version_manager import VersionManager, VersionMetadata
+  |                                                    ^^^^^^^^^^^^^^^
+  |
+help: Remove unused import: `agents.version_manager.VersionMetadata`
+
+F401 [*] `unittest.mock.MagicMock` imported but unused
+ --> verify_bulk_download.py:3:27
+  |
+1 | import os
+2 | import shutil
+3 | from unittest.mock import MagicMock, patch
+  |                           ^^^^^^^^^
+4 | from src.downloader import Downloader
+  |
+help: Remove unused import: `unittest.mock.MagicMock`
+
+F541 [*] f-string without any placeholders
+  --> verify_bulk_download.py:41:15
+   |
+39 |     else:
+40 |         # Maybe path was different in hierarchy
+41 |         print(f"Checking for file manually...")
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |         # Results from bulk_download should have updated the paths
+   |
+help: Remove extraneous `f` prefix
+
+F541 [*] f-string without any placeholders
+  --> verify_hierarchy_extraction.py:15:11
+   |
+14 |     print(f"\n{'='*60}")
+15 |     print(f"COURSE HIERARCHY EXTRACTION RESULTS")
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16 |     print(f"{'='*60}\n")
+   |
+help: Remove extraneous `f` prefix
+
+F401 [*] `os` imported but unused
+ --> verify_login.py:3:8
+  |
+1 | from src.downloader import Downloader
+2 | from src.config import config
+3 | import os
+  |        ^^
+4 |
+5 | # WARNING: This will launch a real browser (if headless=False) 
+  |
+help: Remove unused import: `os`
+
+F401 [*] `os` imported but unused
+ --> verify_transcript_download.py:3:8
+  |
+1 | from src.downloader import Downloader
+2 | from src.config import config
+3 | import os
+  |        ^^
+4 |
+5 | downloader = Downloader(config.USERNAME, config.PASSWORD, headless=True)
+  |
+help: Remove unused import: `os`
+
+Found 180 errors.
+[*] 134 fixable with the `--fix` option (16 hidden fixes can be enabled with the `--unsafe-fixes` option).

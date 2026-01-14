@@ -6,7 +6,6 @@ Ensures exam scaffolding exists and creates consolidated question bank.
 import os
 import re
 from typing import List, Dict
-from datetime import datetime
 
 from .schemas import (
     PipelineLogger, TodoTracker,

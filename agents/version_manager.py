@@ -7,7 +7,7 @@ import os
 import json
 import hashlib
 import difflib
-from typing import List, Dict, Optional, Tuple
+from typing import List, Optional, Tuple
 from datetime import datetime
 from dataclasses import dataclass, asdict
 

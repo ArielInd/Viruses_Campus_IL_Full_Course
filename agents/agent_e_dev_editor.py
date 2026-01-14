@@ -4,9 +4,7 @@ Converts drafts into book-grade chapters by leveraging existing high-quality con
 """
 
 import os
-import shutil
-from typing import List, Dict
-from datetime import datetime
+from typing import Dict
 
 from .schemas import (
     EditedChapter, PipelineLogger, TodoTracker,

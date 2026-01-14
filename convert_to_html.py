@@ -9,7 +9,6 @@ Creates a single-page HTML ebook with:
 - Print-friendly CSS (can print to PDF from browser)
 """
 
-import os
 import json
 from pathlib import Path
 import re
@@ -344,10 +343,10 @@ def create_html(book_dir: Path, output_path: Path, chapters: list, manifest: dic
 
     print(f"\n✅ HTML created: {output_path}")
     print(f"📄 Size: {output_path.stat().st_size / 1024:.2f} KB")
-    print(f"\n💡 To convert to PDF:")
+    print("\n💡 To convert to PDF:")
     print(f"   1. Open in browser: open {output_path}")
-    print(f"   2. Print (Cmd+P / Ctrl+P)")
-    print(f"   3. Save as PDF")
+    print("   2. Print (Cmd+P / Ctrl+P)")
+    print("   3. Save as PDF")
 
 
 def main():
@@ -376,7 +375,7 @@ def main():
     print("Converting to HTML...")
     create_html(book_dir, output_path, chapters, manifest)
 
-    print(f"\n🎉 Done! Your ebook is ready:")
+    print("\n🎉 Done! Your ebook is ready:")
     print(f"   {output_path}")
 
     return 0

@@ -2,7 +2,6 @@
 import os
 import json
 import time
-import random
 from pathlib import Path
 from tqdm import tqdm
 from dotenv import load_dotenv

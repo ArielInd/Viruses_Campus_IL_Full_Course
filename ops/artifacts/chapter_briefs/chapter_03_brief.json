@@ -49,8 +49,8 @@
     }
   ],
   "definitions_to_bold": [
-    "cell-",
-    "acids"
+    "acids",
+    "cell-"
   ],
   "tables_to_create": [
     {

@@ -41,9 +41,8 @@ import os
 import json
 import time
 from pathlib import Path
-from typing import List, Dict, Optional, Tuple
-from dataclasses import dataclass, field, asdict
-from datetime import datetime
+from typing import List, Dict, Tuple
+from dataclasses import dataclass
 from enum import Enum
 
 try:
@@ -551,8 +550,8 @@ class SeniorEditor:
         # =========================================================
         # PHASE 1: Initial Draft from SME
         # =========================================================
-        print(f"\n📝 PHASE 1: Initial Draft")
-        print(f"   → Assigning to Subject Matter Expert...")
+        print("\n📝 PHASE 1: Initial Draft")
+        print("   → Assigning to Subject Matter Expert...")
         
         start = time.time()
         content, sme_score = self.sme.write_draft(chapter_plan, evidence)
@@ -574,7 +573,7 @@ class SeniorEditor:
         # =========================================================
         # PHASE 2: Developmental Review (with possible revision loop)
         # =========================================================
-        print(f"\n🎓 PHASE 2: Developmental Review")
+        print("\n🎓 PHASE 2: Developmental Review")
         
         for round_num in range(MAX_REVISION_ROUNDS + 1):
             print(f"   → Round {round_num + 1}: Developmental Editor reviewing...")
@@ -598,7 +597,7 @@ class SeniorEditor:
                 break
             elif round_num < MAX_REVISION_ROUNDS:
                 print(f"   ↺ Revision requested: {len(feedback.comments)} issues")
-                print(f"   → Sending back to SME...")
+                print("   → Sending back to SME...")
                 time.sleep(2)
                 
                 start = time.time()
@@ -615,14 +614,14 @@ class SeniorEditor:
                     duration_seconds=time.time() - start
                 ))
                 
-                print(f"   ✓ SME revised draft")
+                print("   ✓ SME revised draft")
                 revision_round = round_num + 1
             time.sleep(2)
         
         # =========================================================
         # PHASE 3: Fact Checking (with possible revision loop)
         # =========================================================
-        print(f"\n🔍 PHASE 3: Fact Checking")
+        print("\n🔍 PHASE 3: Fact Checking")
         
         for round_num in range(MAX_REVISION_ROUNDS + 1):
             print(f"   → Round {round_num + 1}: Fact Checker verifying...")
@@ -646,7 +645,7 @@ class SeniorEditor:
                 break
             elif round_num < MAX_REVISION_ROUNDS:
                 print(f"   ↺ Corrections needed: {len(feedback.specific_fixes)} major issues")
-                print(f"   → Sending back to SME...")
+                print("   → Sending back to SME...")
                 time.sleep(2)
                 
                 start = time.time()
@@ -663,14 +662,14 @@ class SeniorEditor:
                     duration_seconds=time.time() - start
                 ))
                 
-                print(f"   ✓ SME corrected content")
+                print("   ✓ SME corrected content")
             time.sleep(2)
         
         # =========================================================
         # PHASE 4: Copy Editing (polish, no revision loop)
         # =========================================================
-        print(f"\n✏️  PHASE 4: Copy Editing")
-        print(f"   → Copy Editor polishing...")
+        print("\n✏️  PHASE 4: Copy Editing")
+        print("   → Copy Editor polishing...")
         
         start = time.time()
         content, lang_score = self.copy_editor.polish(content)
@@ -692,8 +691,8 @@ class SeniorEditor:
         # =========================================================
         # PHASE 5: Assessment Creation
         # =========================================================
-        print(f"\n📋 PHASE 5: Assessment Creation")
-        print(f"   → Assessment Designer creating questions...")
+        print("\n📋 PHASE 5: Assessment Creation")
+        print("   → Assessment Designer creating questions...")
         
         start = time.time()
         questions, assess_score = self.assessment.create_assessment(content, title)
@@ -714,7 +713,7 @@ class SeniorEditor:
         # =========================================================
         # PHASE 6: Senior Editor Final Integration
         # =========================================================
-        print(f"\n👔 PHASE 6: Senior Editor Final Review")
+        print("\n👔 PHASE 6: Senior Editor Final Review")
         
         # Integrate questions into content
         if "## שאלות לתרגול" in content:
@@ -737,14 +736,14 @@ class SeniorEditor:
         total_duration = time.time() - total_start
         
         print(f"\n{'─'*50}")
-        print(f"   ✅ CHAPTER COMPLETE")
-        print(f"   Final scores:")
+        print("   ✅ CHAPTER COMPLETE")
+        print("   Final scores:")
         print(f"      Content:    {final_scores['content']:.0%}")
         print(f"      Pedagogy:   {final_scores['pedagogy']:.0%}")
         print(f"      Accuracy:   {final_scores['accuracy']:.0%}")
         print(f"      Language:   {final_scores['language']:.0%}")
         print(f"      Assessment: {final_scores['assessment']:.0%}")
-        print(f"      ─────────────────")
+        print("      ─────────────────")
         print(f"      OVERALL:    {final_scores['overall']:.0%}")
         print(f"   Total revisions: {revision_round}")
         print(f"   Total time: {total_duration:.1f}s")
@@ -791,7 +790,7 @@ class PublishingPipeline:
             plans = [p for p in plans if p['chapter_id'] in chapter_ids]
         
         print(f"\n{'='*70}")
-        print(f"📖 EDUCATIONAL PUBLISHING PIPELINE")
+        print("📖 EDUCATIONAL PUBLISHING PIPELINE")
         print(f"   Chapters to process: {len(plans)}")
         print(f"   Max revision rounds: {MAX_REVISION_ROUNDS}")
         print(f"{'='*70}")
@@ -835,7 +834,7 @@ class PublishingPipeline:
                     json.dump(log_data, f, ensure_ascii=False, indent=2)
                 
                 # Wait between chapters
-                print(f"⏳ Waiting 10s before next chapter...")
+                print("⏳ Waiting 10s before next chapter...")
                 time.sleep(10)
                 
             except Exception as e:
@@ -849,7 +848,7 @@ class PublishingPipeline:
             total_revisions = sum(r.total_revisions for r in results)
             
             print(f"\n{'='*70}")
-            print(f"📊 PIPELINE COMPLETE")
+            print("📊 PIPELINE COMPLETE")
             print(f"   Chapters processed: {len(results)}/{len(plans)}")
             print(f"   Average quality: {avg_overall:.0%}")
             print(f"   Total revision rounds: {total_revisions}")

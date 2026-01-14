@@ -106,7 +106,7 @@ class Downloader:
             course_slug = course_url.rstrip('/').split('/')[-1]
             # Convert to learning URL format
             # This is a heuristic - may need adjustment based on actual URL pattern
-            learning_url = f"https://app.campus.gov.il/learning/course/course-v1:TAU+ACD_RFP1_HowToBeatViruses_HE+2022_1/home"
+            learning_url = "https://app.campus.gov.il/learning/course/course-v1:TAU+ACD_RFP1_HowToBeatViruses_HE+2022_1/home"
             self.logger.info(f"Navigating to course home: {learning_url}")
             self.page.goto(learning_url)
         else:
@@ -256,7 +256,7 @@ class Downloader:
                                 
                                 # Clean up temporary file if possible? Playwright manages it.
                                 return ('content', content)
-                        except Exception as e:
+                        except Exception:
                             # self.logger.warning(f"Button check failed: {e}")
                             continue
 
@@ -369,29 +369,29 @@ class Downloader:
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         with open(report_path, "w", encoding="utf-8") as f:
-            f.write(f"Course Transcript Downloader - Summary Report\n")
+            f.write("Course Transcript Downloader - Summary Report\n")
             f.write(f"Generated at: {now}\n")
             f.write(f"{ '='*45}\n\n")
             
-            f.write(f"Statistics:\n")
+            f.write("Statistics:\n")
             f.write(f"- Downloaded: {len(results['downloaded'])}\n")
             f.write(f"- Skipped: {len(results['skipped'])}\n")
             f.write(f"- Failed: {len(results['failed'])}\n\n")
             
             if results["downloaded"]:
-                f.write(f"Downloaded Transcripts:\n")
+                f.write("Downloaded Transcripts:\n")
                 for unit in results["downloaded"]:
                     f.write(f"- {unit['title']} ({unit['filename']})\n")
                 f.write("\n")
                 
             if results["skipped"]:
-                f.write(f"Skipped (Already Exists):\n")
+                f.write("Skipped (Already Exists):\n")
                 for unit in results["skipped"]:
                     f.write(f"- {unit['title']} ({unit['filename']})\n")
                 f.write("\n")
                 
             if results["failed"]:
-                f.write(f"Failed Downloads:\n")
+                f.write("Failed Downloads:\n")
                 for unit in results["failed"]:
                     f.write(f"- {unit['title']}\n")
                 f.write("\n")

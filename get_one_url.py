@@ -1,6 +1,5 @@
 from src.downloader import Downloader
 from src.config import config
-import json
 
 downloader = Downloader(config.USERNAME, config.PASSWORD, headless=True)
 try:

@@ -60,6 +60,6 @@ if __name__ == "__main__":
         print(f"Processing {chapter_file.name}...")
         new_content = separate_answers_in_chapter(chapter_file)
         chapter_file.write_text(new_content, encoding='utf-8')
-        print(f"  ✓ Completed\n")
+        print("  ✓ Completed\n")
 
     print("✅ All chapters processed!")

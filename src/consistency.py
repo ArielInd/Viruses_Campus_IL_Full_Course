@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import json
 from pathlib import Path
-from collections import Counter
 import yaml
 
 ENTITIES_FILE = Path("ops/artifacts/entities.jsonl")

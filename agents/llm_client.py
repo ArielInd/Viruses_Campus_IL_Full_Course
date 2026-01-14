@@ -6,8 +6,7 @@ Provides automatic fallback, rate limiting, and async support.
 import os
 import time
 import asyncio
-import json
-from typing import Optional, Dict, List
+from typing import Optional, List
 from dataclasses import dataclass
 from enum import Enum
 

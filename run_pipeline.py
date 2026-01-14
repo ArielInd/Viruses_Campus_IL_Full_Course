@@ -4,7 +4,6 @@ Main pipeline runner for the Hebrew virology study ebook.
 Executes all agents in sequence and produces the final book.
 """
 
-import os
 import sys
 import json
 from datetime import datetime
@@ -141,27 +140,27 @@ def print_summary(results: dict, start_time: datetime):
     print("=" * 60)
     
     print(f"\n⏱️  Total time: {duration:.1f} seconds")
-    print(f"\n📁 Files processed:")
+    print("\n📁 Files processed:")
     print(f"   - Transcripts: {results.get('corpus', {}).get('total_files', 'N/A')}")
     print(f"   - Chapters created: {results.get('editor', {}).get('num_chapters', 'N/A')}")
     
-    print(f"\n✅ Quality checks:")
+    print("\n✅ Quality checks:")
     print(f"   - Terminology issues: {results.get('terminology', {}).get('inconsistencies', 'N/A')}")
     print(f"   - Proofreading issues: {results.get('proofreader', {}).get('issues_found', 'N/A')}")
     
     safety = results.get('safety', {})
     if safety.get('all_passed', False):
-        print(f"   - Safety review: ✅ PASSED")
+        print("   - Safety review: ✅ PASSED")
     else:
         print(f"   - Safety review: ⚠️ {safety.get('failed', 0)} files need review")
     
-    print(f"\n📂 Output locations:")
+    print("\n📂 Output locations:")
     print(f"   - Book: {BOOK_DIR}")
     print(f"   - Logs: {OPS_DIR / 'logs'}")
     print(f"   - Reports: {OPS_DIR / 'reports'}")
     
     # Highest yield chapters (based on word count)
-    print(f"\n📈 Ready for review!")
+    print("\n📈 Ready for review!")
     print("=" * 60 + "\n")
 
 

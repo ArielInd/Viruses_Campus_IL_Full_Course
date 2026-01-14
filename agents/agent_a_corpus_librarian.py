@@ -5,9 +5,7 @@ Reads all transcripts and produces structured notes, corpus index, and concepts 
 
 import os
 import re
-import glob
 from typing import List, Dict, Tuple
-from datetime import datetime
 
 from .schemas import (
     FileNote, CorpusIndex, PipelineLogger, TodoTracker,

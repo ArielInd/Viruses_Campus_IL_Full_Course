@@ -4,7 +4,6 @@ Uses corpus index and notes to produce outline, manifest, and chapter plan.
 """
 
 import os
-import json
 from typing import List, Dict
 from datetime import datetime
 

@@ -14,5 +14,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [~] Track: Review agent pipeline for architectural consistency and code quality.
-*Link: [./conductor/tracks/agent_pipeline_review_20260114/](./conductor/tracks/agent_pipeline_review_20260114/)*
+## [~] Track: Improve robustness, scalability, and maintainability of the agent pipeline based on the review findings.
+*Link: [./conductor/tracks/agent_pipeline_optimization_20260114/](./conductor/tracks/agent_pipeline_optimization_20260114/)*

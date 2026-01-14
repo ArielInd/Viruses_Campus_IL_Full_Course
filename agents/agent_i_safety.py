@@ -6,7 +6,6 @@ FINAL GATE - Scans all outputs for safety constraints.
 import os
 import re
 from typing import List, Dict
-from datetime import datetime
 
 from .schemas import (
     SafetyReport, PipelineLogger, TodoTracker,
@@ -199,9 +198,9 @@ class SafetyScopeReviewer:
             md += "## ⚠️ סטטוס: נדרשת תשומת לב\n\n"
             md += f"{failed} קבצים דורשים בדיקה ידנית.\n\n"
         
-        md += f"## סיכום\n\n"
-        md += f"| מדד | ערך |\n"
-        md += f"|-----|-----|\n"
+        md += "## סיכום\n\n"
+        md += "| מדד | ערך |\n"
+        md += "|-----|-----|\n"
         md += f"| קבצים שנבדקו | {total} |\n"
         md += f"| עברו ✅ | {passed} |\n"
         md += f"| דורשים בדיקה ⚠️ | {failed} |\n\n"

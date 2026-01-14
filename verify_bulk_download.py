@@ -1,6 +1,6 @@
 import os
 import shutil
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 from src.downloader import Downloader
 
 # Define a dummy hierarchy
@@ -38,7 +38,7 @@ with patch.object(Downloader, 'download_transcript', side_effect=mock_download):
         print("✅ File created successfully.")
     else:
         # Maybe path was different in hierarchy
-        print(f"Checking for file manually...")
+        print("Checking for file manually...")
         # Results from bulk_download should have updated the paths
 
     print("\nRunning bulk download (second run - skip check)...")

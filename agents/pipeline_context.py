@@ -7,7 +7,6 @@ import os
 import re
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field
-from functools import lru_cache
 import json
 
 
@@ -97,7 +96,7 @@ class PipelineContext:
         with open(index_path, 'r', encoding='utf-8') as f:
             self._corpus_index_cache = json.load(f)
 
-        print(f"[PipelineContext] Loaded corpus index (cached)")
+        print("[PipelineContext] Loaded corpus index (cached)")
 
         return self._corpus_index_cache
 

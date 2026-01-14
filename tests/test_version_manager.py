@@ -6,7 +6,7 @@ import os
 import pytest
 import tempfile
 import shutil
-from agents.version_manager import VersionManager, VersionMetadata
+from agents.version_manager import VersionManager
 
 
 @pytest.fixture

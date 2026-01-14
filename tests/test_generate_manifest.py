@@ -1,6 +1,3 @@
-import json
-from pathlib import Path
-import pytest
 from src.generate_manifest import generate_book_manifest
 
 def test_generate_book_manifest_structure(tmp_path):

@@ -7,10 +7,8 @@ import pytest
 import tempfile
 import shutil
 import json
-from dataclasses import asdict
 from agents.schemas import (
-    FileNote, CorpusIndex, ChapterPlan, ChapterBrief, DraftChapter,
-    PipelineLogger, TodoTracker, LogEvent,
+    FileNote, CorpusIndex, ChapterPlan, ChapterBrief, PipelineLogger, TodoTracker, LogEvent,
     save_json, load_json, save_markdown, read_file
 )
 from datetime import datetime

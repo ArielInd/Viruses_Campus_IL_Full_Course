@@ -1,6 +1,5 @@
 import pytest
 import os
-import shutil
 from unittest.mock import MagicMock, patch
 from src.downloader import Downloader
 

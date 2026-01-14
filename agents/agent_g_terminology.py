@@ -4,14 +4,12 @@ Enforces consistent Hebrew terminology and acronyms.
 """
 
 import os
-import re
 import yaml
-from typing import List, Dict, Set
-from datetime import datetime
+from typing import Dict
 
 from .schemas import (
     ConsistencyReport, PipelineLogger, TodoTracker,
-    save_markdown, load_json, read_file
+    save_markdown, read_file
 )
 
 AGENT_NAME = "TerminologyConsistencyKeeper"
@@ -152,7 +150,7 @@ class TerminologyConsistencyKeeper:
         md += f"*נוצר על ידי {AGENT_NAME}*\n\n"
         md += "---\n\n"
         
-        md += f"## סיכום\n\n"
+        md += "## סיכום\n\n"
         md += f"- מונחים שנבדקו: {report.total_terms_checked}\n"
         md += f"- חוסר עקביות שנמצא: {report.inconsistencies_found}\n\n"
         

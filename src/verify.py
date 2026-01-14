@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import json
-import glob
 from pathlib import Path
 
 CHAPTERS_DIR = Path("book/chapters")

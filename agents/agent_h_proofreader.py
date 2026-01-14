@@ -6,7 +6,6 @@ Final language and typography pass.
 import os
 import re
 from typing import List, Dict
-from datetime import datetime
 
 from .schemas import (
     PipelineLogger, TodoTracker,
@@ -129,7 +128,7 @@ class CopyeditorProofreader:
         md += f"*נוצר על ידי {AGENT_NAME}*\n\n"
         md += "---\n\n"
         
-        md += f"## סיכום\n\n"
+        md += "## סיכום\n\n"
         md += f"- קבצים שנבדקו: {files_checked}\n"
         md += f"- בעיות שנמצאו: {len(issues)}\n\n"
         
