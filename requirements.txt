@@ -1,6 +1,9 @@
-playwright
+google-genai
+tqdm
 python-dotenv
-pytest
-pytest-cov
-pytest-mock
-ruff
+regex
+pydantic
+pytest>=7.0.0
+pytest-cov>=4.0.0
+httpx>=0.25.0
+aiofiles>=23.0.0

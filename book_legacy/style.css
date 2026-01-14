@@ -1,0 +1,144 @@
+/* Hebrew RTL Ebook Stylesheet */
+
+body {
+  direction: rtl;
+  text-align: right;
+  font-family: "David CLM", "David", "Noto Sans Hebrew", sans-serif;
+  line-height: 1.6;
+  font-size: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  direction: rtl;
+  text-align: right;
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 1.8em;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  font-size: 1.4em;
+  color: #2c5282;
+}
+
+h3 {
+  font-size: 1.2em;
+  color: #4a5568;
+}
+
+p {
+  margin: 1em 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  direction: rtl;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  text-align: right;
+}
+
+th {
+  background-color: #f7fafc;
+  font-weight: bold;
+}
+
+/* Code blocks */
+code, pre {
+  direction: ltr;
+  text-align: left;
+  font-family: "Courier New", monospace;
+  background-color: #f7fafc;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+/* Blockquotes - for boxes */
+blockquote {
+  direction: rtl;
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  background-color: #f0fff4;
+  border-right: 4px solid #48bb78;
+  border-left: none;
+}
+
+blockquote strong:first-child {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #276749;
+}
+
+/* Lists */
+ul, ol {
+  direction: rtl;
+  padding-right: 2em;
+  padding-left: 0;
+}
+
+li {
+  margin: 0.3em 0;
+}
+
+/* Links */
+a {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Bold and emphasis */
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/* Scientific terms in English (within parentheses) */
+.english-term {
+  direction: ltr;
+  font-style: italic;
+}
+
+/* Horizontal rules */
+hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 2em 0;
+}
+
+/* Caution/Warning boxes */
+blockquote:has(> p:first-child:contains("⚠️")),
+blockquote:has(> p:first-child:contains("CAUTION")) {
+  background-color: #fff5f5;
+  border-right-color: #fc8181;
+}
+
+/* Note boxes */
+blockquote:has(> p:first-child:contains("📝")),
+blockquote:has(> p:first-child:contains("NOTE")) {
+  background-color: #ebf8ff;
+  border-right-color: #4299e1;
+}

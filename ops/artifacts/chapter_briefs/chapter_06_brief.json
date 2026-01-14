@@ -1,0 +1,115 @@
+{
+  "chapter_id": "06",
+  "title": "מערכת החיסון הנרכשת",
+  "objectives": [
+    "להבין את הספציפיות והזיכרון של החסינות הנרכשת",
+    "לתאר את מבנה הנוגדנים וסוגי ה-Ig השונים",
+    "להסביר כיצד תאי T מזהים תאים נגועים דרך MHC",
+    "להבין את הקשר בין אלרגיות ל-IgE",
+    "לתאר את הגורמים לכשל חיסוני",
+    "להסביר את מנגנון הפעולה של HIV",
+    "להבין את עקרון בדיקת ELISA"
+  ],
+  "roadmap": "נלמד על יחידת הקומנדו של הגוף – החסינות הנרכשת. נבין כיצד תאי B ו-T מפתחים נשק מדויק נגד פתוגנים ספציפיים וכיצד הם \"זוכרים\" אותם לעשרות שנים.",
+  "content_sections": [
+    {
+      "heading": "חסינות נרכשת: דיוק וזיכרון",
+      "key_points": [
+        "אנטיגנים, אפיטופ"
+      ]
+    },
+    {
+      "heading": "תאי B ונוגדנים",
+      "key_points": [
+        "IgM, IgG, IgA, IgE"
+      ]
+    },
+    {
+      "heading": "תאי T ומערכת ה-MHC",
+      "key_points": [
+        "הצגת אנטיגנים"
+      ]
+    },
+    {
+      "heading": "אלרגיות",
+      "key_points": [
+        "היסטמין, אנפילקסיס"
+      ]
+    },
+    {
+      "heading": "כשל חיסוני",
+      "key_points": [
+        "תת-תזונה, SCID, HIV"
+      ]
+    },
+    {
+      "heading": "ELISA",
+      "key_points": [
+        "בדיקות דם"
+      ]
+    }
+  ],
+  "definitions_to_bold": [
+    "רטרו",
+    "תת-יחידות",
+    "אמרו",
+    "לפניהם",
+    "ולהגיד",
+    "virus",
+    "עיקריות",
+    "לקושרי",
+    "הבאות"
+  ],
+  "tables_to_create": [
+    {
+      "name": "סוגי נוגדנים (Ig)",
+      "columns": [
+        "תכונה",
+        "A",
+        "B"
+      ],
+      "purpose": "השוואה: סוגי נוגדנים (Ig)"
+    },
+    {
+      "name": "הבדל תאי B ו-T",
+      "columns": [
+        "תכונה",
+        "A",
+        "B"
+      ],
+      "purpose": "השוואה: הבדל תאי B ו-T"
+    }
+  ],
+  "expert_perspective": {
+    "expert_name": "רוברט גאלו ",
+    "topic": "ראיון עם פרופסור רוברט גאלו (Robert C. Gallo) – בדיקת דם ל-AIDS",
+    "source": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/07_6.6_ראיון_עם_פרופסור_רוברט_גאלו_(Robert_C._Gallo)_–_בדיקת_דם_ל-AIDS.txt"
+  },
+  "lab_demo_conceptual": null,
+  "common_mistakes": [
+    "נוגדנים יכולים להיכנס לתוך תאים",
+    "כל הנוגדנים זהים"
+  ],
+  "key_terms": [
+    {
+      "hebrew": "נוגדן",
+      "english": "Antibody"
+    },
+    {
+      "hebrew": "אנטיגן",
+      "english": "Antigen"
+    }
+  ],
+  "mcq_targets": [
+    "IgM vs IgG",
+    "MHC",
+    "HIV",
+    "ELISA"
+  ],
+  "short_answer_targets": [
+    "IgM vs IgG",
+    "MHC",
+    "HIV"
+  ],
+  "thinking_question_target": "מדוע בדיקת ELISA שלילית אחרי הדבקה ב-HIV?"
+}

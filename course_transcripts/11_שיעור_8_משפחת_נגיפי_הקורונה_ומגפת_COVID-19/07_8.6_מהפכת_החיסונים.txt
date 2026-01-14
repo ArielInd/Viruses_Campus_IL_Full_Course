@@ -1,0 +1,113 @@
+Let's recall.
+The active ingredient of traditional vaccines
+is the viral proteins in one form or other,
+killed virus, live attenuated virus
+or simply purified subunits spike protein.
+Remarkably, the Covid-19 pandemic
+brought about a genuine vaccine revolution.
+Novel messenger RNA vaccines
+based on 3 technological innovations
+developed over decades.
+First, let's look at the target immunogen,
+the viral spike protein.
+Back in 2013,
+Barney Graham, working at the NIH on respiratory syncytial virus infecrion (RSV),
+show the trick for a successful vaccine
+was to stabilize the RSV spike protein
+by strategically mutating specific amino acids to proline.
+Proline tends to introduce local rigidity in the protein.
+In 2015, Barney applied this approach to MERS CoV,
+introducing two consecutive prolines
+to stabilize the MERS spike protein.
+So, not unexpectedly,
+the moment that Yong-Zhen Zhang
+posted the CoV2 genome on Twitter,
+Graham lost no time,
+and within a month designed and then produced
+the DNA version of a CoV2 stabilized spike
+ready for testing.
+Now, in parallel, a new technology was evolving,
+a technology that took over 20 years to get it right.
+The idea was to use RNA as the vaccine delivery system,
+opposed to DNA or protein.
+RNA was hoped to be especially advantageous
+as it would enable the production of target proteins
+directly in the cytoplasm,
+without the need for nuclear transcription,
+as would be the case for DNA based vaccines.
+In order for RNA to work,
+it would need to comply with the format
+of native messenger RNA in ourselves.
+Messenger RNAs contain in open reading frame, the actual message,
+which is flanked by two untranslated regions.
+The 5 Prime UTR
+is preceded by a 5 Prime cap structure
+and contains a ribosome binding site.
+The 3 prime UTR ends with a poly A sequence.
+Producing synthetic messenger RNA was feasible.
+However, when synthetic messenger RNA was injected into mice,
+it caused a ferocious, out of control, innate reaction.
+As you may recall,
+RNA is a potent PAMP,
+recognized by TLR3 and TLR7,
+which lead to an intense interferon reaction.
+Here is where Katalin Kariko and Drew Weissman,
+working at the University of Pennsylvania, solve the problem.
+In 2005,
+they discovered that by replacing the uridine of RNA
+with a modified base pseudouridine,
+our body would accept the foreign messenger RNA
+and not set off an alarm
+and safely translate the message into viral antigen.
+Thus years before the emergence of CoV2,
+Kariko and Weissman had already fine tuned the use of messenger RNA
+as an efficient vaccine modality.
+Finally,
+the last problem was to deal with the fragility of RNA.
+How to deliver the RNA in such a fashion
+as to protect it from degrading and breaking down.
+Peter Cullis, working at the University of British Columbia,
+provided the answer.
+Cullis had been working for decades on liposomes,
+droplets of fat, that can be used to package drugs
+and be injected into our bodies.
+The trick was to figure out the best combination
+that would be most effective in shuttling RNA
+into our cells.
+Cullis came up with a concoction of 3 lipids
+plus a unique ionizable lipid,
+that together formed a lipid nanoparticle
+that could be used to package and deliver the messenger RNA.
+So, here we are,
+3 technologies,
+antigen design and stabilization,
+RNA modification to enable messenger RNA vaccination
+and lipid nanoparticles to package the RNA.
+Each technology, the result of decades of research
+and perfection by hundreds of investigators,
+all come together as CoV2 emerges.
+All you need now, is to manufacture the vaccine
+and approve it for use.
+Fortunately, two relatively young companies were already active
+in developing RNA based therapies and vaccines.
+BioNTech, established in 2008
+and Moderna, founded in 2010.
+Both companies immediately developed
+lipid nanoparticle package messenger RNA,
+coding for stabilized CoV2 spike protein,
+which in months, after publication of the viral genome,
+were already in Phase 1 clinical trials,
+and by the fall of 2020,
+the results of phase 3 trials demonstrated
+efficacy of the vaccine.
+Moderna and BioNTech
+who had partnered with Pfizer, had already begun production.
+The FDA in the United States, gave emergency use approval
+of the vaccines and people began to get jabbed
+as early as December 2020.
+Timing is sometimes everything.
+3 Technologies developed over decades
+were ripe and ready as CoV2 emerged,
+and so, a new vaccine modality was designed,
+tested, manufactured and deployed,
+all within one year.

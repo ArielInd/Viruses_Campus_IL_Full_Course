@@ -1,50 +1,137 @@
-# Book Outline: Viruses - From Molecular Biology to Pandemics
+# מתווה הספר: נגיפים – מביולוגיה מולקולרית למגפות
 
-## Rationale
-This book transforms the lecture transcripts into a cohesive textbook. The structure follows the original course's 8-lesson progression, as it builds logically from molecular foundations to viral structure, specific diseases, immunity, vaccines, and finally the relevant case study of COVID-19.
+## רציונל
 
-## Chapter Structure
+ספר זה הופך את ההרצאות לספר לימוד קוהרנטי. המבנה עוקב אחר התקדמות הקורס המקורי בן 8 השיעורים, כשהוא בונה באופן הגיוני מיסודות מולקולריים דרך מבנה נגיפי, מחלות ספציפיות, מערכת החיסון, חיסונים, ולבסוף מחקר המקרה הרלוונטי של COVID-19.
 
-### Chapter 1: Introduction & The Cell (Lesson 1)
-- **Focus:** Foundations of life, cell structure, and biological units.
-- **Key Concepts:** Cell theory, chemical composition of life, water, sugars.
-- **Lab:** Cell staining (conceptual summary).
+---
 
-### Chapter 2: Macromolecules & The Central Dogma (Lesson 2)
-- **Focus:** DNA structure, replication, and the flow of genetic information.
-- **Key Concepts:** Polymers, DNA chemistry/structure, Central Dogma, Proteins, Genetic Code.
-- **Lab:** Soap effect on bacteria (conceptual).
+## מבנה הפרקים
 
-### Chapter 3: Viruses - Structure & Function (Lesson 3)
-- **Focus:** What is a virus? How do they replicate?
-- **Key Concepts:** Koch's postulates, virus classification, replication cycle, cell culture.
-- **Lab:** Bacterial cultures (conceptual).
+### פרק 01: מבוא – תאים הם יחידות החיים
 
-### Chapter 4: Human Viral Diseases (Lesson 4)
-- **Focus:** Specific case studies of major viral pathogens.
-- **Key Concepts:** Transmission, Smallpox, Yellow Fever, Ebola, Influenza, Polio.
-- **Expert Perspective:** Interviews with Prof. Saphire (Ebola).
+*(Introduction – Cells Are the Units of Life)*
 
-### Chapter 5: Innate Immunity (Lesson 5)
-- **Focus:** The body's first line of defense.
-- **Key Concepts:** Skin, Macrophages, TLRs, Inflammation, Microbiome.
-- **Expert Perspective:** Prof. Beutler (TLRs).
+**מטרות למידה מרכזיות:**
+- להגדיר את מאפייני החיים ולהבדיל בין חי לדומם
+- לתאר את יחידות המידה הרלוונטיות למדע החיים
+- להסביר את ההבדל בין תאים פרוקריוטיים לאאוקריוטיים
+- לפרט את הרכב היסודות הכימיים של היצורים החיים
+- לתאר את תכונות המים וחשיבותם לחיים
 
-### Chapter 6: Adaptive Immunity (Lesson 6)
-- **Focus:** Targeted immune response and antibodies.
-- **Key Concepts:** B Cells, Antibodies, T Cells, MHC, AIDS/HIV.
-- **Expert Perspective:** Prof. Gallo (HIV/AIDS).
+**הדגמת מעבדה:** הדגמת מעבדה – צביעת תאים
 
-### Chapter 7: Vaccines (Lesson 7)
-- **Focus:** Principles of vaccination and public health.
-- **Key Concepts:** Vaccine types, herd immunity, safety, schedules.
-- **Expert Perspective:** Prof. Palese (Flu vaccine).
+---
 
-### Chapter 8: Coronaviruses & COVID-19 (Lesson 8)
-- **Focus:** The Corona family and the 2019 pandemic.
-- **Key Concepts:** Zoonosis, SARS-CoV-2, diagnostics, vaccines, clinical aspects.
+### פרק 02: מולקולות המקרו – מ-DNA לחלבונים
 
-## Appendices
-- **Glossary:** Key terms (Hebrew/English).
-- **Exam Review:** High-yield summaries.
-- **Question Bank:** Consolidated practice questions.
+*(Macromolecules – From DNA to Proteins)*
+
+**מטרות למידה מרכזיות:**
+- להסביר את תהליך הדחיסה (קונדנסציה) והידרוליזה בפילמור
+- לתאר את מבנה הנוקלאוטידים והרכב ה-DNA
+- לפרט את חוקי שרגף ומשמעותם
+- לתאר את מבנה הסליל הכפול
+- להסביר את מנגנון שכפול ה-DNA
+
+**תיבת מומחה:** ראיון עם דיוויד בולטימור 
+
+**הדגמת מעבדה:** הדגמת מעבדה – ההשפעה של סבון על חיידקים
+
+---
+
+### פרק 03: נגיפים – מבנה, סיווג ושכפול
+
+*(Viruses – Structure, Classification and Replication)*
+
+**מטרות למידה מרכזיות:**
+- להבחין בין מחלות מדבקות ללא מדבקות
+- להבין את העיקרים של קוך לזיהוי פתוגנים
+- להגדיר מהו נגיף ומאפייניו כטפיל מוחלט
+- לתאר את מבנה הנגיף: גנום, קופסית ומעטפת
+- להסביר את שיטת סיווג בולטימור
+
+**תיבת מומחה:** ראיון עם דיוויד בולטימור 
+
+**הדגמת מעבדה:** הדגמת מעבדה – גידול תרביות חיידקים
+
+---
+
+### פרק 04: מחלות נגיפיות בהיסטוריה
+
+*(Viral Diseases in History)*
+
+**מטרות למידה מרכזיות:**
+- להכיר את דרכי ההעברה העיקריות של נגיפים
+- ללמוד על נגיף האבעבועות השחורות והשפעתו ההיסטורית
+- להבין את הקשר בין וקטורים (יתושים) להעברת מחלות
+- לתאר את מאפייני נגיף האבולה ומקורו
+- להסביר את הגנום המחולק של נגיף השפעת
+
+**תיבת מומחה:** ראיון עם אריקה אולמן ספיר 
+
+---
+
+### פרק 05: מערכת החיסון המולדת
+
+*(Innate Immunity)*
+
+**מטרות למידה מרכזיות:**
+- להבין את מבנה מערכת החיסון ותאי הדם הלבנים
+- לתאר את המחסומים הפיזיים והכימיים של הגוף
+- להסביר כיצד מזהים פתוגנים באמצעות PAMPs ו-PRRs
+- לתאר את תהליך הדלקת ותסמיניה
+- להבין את תפקיד המיקרוביום
+
+**תיבת מומחה:** ראיון עם ברוס בויטלר 
+
+---
+
+### פרק 06: מערכת החיסון הנרכשת
+
+*(Adaptive Immunity)*
+
+**מטרות למידה מרכזיות:**
+- להבין את הספציפיות והזיכרון של החסינות הנרכשת
+- לתאר את מבנה הנוגדנים וסוגי ה-Ig השונים
+- להסביר כיצד תאי T מזהים תאים נגועים דרך MHC
+- להבין את הקשר בין אלרגיות ל-IgE
+- לתאר את הגורמים לכשל חיסוני
+
+**תיבת מומחה:** ראיון עם רוברט גאלו 
+
+---
+
+### פרק 07: חיסונים – עקרונות ויישומים
+
+*(Vaccines – Principles and Applications)*
+
+**מטרות למידה מרכזיות:**
+- להסביר את עקרון הפעולה של חיסונים
+- להבחין בין חיסון חי-מוחלש, מומת ותת-יחידה
+- להבין מדוע קשה לפתח חיסון ל-HIV ושפעת
+- להפריך מיתוסים בנוגע לבטיחות חיסונים
+- להסביר את מושג חסינות העדר
+
+**תיבת מומחה:** ראיון עם פיטר פאלזה 
+
+---
+
+### פרק 08: נגיפי הקורונה ומגפת COVID-19
+
+*(Coronaviruses and the COVID-19 Pandemic)*
+
+**מטרות למידה מרכזיות:**
+- לתאר את מאפייני משפחת נגיפי הקורונה
+- להשוות בין SARS, MERS ו-COVID-19
+- להבחין בין סוגי בדיקות האבחון
+- להסביר את מנגנון חיסוני ה-mRNA
+- להבין את מקור הנגיפים הזואונוטי
+
+---
+
+## נספחים
+
+- **מילון מונחים:** הגדרות מונחים מרכזיים (עברית/אנגלית)
+- **חזרה לבחינה:** סיכומים בנקודות, טעויות נפוצות
+- **בנק שאלות:** שאלות תרגול מכל הפרקים

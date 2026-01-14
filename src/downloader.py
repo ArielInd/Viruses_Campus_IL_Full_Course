@@ -5,6 +5,7 @@ import os
 import re
 import logging
 from datetime import datetime
+from urllib.parse import urljoin
 
 # Configure logger
 logger = logging.getLogger(__name__)
@@ -48,17 +49,22 @@ class Downloader:
             self.start()
         
         self.logger.info(f"Logging in as {self.username}...")
-        self.page.goto("https://campus.gov.il/login/")
+        self.page.goto("https://app.campus.gov.il/authn/login")
         self.page.wait_for_selector("#emailOrUsername")
         self.page.fill("#emailOrUsername", self.username)
         self.page.fill("#password", self.password)
         self.page.click("#sign-in")
-        self.page.wait_for_load_state("networkidle")
         
-        if self.is_logged_in():
+        try:
+            # Explicitly wait for dashboard URL pattern
+            self.page.wait_for_url("**/learner-dashboard**", timeout=20000)
             self.logger.info("Successfully logged in.")
-        else:
-            self.logger.error("Login failed.")
+        except Exception:
+            current_url = self.page.url
+            if 'learner-dashboard' in current_url or 'dashboard' in current_url:
+                self.logger.info("Successfully logged in (verified by URL check).")
+            else:
+                self.logger.warning(f"Login Wait Timeout. Current URL: {current_url}. Proceeding cautiously.")
 
     def is_logged_in(self):
         """Check if user is logged in."""
@@ -85,10 +91,100 @@ class Downloader:
 
     def get_course_hierarchy(self):
         """
-        Extract the course hierarchy.
+        Extract the course hierarchy from Campus IL (Open edX platform).
         Returns a list of modules, each containing units.
         """
+        if not self.page:
+            self.start()
+        
+        # Convert marketing URL to learning URL
+        # From: https://campus.gov.il/course/tau-acd-rfp1-howtobeatviruses-he/
+        # To: https://app.campus.gov.il/learning/course/course-v1:TAU+ACD_RFP1_HowToBeatViruses_HE+2022_1/home
+        course_url = config.COURSE_URL
+        if 'campus.gov.il/course/' in course_url:
+            # Extract course slug from marketing URL
+            course_slug = course_url.rstrip('/').split('/')[-1]
+            # Convert to learning URL format
+            # This is a heuristic - may need adjustment based on actual URL pattern
+            learning_url = f"https://app.campus.gov.il/learning/course/course-v1:TAU+ACD_RFP1_HowToBeatViruses_HE+2022_1/home"
+            self.logger.info(f"Navigating to course home: {learning_url}")
+            self.page.goto(learning_url)
+        else:
+            self.logger.info(f"Navigating to course: {course_url}")
+            self.page.goto(course_url)
+        
+        self.page.wait_for_load_state("networkidle")
+        
+        # Wait for course content to load
+        try:
+            self.page.wait_for_selector(".pgn_collapsible", timeout=10000)
+            self.logger.info("Course content loaded")
+        except Exception as e:
+            self.logger.warning(f"Timeout waiting for course content: {e}")
+        
+        # Additional wait for JavaScript
+        time.sleep(2)
+        
+        # Click "Expand all" button to reveal all course content
+        try:
+            # Updated selector based on actual DOM structure
+            expand_button = self.page.query_selector("button.btn-outline-primary.btn-block, button:has-text('הרחב הכל'), button:has-text('Expand all')")
+            if expand_button:
+                self.logger.info("Expanding all course sections...")
+                expand_button.click()
+                time.sleep(3)  # Increased wait for expansion
+            else:
+                self.logger.warning("Could not find expand all button")
+        except Exception as e:
+            self.logger.warning(f"Could not find/click expand button: {e}")
+        
         hierarchy = []
+        
+        # Find all modules (sections)
+        # Based on DOM investigation: each module is a .pgn_collapsible element
+        module_elements = self.page.query_selector_all(".pgn_collapsible")
+        
+        self.logger.info(f"Found {len(module_elements)} modules")
+        
+        for module_idx, module_elem in enumerate(module_elements, start=1):
+            # Extract module title from .collapsible-trigger span
+            title_elem = module_elem.query_selector(".collapsible-trigger span")
+            if not title_elem:
+                self.logger.warning(f"Could not find title for module {module_idx}")
+                continue
+            
+            module_title = title_elem.inner_text().strip()
+            self.logger.info(f"Processing module {module_idx}: {module_title}")
+            
+            module = {
+                "index": module_idx,
+                "title": module_title,
+                "units": []
+            }
+            
+            # Find all units (sequentials) within this module
+            unit_links = module_elem.query_selector_all("a[href*='type@sequential']")
+            
+            for unit_idx, unit_link in enumerate(unit_links, start=1):
+                unit_title = unit_link.inner_text().strip()
+                unit_url = unit_link.get_attribute("href")
+                
+                # Make URL absolute if it's relative
+                if unit_url and not unit_url.startswith('http'):
+                    unit_url = f"https://app.campus.gov.il{unit_url}"
+                
+                unit = {
+                    "index": unit_idx,
+                    "title": unit_title,
+                    "url": unit_url
+                }
+                
+                module["units"].append(unit)
+                self.logger.info(f"  Found unit {unit_idx}: {unit_title}")
+            
+            hierarchy.append(module)
+        
+        self.logger.info(f"Extracted hierarchy: {len(hierarchy)} modules, {sum(len(m['units']) for m in hierarchy)} total units")
         return hierarchy
 
     def create_directories(self, hierarchy, output_dir):
@@ -108,18 +204,114 @@ class Downloader:
                 unit['filename'] = unit_name + ".txt"
 
     def download_transcript(self, unit_url):
-        """Download transcript from a unit page."""
+        """Download transcript from a unit page (handling iframes and tabs)."""
         if not self.page:
             self.start()
             
+        self.logger.info(f"Visiting unit: {unit_url}")
         self.page.goto(unit_url)
-        transcript_link = self.page.query_selector("a[href*='transcript'][href$='.txt']")
-        if not transcript_link:
-            transcript_link = self.page.query_selector("a:has-text('Transcript')")
+        try:
+            self.page.wait_for_load_state("domcontentloaded", timeout=30000)
+        except Exception:
+            self.logger.warning("Timeout waiting for page load, proceeding anyway...")
+        
+        # Helper to check for transcript in current view (iframe)
+        def find_download_in_frames():
+            for frame in self.page.frames:
+                try:
+                    # 1. Check for standard Links (<a>)
+                    links = frame.query_selector_all("a.btn")
+                    for link in links:
+                        try:
+                            text = link.inner_text()
+                            href = link.get_attribute("href")
+                            is_download_text = ("Download" in text or "הורד" in text) and ("(.txt)" in text or "Text" in text or "טקסט" in text)
+                            is_txt_href = href and (".txt" in href)
+                            
+                            if is_download_text or is_txt_href:
+                                self.logger.info(f"Found transcript link: {text} -> {href}")
+                                if href and not href.startswith(('http:', 'https:')):
+                                    href = urljoin(frame.url, href)
+                                return ('url', href)
+                        except Exception:
+                            continue
+
+                    # 2. Check for Buttons (<button>)
+                    buttons = frame.query_selector_all("button")
+                    for btn in buttons:
+                        try:
+                            text = btn.inner_text()
+                            # Check for "Download" and "Text"/.txt
+                            if ("Download" in text or "הורד" in text) and ("(.txt)" in text or "Text" in text or "טקסט" in text):
+                                self.logger.info(f"Found transcript button: {text}")
+                                # Click and capture download
+                                with self.page.expect_download(timeout=10000) as download_info:
+                                    btn.click()
+                                download = download_info.value
+                                path = download.path()
+                                
+                                # Read content
+                                with open(path, 'r', encoding='utf-8') as f:
+                                    content = f.read()
+                                
+                                # Clean up temporary file if possible? Playwright manages it.
+                                return ('content', content)
+                        except Exception as e:
+                            # self.logger.warning(f"Button check failed: {e}")
+                            continue
+
+                except Exception:
+                    continue
+            return None
+
+        try:
+            # Wait for content iframe to account for domcontentloaded being too early
+            try:
+                self.page.wait_for_selector("iframe", state="attached", timeout=10000)
+            except:
+                pass
+                
+            result = find_download_in_frames()
+            if result:
+                rtype, rvalue = result
+                self.logger.info(f"Found transcript in first tab ({rtype}).")
+                if rtype == 'url':
+                    return self._download_file_from_url(rvalue)
+                else:
+                    return rvalue
+        except Exception as e:
+            self.logger.warning(f"Error checking first tab: {e}")
+
+        # 2. Iterate through other tabs (verticals)
+        try:
+            tabs = self.page.query_selector_all(".sequence-navigation-tabs a.btn-link")
+            if not tabs:
+                return None
             
-        if transcript_link:
-            url = transcript_link.get_attribute("href")
-            return self._download_file_from_url(url)
+            for i, tab in enumerate(tabs):
+                tab_title = tab.get_attribute("title")
+                # self.logger.info(f"Checking tab {i+1}: {tab_title}")
+                
+                tab.click()
+                try:
+                    self.page.wait_for_load_state("domcontentloaded", timeout=5000)
+                except:
+                    pass
+                time.sleep(1) 
+                
+                result = find_download_in_frames()
+                if result:
+                    rtype, rvalue = result
+                    self.logger.info(f"Found transcript in tab {i+1} ({rtype}).")
+                    if rtype == 'url':
+                        return self._download_file_from_url(rvalue)
+                    else:
+                        return rvalue
+                    
+        except Exception as e:
+            self.logger.warning(f"Error iterating tabs: {e}")
+
+        self.logger.warning("No transcript found in any tab.")
         return None
 
     def _download_file_from_url(self, url):

@@ -1,0 +1,66 @@
+The immune system deals with recognizing pathogens as foreign
+and systematically knocks them out.
+Much of our immune system flows in our blood
+and reaches all corners of our body.
+Some cells of our immune system act as sentries,
+the macrophages reside in our tissues,
+and when they encounter a pathogen that has breached our skin,
+they engage in battle and sound the alarm to recruit neutrophils.
+Here, the following might help summarize some of the main points:
+Our white blood cells are in essence the cells of our immune system.
+White blood cells are generally of two types:
+phagocytes and lymphocytes.
+Phagocytes, such as macrophages and neutrophils,
+are central to our innate immune response.
+The innate immune response is immediate and fast acting,
+but has no memory.
+Macrophages recognize pathogens via PRRs that bind PAMPs.
+Lymphocytes are the main soldiers of the adaptive immune response.
+Adaptive immunity is slower to kick in,
+but more powerful, exquisitely specific, and generates memory.
+The memory of the adaptive immune response
+is what protects us, when we encounter pathogens a second time.
+In addition to our white blood cells,
+the microbiome is an important factor ensuring good health.
+The presence of native microflora competes against pathogens.
+The following concept maps further explain
+the interrelationships between the terms we've learned.
+In this lesson, we learned about innate immunity.
+Innate immunity can raise mechanical barriers to infection,
+external and internal barriers.
+The external barrier is our skin, made up of epidermis and dermis.
+The cells of epidermis are referred to as keratinocytes.
+The internal barrier is our mucosa, which secretes mucus.
+Mucus is a sticky fluid, which can entrap viruses and bacteria.
+And we can rid ourselves of these stuck pathogens when we cough or sneeze.
+Now, in addition to the mechanical barriers,
+there are also chemical barriers.
+One chemical barrier is, in essence,
+the acidity of our stomach, our gastric juices.
+And when we swallow bacteria or viruses stuck in mucus,
+then the acidic gastric juices kill these pathogens.
+In addition to the acidity, there are also active proteins.
+One protein is lysozyme, an enzyme that kills bacteria.
+And as we learned, Fleming studied lysozyme and, through his experience,
+discovered penicillin.
+In addition to these mechanical and chemical barriers,
+we learned about the induced immune response, the induced innate immunity.
+Induced immunity is mediated via phagocytes.
+Resident macrophages are such phagocytes that have PRRs,
+receptors, that recognize PAMPs.
+When macrophages sense the presence of pathogens via PAMPs binding to PRRs,
+they secrete cytokines and send the alarm.
+In addition, they can also secrete special cytokines called chemokines.
+Chemokines create a gradient, highest concentration at the area of infection,
+which is gradually tapering off
+as you gain further and further distance from the area of infection.
+Neutrophils sense this gradient and follow the gradient
+to the area that has been infected.
+The macrophages and neutrophils, both phagocytes,
+eat and kill the pathogens.
+In addition to the induced innate immune response,
+we also mentioned the microbiome.
+Millions and millions, and millions of bacteria
+cover our body and resident in the mucosa.
+These bacteria are helpful.
+And they compete with pathogens.

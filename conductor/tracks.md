@@ -9,5 +9,10 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [~] Track: Transform Hebrew lecture transcripts into a structured study ebook
+## [x] Track: Transform Hebrew lecture transcripts into a structured study ebook
 *Link: [./conductor/tracks/ebook_transformation_20260114/](./conductor/tracks/ebook_transformation_20260114/)*
+
+---
+
+## [~] Track: Review agent pipeline for architectural consistency and code quality.
+*Link: [./conductor/tracks/agent_pipeline_review_20260114/](./conductor/tracks/agent_pipeline_review_20260114/)*

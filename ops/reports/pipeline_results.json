@@ -1,0 +1,51 @@
+{
+  "corpuslibrarian": {
+    "corpus_index": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/corpus_index.json",
+    "concepts_map": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/concepts_map.md",
+    "file_notes_dir": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/file_notes",
+    "total_files": 73,
+    "total_words": 43292
+  },
+  "curriculumarchitect": {
+    "chapter_plan": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/chapter_plan.json",
+    "manifest": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/manifest.json",
+    "outline": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/01_outline.md",
+    "num_chapters": 8
+  },
+  "chapterbriefbuilder": {
+    "briefs_dir": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/chapter_briefs",
+    "num_briefs": 8
+  },
+  "draftwriter": {
+    "drafts_dir": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/drafts/chapters",
+    "num_drafts": 8
+  },
+  "developmentaleditor": {
+    "chapters_dir": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/chapters",
+    "memos_dir": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/reports/edit_memos",
+    "num_chapters": 8
+  },
+  "assessmentdesigner": {
+    "question_bank": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/92_question_bank.md",
+    "exam_review": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/91_exam_review.md",
+    "total_questions": 2
+  },
+  "terminology": {
+    "terminology_file": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/terminology.yml",
+    "consistency_report": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/reports/consistency_report.md",
+    "glossary": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/90_glossary.md",
+    "inconsistencies": 14
+  },
+  "proofreader": {
+    "proof_log": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/reports/proof_log.md",
+    "files_checked": 23,
+    "issues_found": 1088
+  },
+  "safety": {
+    "safety_review": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/reports/safety_review.md",
+    "files_checked": 23,
+    "passed": 15,
+    "failed": 8,
+    "all_passed": false
+  }
+}

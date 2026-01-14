@@ -1,0 +1,104 @@
+{
+  "total_files": 73,
+  "total_words": 43292,
+  "lessons": {
+    "0": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/02_וירוס_הקורנה_–_שאלות_נפוצות/01_וירוס_הקורונה.txt"
+    ],
+    "1": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/01_1.0_מבוא_לקורס.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/02_1.1_מהם_החיים_החיים_הם_קצת_יותר_מאשר_רק_לחיות.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/03_1.2_יחידות_מדידה_במדע.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/04_1.3_תאים_הם_יחידת_החיים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/05_1.4_הרכב_החומרים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/06_1.5_מים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/07_1.6_סוכרים_ורב-סוכרים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/08_1.7_הדגמת_מעבדה_–_צביעת_תאים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/03_שיעור_1_תאים_הם_יחידות_החיים/09_1.8_סיכום_–_רעיונות_מרכזיים_ומפות_מושגים.txt"
+    ],
+    "2": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/02_2.1_הדגמת_מעבדה_–_ההשפעה_של_סבון_על_חיידקים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/03_2.2_מבנה_כללי_של_פולימרים_ליניאריים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/04_2.3_DNA_–_הרכב_כימי_–_חוקי_שרגף_(Chargaff).txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/05_2.4_DNA_–_מבנה_–_הסליל_הכפול.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/06_2.5_DNA_–_שכפול.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/07_2.6_ראיון_עם_פרופסור_דיוויד_בולטימור_(David_Baltimore)_הדוֹגמה_המרכזית.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/08_2.7_חלבונים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/09_2.8_הקוד_הגנטי.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים/10_2.9_סיכום_–_רעיונות_מרכזיים_ומפות_מושגים.txt"
+    ],
+    "3": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול/02_3.1_מחלות_לא_מדבקות.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול/03_3.2_מחלות_מדבקות_-_העיקרים_של_קוך_(Koch's_Postulates).txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול/04_3.3_הדגמת_מעבדה_–_גידול_תרביות_חיידקים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול/05_3.4_נגיפים_מגיעים_בכל_הצורות_והגדלים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול/06_3.5_ראיון_עם_פרופסור_דיוויד_בולטימור_(Baltimore_David)_–_סיווג_של_נגיפים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול/07_3.6_תרביות_תאים_וחקר_הנגיפים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול/08_3.7_תהליך_השכפול_של_הנגיפים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול/09_3.8_סיכום_–_רעיונות_מרכזיים_ומפות_מושגים.txt"
+    ],
+    "4": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/06_שיעור_4_מחלות_נגיפיות_הומניות/02_4.1_דרכי_העברה_של_נגיפים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/06_שיעור_4_מחלות_נגיפיות_הומניות/03_4.2_נגיף_האבעבועות_השחורות.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/06_שיעור_4_מחלות_נגיפיות_הומניות/04_4.3_נגיף_הקדחת_הצהובה.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/06_שיעור_4_מחלות_נגיפיות_הומניות/05_4.4_נגיף_האבולה_–_קדחת_דימומית.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/06_שיעור_4_מחלות_נגיפיות_הומניות/06_4.5_ראיון_עם_פרופסור_אריקה_אולמן_ספיר_(Erica_Ollmann_Saphire)_אבולה.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/06_שיעור_4_מחלות_נגיפיות_הומניות/07_4.6_נגיף_השפעת.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/06_שיעור_4_מחלות_נגיפיות_הומניות/08_4.7_נגיף_הפוליו.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/06_שיעור_4_מחלות_נגיפיות_הומניות/09_4.8_סיכום_–_רעיונות_מרכזיים_ומפות_מושגים.txt"
+    ],
+    "5": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/02_5.1_האנטומיה_והתאים_של_מערכת_החיסון.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/03_5.2_העור_-_קו_ההגנה_הראשון.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/04_5.3_מקרופאגים_וזיהוי_פתוגנים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/05_5.4_ראיון_עם_פרופסור_ברוס_בויטלר_(Bruce_Beutler)_–_TLRs.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/06_5.5_מערכת_החיסון_המולדת_ודלקת.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/07_5.6_המיקרוביום_–_הרוב_שחיי_בתוכנו.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/08_5.7_מערכת_החיסון_המולדת_מול_הנרכשת.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/09_5.8_סיכום_–_רעיונות_מרכזיים_ומפות_מושגים.txt"
+    ],
+    "6": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/02_6.1_תאי_B_–_מבנה_ותפקוד_הנוגדנים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/03_6.2_כיצד_נוגדנים_מנטרלים_נגיפים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/04_6.3_תאי_T_ומערכת_ה-MHC.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/05_6.4_נלחמים_בתולעים_ואלרגיות.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/06_6.5_כשל_חיסוני_–_תת_תזונה,_SCID_והכשל_החיסוני_הנרכש_(AIDS).txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/07_6.6_ראיון_עם_פרופסור_רוברט_גאלו_(Robert_C._Gallo)_–_בדיקת_דם_ל-AIDS.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/08_6.7_ELISA_–_כיצד_בדיקות_דם_עובדות.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב/09_6.8_סיכום_–_רעיונות_מרכזיים_ומפות_מושגים.txt"
+    ],
+    "7": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/02_7.1_חיסונים_–_עקרונות_בסיסיים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/03_7.2_חיסוני_פוליו_ואבעבועות_שחורות.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/04_7.3_חיסוני_תת-יחידה.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/05_7.4_נגיפים_שלא_נשמעים_לכללים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/06_7.5_ראיון_עם_פרופסור_פיטר_פאלזה_(Peter_Palese)_–_חיסון_השפעת.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/07_7.6_אז_איפה_המלכוד_מה_הסיכון.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/08_7.7_כמה_רעילים_הם_החיסונים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/09_7.8_לוח_זמני_החיסונים_(השנתיים_הראשונות_של_החיים).txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/10_7.9_דעת_מומחים_על_חשיבות_חיסונים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות/11_7.10_סיכום_–_רעיונות_מרכזיים_ומפות_מושגים.txt"
+    ],
+    "8": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/01_8.0_מבוא.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/02_8.1_משפחת_נגיפי_הקורונה.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/03_8.2_נגיפי_קורונה_שמדביקים_בעלי_חיים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/04_8.3_נגיפי_קורונה_שמדביקים_בני_אדם.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/05_8.4_בדיקות_דיאגנוסטית.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/06_8.5_היבט_קליני_על_מחלת_הקורונה.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/07_8.6_מהפכת_החיסונים.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/08_8.7_מגפת_נגיף_הקורונה_2019.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/09_8.8_סיכום_–_רעיונות_מרכזיים_ומפות_מושגים.txt"
+    ],
+    "9": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19/11_אחרית_דבר_–_השערות.txt",
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/12_סיכום_הקורס/01_דברי_סיום.txt"
+    ],
+    "unknown": [
+      "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/summary.txt"
+    ]
+  },
+  "file_notes_dir": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/file_notes",
+  "concepts_map_path": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/artifacts/concepts_map.md",
+  "created_at": "2026-01-14T23:08:10.660035"
+}

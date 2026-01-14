@@ -1,0 +1,88 @@
+The smallpox and polio vaccines contain complete viral pathogens,
+all their proteins, as well as their genes.
+This approach to produce vaccines against bacterial pathogens is also possible.
+However, bacteria compared to viruses are pretty big
+with large DNA genomes that code for thousands of proteins.
+Let's take whooping cough for example.
+This serious respiratory disease is caused by the bacterium Bordetella pertussis,
+which is made of some 2,000 proteins.
+A whole cell vaccine has been produced by killing the bacterium with formaldehyde,
+in the same way Salk prepared is inactivated polio vaccine.
+The whole cell pertussis vaccine
+has saved and continues to save millions of lives around the world.
+However, sometimes young kids have strong annoying reactions
+to this whole cell vaccine, developing an inflammatory response:
+redness, swelling, severe pain, and fever,
+which as it turns out can all be avoided.
+Scientists systematically studied the pathogen
+and mapped out the specific proteins that directly mediate the disease process.
+These can be used to produce a subunit vaccine
+made exclusively of only these few, but most relevant, proteins.
+It turns out that only 5 out of 2,000 proteins of the pertussis bacterium
+are enough to train our immune system
+and provide protection against whooping cough.
+And as anticipated, this subunit vaccine
+has markedly fewer and less severe side effects.
+This approach of generating subunit vaccines has many advantages.
+First of all, it focuses our immune system
+to the most sensitive and critical targets of the pathogen.
+It reduces unnecessary numbers of proteins
+that do not provide any protective advantage,
+yet contribute to unnecessary inflammation.
+Subunit vaccines themselves are never infectious,
+and thus, are especially safe.
+This approach of subunit vaccines has also been applied for toxic proteins,
+toxins that infectious bacteria produce.
+The two most famous bacterial toxins for which vaccines are administered routinely
+are tetanus and diphtheria toxins.
+These vaccines contain tetanus and diphtheria toxiods.
+These are the bacterial toxins inactivated with formaldehyde.
+So, think about it.
+The triple vaccine, DTaP,
+given to protect our kids against diphtheria, tetanus, and whooping cough
+doesn't contain even one infectious agent
+and no more than a handful of harmless proteins.
+As it turns out, subunit vaccines can be very effective for some viruses as well.
+When we review the replication cycles of viruses
+we learned how cells are only susceptible to infection
+if they present the cell surface viral receptors.
+Thus, scientists have developed subunit vaccines
+that contain only one protein of the virus, precisely that protein that is crucial
+for receptor recognition and binding to mediate entry.
+A case in point is the hepatitis B vaccine.
+The vaccine contains just one spike surface protein of the virus--
+a relatively short protein of about 200 amino acids long.
+Moreover, the surface antigen is produced artificially in baker's yeast cells,
+so the vaccine has no trace of viral DNA, no unnecessary proteins or lipids,
+yet affords protection by training and focusing our immune system
+to effectively inactivate and neutralize the viral spike protein.
+The most recent subunit vaccine used today protects women and men from cancer.
+Human Papilloma Virus, HPV, is a naked, double-stranded DNA virus
+whose genome codes for 8 proteins.
+One of these designated L1, which makes up a major part of the viral capsid.
+This single protein produced in yeast constitutes the entire HPV vaccine.
+No DNA, no extra proteins.
+Finally, when the pathogen's antigens are not proteins,
+subunit vaccines can actually be better the nature.
+You recall that bacteria are sometimes slippery
+and hard for macrophages to engulf.
+Antibodies directed to the slippery, outer surface of these bacteria
+enhance macrophages eating efficiency.
+The problem is that the slippery coat of bacteria
+is sometimes made of polysaccharides, complex sugars.
+Here is where scientific ingenuity has paid off.
+Whereas the natural bacteria are somewhat resistant to our immune system,
+we can outwit nature and engineer their coat
+to become improved, excellent targets for B cells.
+If we chemically attached to the sugars some proteins as well,
+the sugar antigens become remarkably more appetizing for B cells.
+These artificially mixed antigens, conjugates of protein bound to sugar,
+are able to stimulate the production of antibodies to sugars
+and provide efficient protection against the otherwise slippery bacteria.
+This is exactly how the vaccines against Haemophilus influenzae
+and Streptococcus pneumonia are produced.
+The vaccines contained the capsular polysaccharides
+conjugated with particularly tasty proteins
+that together stimulate B cells to generate highly effective antibodies
+that when the time comes
+enhance the ability of macrophages to eliminate these bacteria.

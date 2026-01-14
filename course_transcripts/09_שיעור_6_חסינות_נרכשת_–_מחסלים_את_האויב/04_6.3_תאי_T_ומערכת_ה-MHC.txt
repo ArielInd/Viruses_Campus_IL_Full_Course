@@ -1,0 +1,100 @@
+Imagine the following situation.
+You've been infected by a virus.
+Virus particles are cruising around looking for a susceptible cell to infect
+before they get spotted by a B-cell.
+As they hover over the cells,
+cell surface proteins sort of float laterally
+here and there within the membrane.
+At some point, the virus may encounter a susceptible cell
+and latches onto its receptor.
+Membrane fusion takes place, releasing the viral capsid into the cytoplasm.
+and the viral spikes just float away.
+Viewing this from above, the membrane of the infected cell seems totally normal
+and nobody is any wiser.
+Who could guess that this cell
+is actually a ticking time bomb, that soon the infected cell
+will begin spewing out a new generation of infectious particles.
+This is exactly the challenge the immune system is faced with:
+how to detect infected cells and knock them out
+before the viruses have a chance to replicate.
+The exterior of infected cells can appear seemingly normal.
+And so long as the viruses lay low,
+you might assume that there's no way to discriminate them from a healthy cell.
+Here's where things get interesting.
+It turns out that our immune system comes with a quality control department.
+All the cells of our body have a special monitoring and alarm system.
+When normal proteins are newly made in our cells,
+a few copies of each are taken as samples.
+The protein sample is processed by the proteasome.
+Remember Professor Ciechanover?
+The proteasome cuts the protein sample into small pieces,
+short peptides, about nine amino acids long.
+These are then loaded onto special proteins called MHC.
+The MHCs act as reporters, shuttling the peptide samples of newly made proteins
+from the cytoplasm to the cell surface.
+Thus all the cells of our body continually display
+peptide samples of newly made proteins they produce,
+loaded on MHC reporters, all the time.
+We have mentioned numerous times
+that the immune system distinguishes between self and non-self.
+One part of this is that the peptides displayed on MHC
+are constantly being examined by our T-cells.
+T-cells accomplish this via their T-cell receptor, the TCR.
+This special receptor can recognize the short peptides presented on MHC
+with exquisite specificity and precision.
+The TCR's are trained to recognize all the peptides derived from our own proteins,
+that is, self proteins,
+and distinguish these from anything foreign.
+Our ticking time bomb.
+When infected cells begin to produce viral proteins,
+samples of these are taken up by the MHC reporter
+and are displayed on the surface of that infected cell.
+T-cells, scouting out the cells of our body looking for bad guys,
+are pretty much relaxed and laid back and indifferent,
+so long as the peptides displayed on MHC represent familiar self proteins.
+However, as viral proteins begin to accumulate in the infected cell,
+more and more of the MHC reporters display virus-derived peptides.
+The T-cells see these foreign peptides and thus recognize targets for action,
+infected cells active in producing viral antigens.
+Diffusing the time bomb is of essence,
+and relies on the expertise of our well trained bomb squad.
+The T-cells bind the MHC's of the infected cells,
+and release special enzymes that eliminate them
+without causing damage to the neighboring healthy cells.
+T-cells are, in fact, an effective SWAT team,
+able to recognize ticking time bombs
+and diffuse them before they go off
+and cause harm to the surrounding tissue.
+Now, in the last unit I mentioned that viruses have tricks of their own.
+Some viruses have developed methods
+that interfere with the cells' MHC reporting system.
+These viruses block the shuttling of MHC
+so that no viral peptides make their way to the surface of the infected cell.
+At first, this seems rather devious, and infected cells just might go unnoticed.
+However, here comes a special lymphocyte of the innate system,
+natural killer cells, called NK cells.
+These are special lymphocytes designed to wipe out any deviant cell.
+As we have just learned, one characteristic feature of healthy cells
+is that they constantly present MHC reporters.
+Cells that lack MHC on their surface are perceived by NK cells as deviant,
+and so are fair game.
+The NK cells bind to them
+and like T-cells release special enzymes that kill these cells.
+NK cells are pretty crafty and have other means to knock out infected cells.
+The NK cells, like macrophages,
+are armed with receptors for the antibody effector signals.
+So if by chance a virus encounters a B-cell before it infects the target cell,
+antibodies can be produced, that are specific for the viral spike protein.
+When cells are infected by the virus,
+these express the viral spike proteins on their surface.
+The spike-specific antibodies can now bind those spikes
+expressed on the surface of the virus infected cells.
+These cells are now antibody tagged.
+When antibodies bind to the cell surface spikes, expressed on infected cells,
+the NK cells home in on the effector signals
+and surgically knock out the infected cells,
+leaving the neighboring healthy cells alone.
+In the next unit, we'll see how antibodies,
+their effector signals memory, along with special sentinel cells,
+work together to help us.
+We will also see that boredom is never good.

@@ -1,0 +1,117 @@
+{
+  "chapter_id": "05",
+  "title": "מערכת החיסון המולדת",
+  "objectives": [
+    "להבין את מבנה מערכת החיסון ותאי הדם הלבנים",
+    "לתאר את המחסומים הפיזיים והכימיים של הגוף",
+    "להסביר כיצד מזהים פתוגנים באמצעות PAMPs ו-PRRs",
+    "לתאר את תהליך הדלקת ותסמיניה",
+    "להבין את תפקיד המיקרוביום",
+    "להבחין בין חסינות מולדת לנרכשת"
+  ],
+  "roadmap": "נכיר את קו ההגנה הראשון והמהיר של הגוף – החסינות המולדת. נראה כיצד העור והריריות משמשים כחומות, וכיצד הגוף מגייס \"חיילים\" לאתר הפציעה.",
+  "content_sections": [
+    {
+      "heading": "מערכת החיסון: הצבא שבתוכנו",
+      "key_points": [
+        "לויקוציטים"
+      ]
+    },
+    {
+      "heading": "מחסומים פיזיים וכימיים",
+      "key_points": [
+        "עור, ריריות, ליזוזים"
+      ]
+    },
+    {
+      "heading": "זיהוי האויב: PAMPs ו-PRRs",
+      "key_points": [
+        "TLRs"
+      ]
+    },
+    {
+      "heading": "דלקת",
+      "key_points": [
+        "ציטוקינים, נויטרופילים"
+      ]
+    },
+    {
+      "heading": "המיקרוביום",
+      "key_points": [
+        "חיידקים ידידותיים"
+      ]
+    },
+    {
+      "heading": "חסינות מולדת מול נרכשת",
+      "key_points": [
+        "מהירות vs זיכרון"
+      ]
+    }
+  ],
+  "definitions_to_bold": [
+    "גראם",
+    "points",
+    "non",
+    "עיקריות",
+    "action",
+    "types",
+    "whip",
+    "lysosomes-",
+    "cells-"
+  ],
+  "tables_to_create": [
+    {
+      "name": "חסינות מולדת vs נרכשת",
+      "columns": [
+        "תכונה",
+        "A",
+        "B"
+      ],
+      "purpose": "השוואה: חסינות מולדת vs נרכשת"
+    },
+    {
+      "name": "תאי מערכת החיסון",
+      "columns": [
+        "תכונה",
+        "A",
+        "B"
+      ],
+      "purpose": "השוואה: תאי מערכת החיסון"
+    }
+  ],
+  "expert_perspective": {
+    "expert_name": "ברוס בויטלר ",
+    "topic": "ראיון עם פרופסור ברוס בויטלר (Bruce Beutler) – TLRs",
+    "source": "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/course_transcripts/08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון/05_5.4_ראיון_עם_פרופסור_ברוס_בויטלר_(Bruce_Beutler)_–_TLRs.txt"
+  },
+  "lab_demo_conceptual": null,
+  "common_mistakes": [
+    "דלקת היא תמיד דבר רע",
+    "החסינות המולדת ספציפית"
+  ],
+  "key_terms": [
+    {
+      "hebrew": "מקרופאג",
+      "english": "Macrophage"
+    },
+    {
+      "hebrew": "ציטוקין",
+      "english": "Cytokine"
+    },
+    {
+      "hebrew": "דלקת",
+      "english": "Inflammation"
+    }
+  ],
+  "mcq_targets": [
+    "PAMPs/PRRs",
+    "דלקת",
+    "מיקרוביום"
+  ],
+  "short_answer_targets": [
+    "PAMPs/PRRs",
+    "דלקת",
+    "מיקרוביום"
+  ],
+  "thinking_question_target": "מדוע הגוף זקוק גם לחסינות מולדת וגם לנרכשת?"
+}

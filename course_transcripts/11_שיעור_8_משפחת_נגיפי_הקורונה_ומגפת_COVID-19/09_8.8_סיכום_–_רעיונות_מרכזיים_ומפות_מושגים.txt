@@ -1,0 +1,133 @@
+So here we are,
+two and a half years,
+into a global pandemic of gigantic proportions,
+the 3rd coronavirus pandemic in 20 years.
+Focusing on CoV2 and Covid-19,
+has allowed us to explore coronaviruses as a family.
+Two genera, the Alpha and Beta coronaviruses,
+are especially revealing,
+as numerous examples of coronavirus diseases,
+in cats, dogs, cows, and pigs,
+have been known for decades.
+Veterinary vaccines,
+have been proven effective in preventing severe disease,
+although,
+they do not necessarily provide protection against infection,
+transmission and recurrent disease.
+Despite the fact that coronavirus RNA polymerase,
+has unique proof reading activity,
+we have witnessed the emergence,
+of evermore transmissible variants of CoV2.
+Huge advancements in diagnostics,
+and especially in vaccination,
+have helped curb the Covid-19 pandemic,
+although we certainly are still not out of the woods.
+The following are 10 key points to consider.
+Coronaviruses have huge RNA genomes,
+some 30,000 bases coding for over 25 proteins.
+Their genomes are ribosome ready,
+the first 2 thirds of the positive strand RNA,
+code for 2 large polyproteins,
+16 proteins strung together,
+one after the other and cleaved apart by viral proteolysis.
+The 3 prime end corresponds to sub genomic RNA's,
+that code for the structural proteins,
+spike, membrane, envelope and nucleocapsid proteins.
+7 human coronaviruses have been identified,
+4 of which cause mild, common cold like disease.
+Over the last 20 years,
+3 pandemics have emerged, SARS-CoV1 in 2003,
+MERS in 2012 and CoV2 in 2019.
+Compared to SARS-CoV1 and MERS,
+CoV2 is extraordinarily contagious
+and consequently has led to massive infections worldwide.
+Fortunately, the fatality rate of CoV2,
+is much less than SARS and MERS.
+Although proof reading activities,
+associated with coronavirus RNA, RNA polymerase,
+transmissibility continuously increases.
+And so we have seen,
+the serial emergence of variants of concern,
+that are ever more adapted,
+to more efficiently infect humans.
+How to control the spread of the virus,
+has been a major challenge.
+Pandemic management through behavioral measures,
+such as donning masks and social distancing,
+has proven effective.
+Lockdowns and quarantine,
+have had serious impact on all our lives.
+Monitoring the pandemic and contact tracing,
+have been possible through extensive use of diagnostics.
+3 diagnostic platforms,
+complement each other,
+to provide a picture of the dynamics of the pandemic.
+And finally, the implementation of a novel vaccine modality,
+messenger RNA vaccines,
+have been deployed within 1 year.
+Clearly this is remarkable,
+due to the perfect timing,
+where 3 technologies have matured
+and come together to bring about a genuine vaccine revolution.
+Here are some concept maps to better understand,
+the interrelationships between the terms we have learned.
+Coronaviruses contain single stranded RNA,
+positive sense RNA,
+about 30,000 bases long.
+The first 2 thirds of the genome,
+code for the non structural proteins,
+2 large polyproteins,
+2 of which are proteases
+and once they cleave the polyproteins,
+the ribosome dependent RNA polymerase can assemble,
+the RdRp uses the ExoN component and exonuclease,
+for proof reading activity.
+The remaining last third of the genome,
+codes for the structural proteins.
+To be precise, it serves as a template,
+for short sub genomic messenger RNA segments,
+which are then translated to produce the structural proteins,
+spike, membrane and envelope,
+that assemble with the membrane
+and in addition, nuclear proteins,
+which associate with the genome,
+all together they package to form new viral particles.
+Phylogenetic analysis of the viral genomes,
+allows us to divide the coronaviruses into 4 genera.
+Alpha coronaviruses, Beta coronaviruses,
+Gamma coronaviruses and Delta coronaviruses.
+Alpha and Beta coronaviruses infect mammals,
+whereas Gamma and Delta coronaviruses infect birds.
+The Alpha coronaviruses infect cats, dogs and pigs,
+causing gastrointestinal disease and respiratory diseases.
+The Beta coronaviruses can infect cows,
+also causing serious coronavirus disease.
+Curiously, all of these animals have existing vaccines
+and the vaccines prevent severe disease.
+However, are less effective in preventing the infection
+and reinfection of the vaccinated animals.
+And of course, in the end,
+we also have discovered viruses that infect humans.
+Humans can be infected by both Alpha and Beta coronaviruses.
+Now let's look at human coronaviruses.
+Obviously they can be divided into Alpha and Beta,
+but in this case,
+let's look at those that cause the common cold,
+as opposed to the pandemic coronaviruses,
+we've been talking about.
+The first 2 human coronaviruses,
+discovered back in the 60's were 229E and OC43.
+And then in 2003,
+SARS coronavirus emerged in China,
+the first pandemic coronavirus.
+In view of the pandemic,
+research was conducted to seek and try,
+to identify new unknown coronaviruses
+and immediately NL63 and HKU1 were identified,
+both causing common cold like disease.
+In 2012 MERS coronavirus,
+a new pandemic was discovered in the Saudi Peninsula
+and we had thought, hopefully,
+that this might be the end of coronaviruses pandemics.
+However, in 2019,
+we witnessed the emergence of SARS-CoV2 and Covid-19.

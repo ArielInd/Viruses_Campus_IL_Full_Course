@@ -1,0 +1,250 @@
+# Terminology Guidelines / מונחים מאושרים
+
+# This file defines canonical Hebrew terms and their English equivalents.
+# Use these terms consistently throughout all chapters.
+
+# Format:
+# - hebrew: canonical Hebrew term
+#   english: English equivalent
+#   variants: list of alternative forms to avoid or normalize
+#   notes: usage notes
+
+biology_basics:
+  - hebrew: תא
+    english: Cell
+    variants: [תאים]
+    
+  - hebrew: אאוקריוט
+    english: Eukaryote
+    variants: [אֵאוּקָרְיוֹט, איאוקריוט]
+    
+  - hebrew: פרוקריוט
+    english: Prokaryote
+    variants: [פרוקריאוט]
+    
+  - hebrew: גרעין
+    english: Nucleus
+    variants: []
+    
+  - hebrew: ציטופלזמה
+    english: Cytoplasm
+    variants: [ציטופלסמה]
+    
+  - hebrew: מיטוכונדריה
+    english: Mitochondria
+    variants: [מיטוכונדריון]
+    
+  - hebrew: מקרומולקולה
+    english: Macromolecule
+    variants: []
+    
+  - hebrew: פולימר
+    english: Polymer
+    variants: []
+    
+  - hebrew: מונומר
+    english: Monomer
+    variants: []
+
+genetics:
+  - hebrew: DNA
+    english: DNA
+    variants: [דנ"א]
+    notes: Use DNA in text, דנ"א in Hebrew-only contexts
+    
+  - hebrew: RNA
+    english: RNA
+    variants: [רנ"א]
+    
+  - hebrew: mRNA
+    english: mRNA
+    variants: [RNA שליח]
+    
+  - hebrew: שעתוק
+    english: Transcription
+    variants: [תרגום, טרנסקריפציה]
+    notes: שעתוק = DNA→RNA; תרגום = RNA→Protein
+    
+  - hebrew: תרגום
+    english: Translation
+    variants: [טרנסלציה]
+    
+  - hebrew: נוקלאוטיד
+    english: Nucleotide
+    variants: []
+    
+  - hebrew: חומצת אמינו
+    english: Amino Acid
+    variants: [חומצה אמינית]
+    
+  - hebrew: קודון
+    english: Codon
+    variants: []
+    
+  - hebrew: ריבוזום
+    english: Ribosome
+    variants: []
+
+virology:
+  - hebrew: נגיף
+    english: Virus
+    variants: [וירוס]
+    notes: Always use נגיף, never וירוס
+    
+  - hebrew: קופסית
+    english: Capsid
+    variants: [קפסיד, קפסולה]
+    
+  - hebrew: מעטפת
+    english: Envelope
+    variants: [אנבלופ]
+    
+  - hebrew: קולטן
+    english: Receptor
+    variants: [רצפטור]
+    
+  - hebrew: ספייק
+    english: Spike
+    variants: [זיז, שיכה]
+    notes: Use ספייק for COVID-19 context
+    
+  - hebrew: שכפול
+    english: Replication
+    variants: [רפליקציה]
+    
+  - hebrew: טפיל מוחלט
+    english: Obligate Parasite
+    variants: []
+    
+  - hebrew: זואונוזה
+    english: Zoonosis
+    variants: [מחלה זואונוטית]
+
+immunology:
+  - hebrew: חסינות מולדת
+    english: Innate Immunity
+    variants: [חסינות טבעית]
+    notes: Prefer מולדת over טבעית
+    
+  - hebrew: חסינות נרכשת
+    english: Adaptive Immunity
+    variants: [חסינות סגולית, חסינות ספציפית]
+    
+  - hebrew: נוגדן
+    english: Antibody
+    variants: [אנטיבודי]
+    
+  - hebrew: אנטיגן
+    english: Antigen
+    variants: []
+    
+  - hebrew: אימונוגלובולין
+    english: Immunoglobulin (Ig)
+    variants: []
+    
+  - hebrew: תא B
+    english: B Cell
+    variants: [תא בי, לימפוציט B]
+    
+  - hebrew: תא T
+    english: T Cell
+    variants: [תא טי, לימפוציט T]
+    
+  - hebrew: מקרופאג
+    english: Macrophage
+    variants: [מקרופאז]
+    
+  - hebrew: נויטרופיל
+    english: Neutrophil
+    variants: []
+    
+  - hebrew: ציטוקין
+    english: Cytokine
+    variants: []
+    
+  - hebrew: כימוקין
+    english: Chemokine
+    variants: []
+    
+  - hebrew: דלקת
+    english: Inflammation
+    variants: []
+    
+  - hebrew: MHC
+    english: MHC
+    variants: []
+    notes: Keep as MHC, not translated
+    
+  - hebrew: TLR
+    english: TLR
+    variants: [Toll-Like Receptor]
+
+vaccines:
+  - hebrew: חיסון
+    english: Vaccine
+    variants: [וקצין]
+    notes: Always use חיסון
+    
+  - hebrew: חיסון חי-מוחלש
+    english: Live Attenuated Vaccine
+    variants: []
+    
+  - hebrew: חיסון מומת
+    english: Inactivated Vaccine
+    variants: []
+    
+  - hebrew: חיסון תת-יחידתי
+    english: Subunit Vaccine
+    variants: []
+    
+  - hebrew: חסינות העדר
+    english: Herd Immunity
+    variants: []
+
+diseases:
+  - hebrew: אבעבועות שחורות
+    english: Smallpox
+    variants: []
+    
+  - hebrew: פוליו
+    english: Polio
+    variants: [שיתוק ילדים]
+    
+  - hebrew: שפעת
+    english: Influenza
+    variants: [אינפלואנזה]
+    
+  - hebrew: אבולה
+    english: Ebola
+    variants: []
+    
+  - hebrew: קדחת צהובה
+    english: Yellow Fever
+    variants: []
+    
+  - hebrew: איידס
+    english: AIDS
+    variants: []
+    
+  - hebrew: HIV
+    english: HIV
+    variants: []
+
+acronyms_keep_english:
+  - DNA
+  - RNA
+  - mRNA
+  - PCR
+  - ELISA
+  - MHC
+  - TLR
+  - ACE2
+  - IgG
+  - IgM
+  - IgA
+  - IgE
+  - HIV
+  - AIDS
+  - COVID-19
+  - SARS-CoV-2
+  - HPV

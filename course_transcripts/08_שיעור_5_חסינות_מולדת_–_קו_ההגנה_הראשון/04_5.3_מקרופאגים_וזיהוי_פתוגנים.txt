@@ -1,0 +1,76 @@
+Our skin is the first line of defense--
+a coating of keratinized dead cells--
+a dry, hostile desert, where no pathogens can survive.
+Should viruses, bacteria, fungi, and the sort accumulate on our skin,
+then the dead surface cells simply slough off daily,
+and with them, shedding off anything that may have stuck to them.
+This protective coat of keratin armor is constantly replenished
+as the lowermost keratinocytes of the epidermis
+continually divide and provide new layers of cells
+that are pushed up to the surface.
+Yet, when we are injured, when we experience abrasions and cuts,
+or when we get wounded, our protective armor is breached.
+And pathogens can gain access to the soft tissue underlying our skin.
+These pathogens however are in for a surprise
+as they encounter special cells ready to counter-attack.
+These cells, elite members of our innate immune system, are resident macrophages.
+I mentioned previously that our leukocytes, white blood cells,
+can be divided into phagocytes and lymphocytes.
+Macrophages are phagocytes that reside in every tissue of our body,
+just waiting to intercept any intruder looking to cause trouble.
+When macrophages encounter bacteria and viruses,
+they engulf them and basically swallow them up.
+Inside the cytoplasm, the phagosome, as it's called,
+the membrane-coated pathogen, fuses with lysosomes--
+lysosome vesicles.
+Lysosomes contain an arsenal of enzymes that kill,
+and completely digest and break down whatever the macrophage has devoured.
+The question is, how do macrophages identify the enemy?
+How do they know that the intruders are foreign?
+How do they recognize what is edible?
+Obviously, this is a really important and fundamental point
+that we need to answer for our immune system in general.
+Much of how the innate and adaptive immune systems work is based on the ability
+to distinguish between foreign intruders and our own cells.
+The immune system must be able to discriminate between self,
+the cells and components of our body,
+and non-self, that is, foreign intruders.
+For this, macrophages have special receptors on their cells,
+on the membranes, that recognize foreign patterns,
+which are molecules and structures  typical of bacteria and viruses in general
+and clearly distinct us from them.
+These structures constitute Pathogen Associated Molecular Patterns, or PAMPs.
+PAMPs, for example, can be unique structures of the cell walls
+common to many bacteria.
+Lipopolysaccharide, LPS, is such a classical PAMP.
+These molecules are made of lipid and sugar,
+as their name implies, and are part of the cell wall of many bacteria.
+When special receptors, called Pattern Recognition Receptors, or PRRs,
+bind LPS, for example, they sound the alarm and tell the macrophage
+that it has encountered a foreign invader
+and sends the macrophage into an eating frenzy.
+Bacteria can move about and are able to do this
+using special flagella, whip-like structures that propel them forward.
+The flagella are made of unique bacterial protein called flagellin.
+And, yes, flagellin is also a PAMP.
+PAMPs, specific for viruses, also exist.
+As we learned in the previous lessons, viruses often have RNA genomes.
+Double stranded RNA and other virus unique DNA and RNA structures are also PAMPs.
+that can trigger innate immune responses.
+So there are many molecules and structures, PAMPs,
+that seem to be common to pathogens.
+Our innate immune system is not able to specifically distinguish
+between the different species of bacteria--
+to differentiate between Escherichia coli or streptococcus or Klebsiella,
+for example, or discriminate even between flaviviruses,
+such as yellow fever and Zika, or even tell Ebola apart from influenza.
+However, by focusing on common PAMPs, the innate immune system
+can clearly identify intruders as foreign and targets that must be destroyed.
+This ability is based on the fact that our innate immune system
+is armed with an impressive collection of PRRs.
+These receptors are sensors that are able to recognize PAMPs.
+One particularly important family of such receptors
+are the TOLL Like Receptors, the TLRs.
+These receptors are so important and their discoveries so surprising,
+they led to the Nobel Prize in medicine just a few years ago.
+I've asked Professor Bruce Beutler to tell us about his discovery of TLRs.
