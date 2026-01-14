@@ -26,6 +26,10 @@ class Downloader:
         self.playwright = None
         self.logger = logger
 
+        # Pre-compile regex patterns for sanitizing filenames
+        self.forbidden_chars_regex = re.compile(r'[\\/*?:"<<>>|"]')
+        self.multiple_underscores_regex = re.compile(r'_+')
+
     def start(self):
         """Initialize playwright and browser."""
         self.logger.info("Initializing browser...")
@@ -77,10 +81,9 @@ class Downloader:
 
     def sanitize_filename(self, filename):
         """Sanitize filename to be safe for the filesystem."""
-        forbidden_chars = r'[\\/*?:"<<>>|"]'
-        sanitized = re.sub(forbidden_chars, '_', filename)
+        sanitized = self.forbidden_chars_regex.sub('_', filename)
         sanitized = sanitized.replace(' ', '_')
-        sanitized = re.sub(r'_+', '_', sanitized)
+        sanitized = self.multiple_underscores_regex.sub('_', sanitized)
         return sanitized.strip('_')
 
     def get_course_hierarchy(self):
