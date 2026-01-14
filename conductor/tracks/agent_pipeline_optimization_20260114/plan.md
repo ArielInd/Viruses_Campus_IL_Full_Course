@@ -4,8 +4,8 @@ This plan executes the refactoring strategy defined in the review phase.
 
 ## Phase 1: Cleanup and Standardization
 - [x] Task: Remove duplicate legacy agent files (`agent_e_developmental_editor.py`, `agent_f_assessment_designer.py`, etc. ) 5619be9
-- [~] Task: Fix all linting errors identified by Ruff (160+ issues, mostly unused imports).
-- [ ] Task: Standardize file headers and docstrings across all agents.
+- [x] Task: Fix all linting errors identified by Ruff (160+ issues, mostly unused imports). 4afc349
+- [~] Task: Standardize file headers and docstrings across all agents.
 
 ## Phase 2: Infrastructure Hardening
 - [ ] Task: Upgrade `src/config.py` to use `pydantic-settings` for validation.
