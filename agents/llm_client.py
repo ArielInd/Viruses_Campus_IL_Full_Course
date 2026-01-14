@@ -6,7 +6,7 @@ Provides automatic fallback, rate limiting, and async support.
 import os
 import time
 import asyncio
-from typing import Optional, List
+from typing import Optional, List, Dict
 from dataclasses import dataclass
 from enum import Enum
 
@@ -86,6 +86,10 @@ class LLMClient:
     - Rate limiting
     - Retry logic with exponential backoff
     - Both sync and async interfaces
+    
+    Usage:
+        async with LLMClient() as client:
+            response = await client.generate_async("Hello")
     """
 
     def __init__(self, config: Optional[LLMConfig] = None):
@@ -109,6 +113,18 @@ class LLMClient:
         self.active_provider = self._determine_active_provider()
 
         print(f"[LLMClient] Initialized with provider: {self.active_provider.value}")
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.aclose()
+
+    async def aclose(self):
+        """Close asynchronous resources."""
+        if self.openrouter_client:
+            await self.openrouter_client.aclose()
+            print("[LLMClient] OpenRouter client closed")
 
     def _load_config_from_env(self) -> LLMConfig:
         """Load configuration from environment variables."""
@@ -321,13 +337,13 @@ class LLMClient:
 
         return await asyncio.gather(*tasks)
 
-    def __del__(self):
-        """Cleanup resources."""
-        if self.openrouter_client:
-            asyncio.run(self.openrouter_client.aclose())
-
 
 # Convenience function for simple usage
 def get_llm_client() -> LLMClient:
-    """Get a configured LLM client from environment."""
+    """
+    Get a configured LLM client from environment.
+    Note: It is recommended to use LLMClient as a context manager:
+    async with LLMClient() as client:
+        ...
+    """
     return LLMClient()
