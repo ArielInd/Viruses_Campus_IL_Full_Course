@@ -7,10 +7,10 @@ This plan outlines the steps to perform a comprehensive architectural and code q
 - [x] Task: Ensure all existing tests pass before starting the review (Run `pytest`) 3f46d1e
 
 ## Phase 2: Structural and Architectural Review
-- [ ] Task: Analyze `pipeline_orchestrator.py` for orchestration logic, error handling, and state management.
-- [ ] Task: Review individual agent implementations in `agents/` for consistency with `schemas.py` and `pipeline_context.py`.
-- [ ] Task: Audit `llm_client.py` and `config.py` for robustness and security (no hardcoded secrets).
-- [ ] Task: Map end-to-end data flow from Ingestion to Generation, identifying any fragile links or bottlenecks.
+- [x] Task: Analyze `pipeline_orchestrator.py` for orchestration logic, error handling, and state management.
+- [x] Task: Review individual agent implementations in `agents/` for consistency with `schemas.py` and `pipeline_context.py`.
+- [x] Task: Audit `llm_client.py` and `config.py` for robustness and security (no hardcoded secrets).
+- [x] Task: Map end-to-end data flow from Ingestion to Generation, identifying any fragile links or bottlenecks.
 
 ## Phase 3: Code Quality and Backlog Generation
 - [ ] Task: Run static analysis tools (Ruff, Mypy if applicable) and document persistent warnings/errors.
