@@ -104,8 +104,6 @@ class CurriculumArchitect:
                 self.logger.log_end(AGENT_NAME, start_time, output_files, warnings, errors)
                 raise FileNotFoundError(error_msg)
 
-            corpus_index = load_json(corpus_index_path)
-
             # Load all file notes
             file_notes = self._load_file_notes()
             print(f"[{AGENT_NAME}] Loaded {len(file_notes)} file notes")

@@ -1,7 +1,6 @@
-"""
-Pipeline Context Manager: Shared state and caching for the multi-agent pipeline.
+"Pipeline Context Manager: Shared state and caching for the multi-agent pipeline.
 Eliminates redundant file loading and provides efficient data access.
-"""
+"
 
 import os
 import re
@@ -17,13 +16,14 @@ class PipelineContext:
     Loads common data once and provides cached access.
 
     Usage:
-        context = PipelineContext(ops_dir="/path/to/ops")
+        context = PipelineContext(ops_dir="/path/to/ops", book_dir="/path/to/book")
         file_notes = context.get_file_notes()  # Cached after first call
-        chapter_plan = context.get_chapter_plan()  # Cached
     """
 
     ops_dir: str
+    book_dir: Optional[str] = None
     transcripts_dir: Optional[str] = None
+    
     _file_notes_cache: Optional[Dict[str, Dict]] = field(default=None, init=False, repr=False)
     _corpus_index_cache: Optional[Dict] = field(default=None, init=False, repr=False)
     _chapter_plan_cache: Optional[List[Dict]] = field(default=None, init=False, repr=False)
@@ -40,6 +40,58 @@ class PipelineContext:
         os.makedirs(self.artifacts_dir, exist_ok=True)
         os.makedirs(os.path.join(self.artifacts_dir, "file_notes"), exist_ok=True)
         os.makedirs(os.path.join(self.artifacts_dir, "chapter_briefs"), exist_ok=True)
+        os.makedirs(os.path.join(self.artifacts_dir, "drafts", "chapters"), exist_ok=True)
+        if self.book_dir:
+            os.makedirs(os.path.join(self.book_dir, "chapters"), exist_ok=True)
+
+    # --- Path Generation ---
+
+    def get_artifact_path(self, artifact_type: str, identifier: str = None, ext: str = "json") -> str:
+        """
+        Get the path for a specific artifact type.
+        
+        Supported types:
+        - corpus_index
+        - chapter_plan
+        - concepts_map
+        - file_note
+        - chapter_brief
+        - chapter_draft
+        """
+        if artifact_type == "corpus_index":
+            return os.path.join(self.artifacts_dir, f"corpus_index.{ext}")
+        
+        elif artifact_type == "chapter_plan":
+            return os.path.join(self.artifacts_dir, f"chapter_plan.{ext}")
+            
+        elif artifact_type == "concepts_map":
+            return os.path.join(self.artifacts_dir, f"concepts_map.{ext}")
+            
+        elif artifact_type == "file_note":
+            if not identifier:
+                raise ValueError("Identifier required for file_note")
+            return os.path.join(self.artifacts_dir, "file_notes", f"{identifier}.{ext}")
+            
+        elif artifact_type == "chapter_brief":
+            if not identifier:
+                raise ValueError("Identifier required for chapter_brief")
+            return os.path.join(self.artifacts_dir, "chapter_briefs", f"chapter_{identifier}_brief.{ext}")
+            
+        elif artifact_type == "chapter_draft":
+            if not identifier:
+                raise ValueError("Identifier required for chapter_draft")
+            return os.path.join(self.artifacts_dir, "drafts", "chapters", f"{identifier}_chapter_draft.{ext}")
+            
+        else:
+            raise ValueError(f"Unknown artifact type: {artifact_type}")
+
+    def get_book_chapter_path(self, chapter_id: str, ext: str = "md") -> str:
+        """Get the path for a book chapter."""
+        if not self.book_dir:
+            raise ValueError("book_dir not set in PipelineContext")
+        return os.path.join(self.book_dir, "chapters", f"{chapter_id}_chapter.{ext}")
+
+    # --- Data Access ---
 
     def get_file_notes(self, force_reload: bool = False) -> Dict[str, Dict]:
         """
@@ -76,19 +128,11 @@ class PipelineContext:
         return notes
 
     def get_corpus_index(self, force_reload: bool = False) -> Dict:
-        """
-        Get corpus index, cached after first load.
-
-        Args:
-            force_reload: If True, bypass cache and reload from disk
-
-        Returns:
-            Corpus index dictionary
-        """
+        """Get corpus index, cached after first load."""
         if self._corpus_index_cache is not None and not force_reload:
             return self._corpus_index_cache
 
-        index_path = os.path.join(self.artifacts_dir, "corpus_index.json")
+        index_path = self.get_artifact_path("corpus_index")
 
         if not os.path.exists(index_path):
             raise FileNotFoundError(f"Corpus index not found: {index_path}")
@@ -101,19 +145,11 @@ class PipelineContext:
         return self._corpus_index_cache
 
     def get_chapter_plan(self, force_reload: bool = False) -> List[Dict]:
-        """
-        Get chapter plan, cached after first load.
-
-        Args:
-            force_reload: If True, bypass cache and reload from disk
-
-        Returns:
-            List of chapter plan dictionaries
-        """
+        """Get chapter plan, cached after first load."""
         if self._chapter_plan_cache is not None and not force_reload:
             return self._chapter_plan_cache
 
-        plan_path = os.path.join(self.artifacts_dir, "chapter_plan.json")
+        plan_path = self.get_artifact_path("chapter_plan")
 
         if not os.path.exists(plan_path):
             raise FileNotFoundError(f"Chapter plan not found: {plan_path}")
@@ -126,24 +162,11 @@ class PipelineContext:
         return self._chapter_plan_cache
 
     def get_chapter_brief(self, chapter_id: str, force_reload: bool = False) -> Optional[Dict]:
-        """
-        Get a specific chapter brief, cached.
-
-        Args:
-            chapter_id: Chapter identifier (e.g., "01")
-            force_reload: If True, bypass cache
-
-        Returns:
-            Chapter brief dictionary or None if not found
-        """
+        """Get a specific chapter brief, cached."""
         if chapter_id in self._chapter_briefs_cache and not force_reload:
             return self._chapter_briefs_cache[chapter_id]
 
-        brief_path = os.path.join(
-            self.artifacts_dir,
-            "chapter_briefs",
-            f"chapter_{chapter_id}_brief.json"
-        )
+        brief_path = self.get_artifact_path("chapter_brief", identifier=chapter_id)
 
         if not os.path.exists(brief_path):
             return None
@@ -155,12 +178,7 @@ class PipelineContext:
         return brief
 
     def get_all_chapter_briefs(self, force_reload: bool = False) -> Dict[str, Dict]:
-        """
-        Get all chapter briefs, cached.
-
-        Returns:
-            Dictionary mapping chapter IDs to brief data
-        """
+        """Get all chapter briefs, cached."""
         briefs_dir = os.path.join(self.artifacts_dir, "chapter_briefs")
 
         if not os.path.exists(briefs_dir):
@@ -179,17 +197,7 @@ class PipelineContext:
         return self._chapter_briefs_cache
 
     def get_compiled_pattern(self, pattern_name: str, pattern: str, flags: int = 0):
-        """
-        Get a compiled regex pattern, cached.
-
-        Args:
-            pattern_name: Unique name for this pattern
-            pattern: Regex pattern string
-            flags: Regex flags (e.g., re.IGNORECASE)
-
-        Returns:
-            Compiled regex pattern object
-        """
+        """Get a compiled regex pattern, cached."""
         cache_key = f"{pattern_name}_{flags}"
 
         if cache_key not in self._compiled_patterns_cache:
@@ -198,30 +206,14 @@ class PipelineContext:
         return self._compiled_patterns_cache[cache_key]
 
     def get_compiled_patterns(self, patterns: Dict[str, str], flags: int = 0) -> Dict[str, Any]:
-        """
-        Get multiple compiled patterns at once.
-
-        Args:
-            patterns: Dictionary mapping pattern names to pattern strings
-            flags: Regex flags to apply to all
-
-        Returns:
-            Dictionary mapping pattern names to compiled patterns
-        """
+        """Get multiple compiled patterns at once."""
         return {
             name: self.get_compiled_pattern(name, pattern, flags)
             for name, pattern in patterns.items()
         }
 
     def save_artifact(self, filename: str, content: Any, format: str = "json"):
-        """
-        Save an artifact to the artifacts directory.
-
-        Args:
-            filename: Name of file to save
-            content: Content to save
-            format: "json" or "text"
-        """
+        """Save an artifact to the artifacts directory."""
         path = os.path.join(self.artifacts_dir, filename)
 
         if format == "json":
@@ -232,12 +224,7 @@ class PipelineContext:
                 f.write(content)
 
     def invalidate_cache(self, cache_name: Optional[str] = None):
-        """
-        Invalidate cached data.
-
-        Args:
-            cache_name: Specific cache to invalidate, or None for all
-        """
+        """Invalidate cached data."""
         if cache_name is None or cache_name == "file_notes":
             self._file_notes_cache = None
             print("[PipelineContext] Invalidated file_notes cache")
@@ -255,12 +242,7 @@ class PipelineContext:
             print("[PipelineContext] Invalidated chapter_briefs cache")
 
     def get_cache_stats(self) -> Dict[str, Any]:
-        """
-        Get statistics about cached data.
-
-        Returns:
-            Dictionary with cache statistics
-        """
+        """Get statistics about cached data."""
         return {
             "file_notes_cached": self._file_notes_cache is not None,
             "file_notes_count": len(self._file_notes_cache) if self._file_notes_cache else 0,
@@ -277,6 +259,7 @@ class PipelineContext:
         return (
             f"PipelineContext(\n"
             f"  ops_dir='{self.ops_dir}',\n"
+            f"  book_dir='{self.book_dir}',\n"
             f"  file_notes: {stats['file_notes_count']} loaded,\n"
             f"  chapter_plan: {stats['chapter_plan_count']} chapters,\n"
             f"  briefs: {stats['chapter_briefs_count']} cached,\n"
@@ -289,22 +272,14 @@ class PipelineContext:
 _global_context: Optional[PipelineContext] = None
 
 
-def get_global_context(ops_dir: Optional[str] = None) -> PipelineContext:
-    """
-    Get or create the global pipeline context singleton.
-
-    Args:
-        ops_dir: Operations directory path (required on first call)
-
-    Returns:
-        Global PipelineContext instance
-    """
+def get_global_context(ops_dir: Optional[str] = None, book_dir: Optional[str] = None) -> PipelineContext:
+    """Get or create the global pipeline context singleton."""
     global _global_context
 
     if _global_context is None:
         if ops_dir is None:
             raise ValueError("ops_dir required for first call to get_global_context()")
-        _global_context = PipelineContext(ops_dir=ops_dir)
+        _global_context = PipelineContext(ops_dir=ops_dir, book_dir=book_dir)
 
     return _global_context
 
