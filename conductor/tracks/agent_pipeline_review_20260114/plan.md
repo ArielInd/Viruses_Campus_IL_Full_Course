@@ -13,7 +13,7 @@ This plan outlines the steps to perform a comprehensive architectural and code q
 - [x] Task: Map end-to-end data flow from Ingestion to Generation, identifying any fragile links or bottlenecks.
 
 ## Phase 3: Code Quality and Backlog Generation
-- [ ] Task: Run static analysis tools (Ruff, Mypy if applicable) and document persistent warnings/errors.
-- [ ] Task: Identify code duplication and opportunities for abstraction across agents.
-- [ ] Task: Document all identified issues, categorized by severity and component.
-- [ ] Task: Create a list of actionable "Refactor" tasks for the backlog.
+- [x] Task: Run static analysis tools (Ruff, Mypy if applicable) and document persistent warnings/errors.
+- [x] Task: Identify code duplication and opportunities for abstraction across agents.
+- [x] Task: Document all identified issues, categorized by severity and component.
+- [x] Task: Create a list of actionable "Refactor" tasks for the backlog.
