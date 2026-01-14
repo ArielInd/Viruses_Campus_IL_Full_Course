@@ -30,7 +30,7 @@ def test_login_success(mock_playwright_all):
     downloader.login()
     
     page = mock_playwright_all["page"]
-    page.goto.assert_any_call("https://campus.gov.il/login/")
+    page.goto.assert_any_call("https://app.campus.gov.il/authn/login")
     page.fill.assert_any_call("#emailOrUsername", "user")
     page.fill.assert_any_call("#password", "pass")
     page.click.assert_any_call("#sign-in")

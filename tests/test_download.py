@@ -16,9 +16,15 @@ def test_download_transcript_success(mocker):
     mock_page = MagicMock()
     downloader.page = mock_page
     
+    # Mock frames
+    mock_frame = MagicMock()
+    mock_page.frames = [mock_frame]
+    
+    # Mock finding the link in the frame
     mock_link = MagicMock()
+    mock_link.inner_text.return_value = "Download (.txt)"
     mock_link.get_attribute.return_value = "https://example.com/transcript.txt"
-    mock_page.query_selector.return_value = mock_link
+    mock_frame.query_selector_all.side_effect = lambda selector: [mock_link] if "a.btn" in selector else []
     
     with patch.object(Downloader, '_download_file_from_url', return_value="Transcript content"):
         content = downloader.download_transcript("https://campus.gov.il/unit/1")
