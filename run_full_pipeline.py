@@ -45,7 +45,8 @@ def main():
     print("[Setup] Initializing pipeline context...")
     context = PipelineContext(
         ops_dir=str(OPS_DIR),
-        transcripts_dir=str(TRANSCRIPTS_DIR)
+        transcripts_dir=str(TRANSCRIPTS_DIR),
+        book_dir=str(BOOK_DIR)
     )
 
     # Initialize logger and todos
