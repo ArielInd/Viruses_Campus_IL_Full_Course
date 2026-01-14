@@ -1,27 +1,11 @@
-import os
-from dotenv import load_dotenv
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-load_dotenv()
+class Config(BaseSettings):
+    USERNAME: str = Field(alias="CAMPUS_IL_USERNAME")
+    PASSWORD: str = Field(alias="CAMPUS_IL_PASSWORD")
+    COURSE_URL: str = Field(alias="COURSE_URL")
 
-class Config:
-    @property
-    def USERNAME(self):
-        return os.getenv("CAMPUS_IL_USERNAME")
-
-    @property
-    def PASSWORD(self):
-        return os.getenv("CAMPUS_IL_PASSWORD")
-
-    @property
-    def COURSE_URL(self):
-        return os.getenv("COURSE_URL")
-
-    def validate(self):
-        """Validate that all required environment variables are set."""
-        required_vars = ["CAMPUS_IL_USERNAME", "CAMPUS_IL_PASSWORD", "COURSE_URL"]
-        missing = [var for var in required_vars if not os.getenv(var)]
-        
-        if missing:
-            raise ValueError(f"Missing required environment variables: {', '.join(missing)}")
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
 config = Config()
