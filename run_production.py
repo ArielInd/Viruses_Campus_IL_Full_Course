@@ -58,7 +58,11 @@ async def run_production():
     for d in [OPS_DIR / "artifacts", OPS_DIR / "reports", BOOK_DIR / "chapters"]:
         d.mkdir(parents=True, exist_ok=True)
 
-    context = PipelineContext(str(OPS_DIR), str(TRANSCRIPTS_DIR))
+    context = PipelineContext(
+        ops_dir=str(OPS_DIR),
+        transcripts_dir=str(TRANSCRIPTS_DIR),
+        book_dir=str(BOOK_DIR)
+    )
     logger = PipelineLogger(str(OPS_DIR / "pipeline.jsonl"))
     todos = TodoTracker(str(OPS_DIR / "todos.md"))
     orchestrator = PipelineOrchestrator(context, logger, todos)
