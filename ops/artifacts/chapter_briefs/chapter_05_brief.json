@@ -49,15 +49,15 @@
     }
   ],
   "definitions_to_bold": [
+    "cells-",
+    "points",
+    "lysosomes-",
+    "עיקריות",
     "action",
     "whip",
-    "lysosomes-",
-    "cells-",
+    "גראם",
     "types",
-    "עיקריות",
-    "points",
-    "non",
-    "גראם"
+    "non"
   ],
   "tables_to_create": [
     {

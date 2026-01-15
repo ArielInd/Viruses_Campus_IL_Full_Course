@@ -1,0 +1,409 @@
+/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/run_production.py:30: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+[Diagnostics] google.generativeai version: 0.8.6
+[Diagnostics] GEMINI_API_KEY set: Yes
+
+======================================================================
+🚀 HEBREW VIROLOGY EBOOK - PRODUCTION PIPELINE
+======================================================================
+
+[Production] Starting base analysis...
+
+============================================================
+STAGE: CORPUS_ANALYSIS
+============================================================
+Running CorpusLibrarian (sequential)...
+[CorpusLibrarian] Found 73 transcript files
+[CorpusLibrarian] Processed 73 files, 43292 total words
+  ✓ CorpusLibrarian completed (0.16s)
+
+Stage completed in 0.16s
+
+============================================================
+STAGE: CURRICULUM_DESIGN
+============================================================
+Running CurriculumArchitect (sequential)...
+[CurriculumArchitect] Loaded 73 file notes
+[CurriculumArchitect] Created 8 chapter plans
+  ✓ CurriculumArchitect completed (0.01s)
+
+Stage completed in 0.01s
+
+============================================================
+STAGE: BRIEF_GENERATION
+============================================================
+Running BriefBuilder (sequential)...
+[ChapterBriefBuilder] Creating briefs for 8 chapters (parallel processing)
+[ChapterBriefBuilder] ✓ Completed brief for chapter 01
+[ChapterBriefBuilder] ✓ Completed brief for chapter 02
+[ChapterBriefBuilder] ✓ Completed brief for chapter 03
+[ChapterBriefBuilder] ✓ Completed brief for chapter 04
+[ChapterBriefBuilder] ✓ Completed brief for chapter 06
+[ChapterBriefBuilder] ✓ Completed brief for chapter 07
+[ChapterBriefBuilder] ✓ Completed brief for chapter 05
+[ChapterBriefBuilder] ✓ Completed brief for chapter 08
+[ChapterBriefBuilder] Created 16 chapter briefs
+  ✓ BriefBuilder completed (0.01s)
+
+Stage completed in 0.01s
+
+============================================================
+STAGE: DRAFT_WRITING
+============================================================
+Running DraftWriter (sequential)...
+[DraftWriter] Gemini 3 Pro initialized (Quality-First Mode)
+[DraftWriter] Writing drafts for 8 chapters (Quality-First Mode)
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Wave 2: Writing 6 sections...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 1 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 2 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 3 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 4 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 5 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 6 failed
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Synthesis failed, using raw content
+[DraftWriter] ✓ Chapter 01: 51 words (Quality-First)
+[DraftWriter] Waiting 30s before next chapter...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Wave 2: Writing 6 sections...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 1 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 2 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 3 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 4 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 5 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 6 failed
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Synthesis failed, using raw content
+[DraftWriter] ✓ Chapter 02: 50 words (Quality-First)
+[DraftWriter] Waiting 30s before next chapter...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Wave 2: Writing 6 sections...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 1 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 2 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 3 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 4 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 5 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 6 failed
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Synthesis failed, using raw content
+[DraftWriter] ✓ Chapter 03: 50 words (Quality-First)
+[DraftWriter] Waiting 30s before next chapter...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Wave 2: Writing 6 sections...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 1 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 2 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 3 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 4 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 5 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 6 failed
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Synthesis failed, using raw content
+[DraftWriter] ✓ Chapter 04: 48 words (Quality-First)
+[DraftWriter] Waiting 30s before next chapter...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Wave 2: Writing 6 sections...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 1 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 2 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 3 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 4 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 5 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 6 failed
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Synthesis failed, using raw content
+[DraftWriter] ✓ Chapter 05: 48 words (Quality-First)
+[DraftWriter] Waiting 30s before next chapter...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Wave 2: Writing 6 sections...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 1 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 2 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 3 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 4 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 5 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 6 failed
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Synthesis failed, using raw content
+[DraftWriter] ✓ Chapter 06: 48 words (Quality-First)
+[DraftWriter] Waiting 30s before next chapter...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Wave 2: Writing 6 sections...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 1 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 2 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 3 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 4 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 5 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 6 failed
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Synthesis failed, using raw content
+[DraftWriter] ✓ Chapter 07: 49 words (Quality-First)
+[DraftWriter] Waiting 30s before next chapter...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Wave 2: Writing 6 sections...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 1 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 2 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 3 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 4 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 5 failed
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+    ✗ Section 6 failed
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DraftWriter] Synthesis failed, using raw content
+[DraftWriter] ✓ Chapter 08: 49 words (Quality-First)
+[DraftWriter] Waiting 30s before next chapter...
+  ✓ DraftWriter completed (529.58s)
+
+Stage completed in 529.58s
+
+[Production] Running adversarial critique...
+
+============================================================
+STAGE: VALIDATION
+============================================================
+Running AdversarialCritic (sequential)...
+[AdversarialCritic] Gemini 3 Pro initialized (Adversarial Mode)
+[AdversarialCritic] Critiquing 8 drafts...
+[AdversarialCritic] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[AdversarialCritic] ✗ Chapter 01: unknown (0 issues, 0 critical)
+[AdversarialCritic] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[AdversarialCritic] ✗ Chapter 02: unknown (0 issues, 0 critical)
+[AdversarialCritic] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[AdversarialCritic] ✗ Chapter 03: unknown (0 issues, 0 critical)
+[AdversarialCritic] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[AdversarialCritic] ✗ Chapter 04: unknown (0 issues, 0 critical)
+[AdversarialCritic] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[AdversarialCritic] ✗ Chapter 05: unknown (0 issues, 0 critical)
+[AdversarialCritic] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[AdversarialCritic] ✗ Chapter 06: unknown (0 issues, 0 critical)
+[AdversarialCritic] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[AdversarialCritic] ✗ Chapter 07: unknown (0 issues, 0 critical)
+[AdversarialCritic] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[AdversarialCritic] ✗ Chapter 08: unknown (0 issues, 0 critical)
+  ✓ AdversarialCritic completed (42.28s)
+
+Stage completed in 42.28s
+
+============================================================
+STAGE: EDITING
+============================================================
+Running DevelopmentalEditor (sequential)...
+[DevelopmentalEditor] Gemini 3 Pro initialized (Active Editing Mode)
+[DevelopmentalEditor] Processing 8 chapters (Active Editing Mode)
+[DevelopmentalEditor] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DevelopmentalEditor] ✓ Chapter 01: score=95%
+[DevelopmentalEditor] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DevelopmentalEditor] ✓ Chapter 02: score=95%
+[DevelopmentalEditor] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DevelopmentalEditor] ✓ Chapter 03: score=95%
+[DevelopmentalEditor] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DevelopmentalEditor] ✓ Chapter 04: score=95%
+[DevelopmentalEditor] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DevelopmentalEditor] ✓ Chapter 05: score=95%
+[DevelopmentalEditor] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DevelopmentalEditor] ✓ Chapter 06: score=95%
+[DevelopmentalEditor] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DevelopmentalEditor] ✓ Chapter 07: score=95%
+[DevelopmentalEditor] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[DevelopmentalEditor] ✓ Chapter 08: score=95%
+  ✓ DevelopmentalEditor completed (1.67s)
+
+Stage completed in 1.67s
+
+[Production] Starting final refinements...
+
+============================================================
+STAGE: VALIDATION
+============================================================
+Running 4 tasks in parallel...
+[AssessmentDesigner] Collected 0 questions from chapters
+[AssessmentDesigner] Created question bank and exam review
+  ✓ AssessmentDesigner completed (0.01s)
+[TerminologyConsistencyKeeper] Checked 672 terms, found 33 issues
+  ✓ TerminologyKeeper completed (0.05s)
+[CopyeditorProofreader] Gemini 3 Pro initialized (LLM-Powered Mode)
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Generation error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+[CopyeditorProofreader] Checked 51 files, found 0 issues, corrected 0
+  ✓ Proofreader completed (111.22s)
+[SafetyScopeReviewer] Safety review: ⚠️ ISSUES FOUND (34/51 passed)
+  ✓ SafetyReviewer completed (0.27s)
+
+Stage completed in 111.56s
+
+======================================================================
+📚 BUILDING FINAL BOOK ARTIFACTS
+======================================================================
+
+[Build] Executing /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/build_all.sh...
+=== Building EPUB ===
+Building EPUB from:
+00_front_matter.md 01_study_guide.md chapters/01_chapter.md chapters/02_02_וירוס_הקורנה_–_שאלות_נפוצות.md chapters/02_chapter.md chapters/02_chapter_01.md chapters/03_03_שיעור_1_תאים_הם_יחידות_החיים.md chapters/03_chapter.md chapters/03_chapter_02.md chapters/04_04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים.md chapters/04_chapter.md chapters/04_chapter_03.md chapters/05_05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול.md chapters/05_chapter.md chapters/05_chapter_04.md chapters/06_06_שיעור_4_מחלות_נגיפיות_הומניות.md chapters/06_chapter.md chapters/06_chapter_05.md chapters/07_chapter.md chapters/07_chapter_06.md chapters/08_08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון.md chapters/08_chapter.md chapters/08_chapter_07.md chapters/09_09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב.md chapters/09_chapter_08.md chapters/10_10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות.md chapters/11_11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19.md chapters/12_12_סיכום_הקורס.md chapters/chapter_01.md chapters/chapter_01_draft.md chapters/chapter_02.md chapters/chapter_02_draft.md chapters/chapter_03.md chapters/chapter_03_draft.md chapters/chapter_04.md chapters/chapter_04_draft.md chapters/chapter_05.md chapters/chapter_05_draft.md chapters/chapter_06.md chapters/chapter_06_draft.md chapters/chapter_07.md chapters/chapter_07_draft.md chapters/chapter_08.md chapters/chapter_08_draft.md 89_quick_reference.md 90_glossary.md 91_exam_review.md 92_question_bank.md
+EPUB generated successfully at build/book.epub
+
+=== Building PDF ===
+Building PDF/HTML from:
+00_front_matter.md 01_study_guide.md chapters/01_chapter.md chapters/02_02_וירוס_הקורנה_–_שאלות_נפוצות.md chapters/02_chapter.md chapters/02_chapter_01.md chapters/03_03_שיעור_1_תאים_הם_יחידות_החיים.md chapters/03_chapter.md chapters/03_chapter_02.md chapters/04_04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים.md chapters/04_chapter.md chapters/04_chapter_03.md chapters/05_05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול.md chapters/05_chapter.md chapters/05_chapter_04.md chapters/06_06_שיעור_4_מחלות_נגיפיות_הומניות.md chapters/06_chapter.md chapters/06_chapter_05.md chapters/07_chapter.md chapters/07_chapter_06.md chapters/08_08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון.md chapters/08_chapter.md chapters/08_chapter_07.md chapters/09_09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב.md chapters/09_chapter_08.md chapters/10_10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות.md chapters/11_11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19.md chapters/12_12_סיכום_הקורס.md chapters/chapter_01.md chapters/chapter_01_draft.md chapters/chapter_02.md chapters/chapter_02_draft.md chapters/chapter_03.md chapters/chapter_03_draft.md chapters/chapter_04.md chapters/chapter_04_draft.md chapters/chapter_05.md chapters/chapter_05_draft.md chapters/chapter_06.md chapters/chapter_06_draft.md chapters/chapter_07.md chapters/chapter_07_draft.md chapters/chapter_08.md chapters/chapter_08_draft.md 89_quick_reference.md 90_glossary.md 91_exam_review.md 92_question_bank.md
+Generating intermediate HTML...
+xelatex not found. Using Google Chrome for PDF conversion...
+PDF generated successfully via Chrome at build/book.pdf
+Process complete.
+
+=== Build Summary ===
+-rw-r--r--@ 1 arielindenbaum  staff   248K Jan 15 01:20 build/book.epub
+-rw-r--r--@ 1 arielindenbaum  staff   3.7M Jan 15 01:21 build/book.pdf
+
+
+======================================================================
+✅ PRODUCTION COMPLETE
+======================================================================
+# Pipeline Performance Report
+
+**Total Pipeline Time:** 642.99s
+
+## Stage Breakdown
+
+| Stage | Duration | % of Total |
+|-------|----------|------------|
+| draft_writing | 529.58s | 82.4% |
+| validation | 111.56s | 17.4% |
+| editing | 1.67s | 0.3% |
+| corpus_analysis | 0.16s | 0.0% |
+| brief_generation | 0.01s | 0.0% |
+| curriculum_design | 0.01s | 0.0% |
+
+## Agent Results
+
+- **Successful:** 10/10
+- **Failed:** 0/10
+
+
+## Performance Metrics
+
+- **Sequential execution time estimate:** 685.25s
+- **Actual parallel execution time:** 642.99s
+- **Speedup factor:** 1.07x
+- **Time saved:** 42.26s (6.2%)
+
+
+📂 Results preserved in:
+- Book:  /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/build/
+- Logs:  /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/pipeline.jsonl
+- TODOs: /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/todos.md

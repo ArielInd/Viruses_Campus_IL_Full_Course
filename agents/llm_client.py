@@ -75,6 +75,79 @@ class RateLimiter:
         self.last_request_time = time.time()
 
 
+class CircuitBreaker:
+    """
+    Circuit breaker pattern for API resilience.
+
+    States:
+    - CLOSED: Normal operation, requests pass through
+    - OPEN: Too many failures, requests fail fast
+    - HALF_OPEN: Testing if service recovered
+
+    Prevents cascading failures by detecting systematic API outages.
+    """
+
+    def __init__(self, failure_threshold: int = 5, timeout: float = 60.0):
+        """
+        Initialize circuit breaker.
+
+        Args:
+            failure_threshold: Number of consecutive failures before opening
+            timeout: Seconds to wait before attempting recovery (half-open state)
+        """
+        self.failure_threshold = failure_threshold
+        self.timeout = timeout
+        self.failure_count = 0
+        self.opened_at: Optional[float] = None
+        self.state = "CLOSED"  # CLOSED, OPEN, HALF_OPEN
+
+    def record_failure(self):
+        """Record a failed request."""
+        self.failure_count += 1
+
+        if self.failure_count >= self.failure_threshold and self.state == "CLOSED":
+            self.opened_at = time.time()
+            self.state = "OPEN"
+            print(f"[CircuitBreaker] ⚠ OPEN: Too many failures ({self.failure_count}/{self.failure_threshold})")
+            print(f"[CircuitBreaker] Will retry after {self.timeout}s timeout")
+
+    def record_success(self):
+        """Record a successful request."""
+        if self.state == "HALF_OPEN":
+            print(f"[CircuitBreaker] ✓ CLOSED: Service recovered")
+
+        self.failure_count = 0
+        self.opened_at = None
+        self.state = "CLOSED"
+
+    def is_open(self) -> bool:
+        """
+        Check if circuit is open (requests should fail fast).
+
+        Returns:
+            True if open, False if closed or half-open
+        """
+        if self.opened_at is None:
+            return False
+
+        elapsed = time.time() - self.opened_at
+
+        if elapsed > self.timeout:
+            # Transition to half-open (test recovery)
+            self.state = "HALF_OPEN"
+            self.opened_at = None
+            print(f"[CircuitBreaker] → HALF_OPEN: Testing service recovery")
+            return False
+
+        return True
+
+    def __repr__(self):
+        return (
+            f"CircuitBreaker(state={self.state}, "
+            f"failures={self.failure_count}/{self.failure_threshold})"
+        )
+
+
 class LLMClient:
     """
     Unified LLM client with multi-provider support and automatic fallback.
@@ -98,6 +171,7 @@ class LLMClient:
 
         self.config = config
         self.rate_limiter = RateLimiter(config.rate_limit_delay)
+        self.circuit_breaker = CircuitBreaker(failure_threshold=5, timeout=60.0)
 
         # Initialize providers
         self.gemini_model = None
@@ -227,21 +301,46 @@ class LLMClient:
         Returns:
             Generated text
         """
+        # Check circuit breaker
+        if self.circuit_breaker.is_open():
+            raise RuntimeError(
+                f"Circuit breaker is OPEN ({self.circuit_breaker.state}). "
+                f"API appears unavailable. Will retry after timeout."
+            )
+
         self.rate_limiter.acquire_sync()
 
         for attempt in range(self.config.max_retries):
             try:
                 if self.active_provider == LLMProvider.GEMINI:
-                    return self._generate_gemini(prompt, system_prompt)
+                    result = self._generate_gemini(prompt, system_prompt)
                 else:
                     # OpenRouter requires async, so use sync wrapper
-                    return asyncio.run(self._generate_openrouter(prompt, system_prompt))
+                    result = asyncio.run(self._generate_openrouter(prompt, system_prompt))
+
+                # Success - record in circuit breaker
+                self.circuit_breaker.record_success()
+                return result
 
             except Exception as e:
+                # Record failure in circuit breaker
+                self.circuit_breaker.record_failure()
+
                 if attempt < self.config.max_retries - 1:
-                    delay = self.config.retry_delay * (2 ** attempt)
-                    print(f"[LLMClient] Attempt {attempt + 1} failed: {e}")
-                    print(f"[LLMClient] Retrying in {delay}s...")
+                    # Check if it's a rate limit error
+                    is_rate_limit = self._is_rate_limit_error(e)
+
+                    if is_rate_limit:
+                        # Use longer backoff for rate limits (3x exponential)
+                        delay = self.config.retry_delay * (3 ** attempt)
+                        print(f"[LLMClient] Rate limit hit (attempt {attempt + 1}/{self.config.max_retries})")
+                        print(f"[LLMClient] Backing off for {delay}s...")
+                    else:
+                        # Standard exponential backoff for other errors
+                        delay = self.config.retry_delay * (2 ** attempt)
+                        print(f"[LLMClient] Attempt {attempt + 1} failed: {e}")
+                        print(f"[LLMClient] Retrying in {delay}s...")
+
                     time.sleep(delay)
                 else:
                     raise
@@ -257,26 +356,78 @@ class LLMClient:
         Returns:
             Generated text
         """
+        # Check circuit breaker
+        if self.circuit_breaker.is_open():
+            raise RuntimeError(
+                f"Circuit breaker is OPEN ({self.circuit_breaker.state}). "
+                f"API appears unavailable. Will retry after timeout."
+            )
+
         await self.rate_limiter.acquire()
 
         for attempt in range(self.config.max_retries):
             try:
                 if self.active_provider == LLMProvider.GEMINI:
                     # Gemini is sync, run in executor
-                    return await asyncio.to_thread(
+                    result = await asyncio.to_thread(
                         self._generate_gemini, prompt, system_prompt
                     )
                 else:
-                    return await self._generate_openrouter(prompt, system_prompt)
+                    result = await self._generate_openrouter(prompt, system_prompt)
+
+                # Success - record in circuit breaker
+                self.circuit_breaker.record_success()
+                return result
 
             except Exception as e:
+                # Record failure in circuit breaker
+                self.circuit_breaker.record_failure()
+
                 if attempt < self.config.max_retries - 1:
-                    delay = self.config.retry_delay * (2 ** attempt)
-                    print(f"[LLMClient] Attempt {attempt + 1} failed: {e}")
-                    print(f"[LLMClient] Retrying in {delay}s...")
+                    # Check if it's a rate limit error
+                    is_rate_limit = self._is_rate_limit_error(e)
+
+                    if is_rate_limit:
+                        # Use longer backoff for rate limits (3x exponential)
+                        delay = self.config.retry_delay * (3 ** attempt)
+                        print(f"[LLMClient] Rate limit hit (attempt {attempt + 1}/{self.config.max_retries})")
+                        print(f"[LLMClient] Backing off for {delay}s...")
+                    else:
+                        # Standard exponential backoff for other errors
+                        delay = self.config.retry_delay * (2 ** attempt)
+                        print(f"[LLMClient] Attempt {attempt + 1} failed: {e}")
+                        print(f"[LLMClient] Retrying in {delay}s...")
+
                     await asyncio.sleep(delay)
                 else:
                     raise
+
+    def _is_rate_limit_error(self, error: Exception) -> bool:
+        """
+        Detect if an exception is a rate limit error.
+
+        Args:
+            error: The exception to check
+
+        Returns:
+            True if error is rate limit related, False otherwise
+        """
+        error_str = str(error).lower()
+        error_type = type(error).__name__.lower()
+
+        # Common rate limit indicators
+        rate_limit_indicators = [
+            "429",  # HTTP status code
+            "rate limit",
+            "rate_limit",
+            "quota",
+            "too many requests",
+            "resource exhausted",
+            "resourceexhausted"
+        ]
+
+        return any(indicator in error_str or indicator in error_type
+                   for indicator in rate_limit_indicators)
 
     def _generate_gemini(self, prompt: str, system_prompt: Optional[str] = None) -> str:
         """Generate using Gemini."""
@@ -285,7 +436,7 @@ class LLMClient:
         else:
             full_prompt = prompt
 
-        response = self.gemini_model.generate_content(full_prompt)
+        response = self.gemini_model.generate_content(full_prompt, request_options={"timeout": 120})
         return response.text
 
     async def _generate_openrouter(self, prompt: str, system_prompt: Optional[str] = None) -> str:

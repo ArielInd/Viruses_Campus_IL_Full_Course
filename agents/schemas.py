@@ -8,6 +8,12 @@ from datetime import datetime
 import json
 import os
 
+try:
+    from pydantic import BaseModel, Field, validator
+    PYDANTIC_AVAILABLE = True
+except ImportError:
+    PYDANTIC_AVAILABLE = False
+
 # =============================================================================
 # DATA SCHEMAS
 # =============================================================================
@@ -231,3 +237,88 @@ def read_file(path: str) -> str:
         except (UnicodeDecodeError, UnicodeError):
             continue
     raise ValueError(f"Could not decode file: {path}")
+
+
+# =============================================================================
+# PYDANTIC VALIDATION MODELS (for LLM responses)
+# =============================================================================
+
+if PYDANTIC_AVAILABLE:
+    class OutlineSection(BaseModel):
+        """
+        Validation model for a single section in chapter outline.
+
+        Used to validate LLM responses in Agent D (DraftWriter) Wave 1.
+        """
+        id: int = Field(ge=1, description="Section number (must be >= 1)")
+        title: str = Field(min_length=3, max_length=200, description="Section title")
+        key_points: List[str] = Field(default_factory=list, description="Key points to cover")
+        word_target: int = Field(ge=100, le=2000, description="Target word count (100-2000)")
+
+        @validator('title')
+        def title_not_empty(cls, v):
+            """Ensure title is not just whitespace."""
+            if not v.strip():
+                raise ValueError('Title cannot be empty or only whitespace')
+            return v.strip()
+
+        @validator('key_points')
+        def validate_key_points(cls, v):
+            """Ensure key points are non-empty strings."""
+            return [point.strip() for point in v if point.strip()]
+
+    class OutlineResponse(BaseModel):
+        """
+        Validation model for complete chapter outline response.
+
+        Used to validate LLM responses in Agent D (DraftWriter) Wave 1.
+        Ensures the LLM returns properly structured outline data.
+        """
+        sections: List[OutlineSection] = Field(min_items=1, description="List of sections")
+
+        @validator('sections')
+        def validate_unique_ids(cls, v):
+            """Ensure section IDs are unique."""
+            ids = [s.id for s in v]
+            if len(ids) != len(set(ids)):
+                raise ValueError('Section IDs must be unique')
+            return v
+
+        @validator('sections')
+        def validate_sequential_ids(cls, v):
+            """Ensure section IDs are sequential starting from 1."""
+            ids = sorted([s.id for s in v])
+            expected_ids = list(range(1, len(v) + 1))
+            if ids != expected_ids:
+                raise ValueError(f'Section IDs must be sequential 1-{len(v)}, got {ids}')
+            return v
+
+    def validate_outline_response(data: Dict) -> List[Dict]:
+        """
+        Validate outline response from LLM.
+
+        Args:
+            data: Raw dictionary from LLM (parsed JSON)
+
+        Returns:
+            List of validated section dictionaries
+
+        Raises:
+            ValidationError: If data doesn't match schema
+
+        Example:
+            try:
+                sections = validate_outline_response(json_data)
+            except ValidationError as e:
+                print(f"Validation failed: {e}")
+                # Use fallback sections
+        """
+        validated = OutlineResponse(**data)
+        return [section.dict() for section in validated.sections]
+
+else:
+    # Pydantic not available, provide dummy implementation
+    def validate_outline_response(data: Dict) -> List[Dict]:
+        """Fallback validation when Pydantic is not available."""
+        print("[Schemas] Warning: Pydantic not available, validation skipped")
+        return data.get("sections", [])

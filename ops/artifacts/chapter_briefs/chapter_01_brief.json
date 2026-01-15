@@ -56,15 +56,15 @@
     }
   ],
   "definitions_to_bold": [
-    "nucleus-",
-    "הדו",
-    "לתהות",
-    "גופנו",
-    "glucose-",
-    "תוך",
-    "monomers-",
     "מדו",
-    "התוך"
+    "גופנו",
+    "monomers-",
+    "תוך",
+    "הדו",
+    "nucleus-",
+    "התוך",
+    "לתהות",
+    "glucose-"
   ],
   "tables_to_create": [
     {

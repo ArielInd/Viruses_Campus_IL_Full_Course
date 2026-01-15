@@ -7,6 +7,7 @@ import os
 import re
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field
+from threading import Lock
 import json
 
 
@@ -24,12 +25,19 @@ class PipelineContext:
     ops_dir: str
     book_dir: Optional[str] = None
     transcripts_dir: Optional[str] = None
-    
+
     _file_notes_cache: Optional[Dict[str, Dict]] = field(default=None, init=False, repr=False)
     _corpus_index_cache: Optional[Dict] = field(default=None, init=False, repr=False)
     _chapter_plan_cache: Optional[List[Dict]] = field(default=None, init=False, repr=False)
     _chapter_briefs_cache: Dict[str, Dict] = field(default_factory=dict, init=False, repr=False)
     _compiled_patterns_cache: Dict[str, Any] = field(default_factory=dict, init=False, repr=False)
+
+    # Thread locks for cache synchronization
+    _file_notes_lock: Lock = field(default_factory=Lock, init=False, repr=False)
+    _corpus_index_lock: Lock = field(default_factory=Lock, init=False, repr=False)
+    _chapter_plan_lock: Lock = field(default_factory=Lock, init=False, repr=False)
+    _chapter_briefs_lock: Lock = field(default_factory=Lock, init=False, repr=False)
+    _compiled_patterns_lock: Lock = field(default_factory=Lock, init=False, repr=False)
 
     def __post_init__(self):
         """Initialize context."""
@@ -104,79 +112,83 @@ class PipelineContext:
         Returns:
             Dictionary mapping file paths to note data
         """
-        if self._file_notes_cache is not None and not force_reload:
-            return self._file_notes_cache
+        with self._file_notes_lock:
+            if self._file_notes_cache is not None and not force_reload:
+                return self._file_notes_cache
 
-        notes = {}
-        notes_dir = os.path.join(self.artifacts_dir, "file_notes")
+            notes = {}
+            notes_dir = os.path.join(self.artifacts_dir, "file_notes")
 
-        if os.path.exists(notes_dir):
-            # Batch load all JSON files
-            json_files = [f for f in os.listdir(notes_dir) if f.endswith('.json')]
+            if os.path.exists(notes_dir):
+                # Batch load all JSON files
+                json_files = [f for f in os.listdir(notes_dir) if f.endswith('.json')]
 
-            for filename in json_files:
-                path = os.path.join(notes_dir, filename)
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        note = json.load(f)
-                        notes[note.get("path", "")] = note
-                except Exception as e:
-                    print(f"[PipelineContext] Warning: Failed to load {filename}: {e}")
+                for filename in json_files:
+                    path = os.path.join(notes_dir, filename)
+                    try:
+                        with open(path, 'r', encoding='utf-8') as f:
+                            note = json.load(f)
+                            notes[note.get("path", "")] = note
+                    except Exception as e:
+                        print(f"[PipelineContext] Warning: Failed to load {filename}: {e}")
 
-        self._file_notes_cache = notes
-        print(f"[PipelineContext] Loaded {len(notes)} file notes (cached)")
+            self._file_notes_cache = notes
+            print(f"[PipelineContext] Loaded {len(notes)} file notes (cached)")
 
-        return notes
+            return notes
 
     def get_corpus_index(self, force_reload: bool = False) -> Dict:
         """Get corpus index, cached after first load."""
-        if self._corpus_index_cache is not None and not force_reload:
+        with self._corpus_index_lock:
+            if self._corpus_index_cache is not None and not force_reload:
+                return self._corpus_index_cache
+
+            index_path = self.get_artifact_path("corpus_index")
+
+            if not os.path.exists(index_path):
+                raise FileNotFoundError(f"Corpus index not found: {index_path}")
+
+            with open(index_path, 'r', encoding='utf-8') as f:
+                self._corpus_index_cache = json.load(f)
+
+            print("[PipelineContext] Loaded corpus index (cached)")
+
             return self._corpus_index_cache
-
-        index_path = self.get_artifact_path("corpus_index")
-
-        if not os.path.exists(index_path):
-            raise FileNotFoundError(f"Corpus index not found: {index_path}")
-
-        with open(index_path, 'r', encoding='utf-8') as f:
-            self._corpus_index_cache = json.load(f)
-
-        print("[PipelineContext] Loaded corpus index (cached)")
-
-        return self._corpus_index_cache
 
     def get_chapter_plan(self, force_reload: bool = False) -> List[Dict]:
         """Get chapter plan, cached after first load."""
-        if self._chapter_plan_cache is not None and not force_reload:
+        with self._chapter_plan_lock:
+            if self._chapter_plan_cache is not None and not force_reload:
+                return self._chapter_plan_cache
+
+            plan_path = self.get_artifact_path("chapter_plan")
+
+            if not os.path.exists(plan_path):
+                raise FileNotFoundError(f"Chapter plan not found: {plan_path}")
+
+            with open(plan_path, 'r', encoding='utf-8') as f:
+                self._chapter_plan_cache = json.load(f)
+
+            print(f"[PipelineContext] Loaded chapter plan ({len(self._chapter_plan_cache)} chapters, cached)")
+
             return self._chapter_plan_cache
-
-        plan_path = self.get_artifact_path("chapter_plan")
-
-        if not os.path.exists(plan_path):
-            raise FileNotFoundError(f"Chapter plan not found: {plan_path}")
-
-        with open(plan_path, 'r', encoding='utf-8') as f:
-            self._chapter_plan_cache = json.load(f)
-
-        print(f"[PipelineContext] Loaded chapter plan ({len(self._chapter_plan_cache)} chapters, cached)")
-
-        return self._chapter_plan_cache
 
     def get_chapter_brief(self, chapter_id: str, force_reload: bool = False) -> Optional[Dict]:
         """Get a specific chapter brief, cached."""
-        if chapter_id in self._chapter_briefs_cache and not force_reload:
-            return self._chapter_briefs_cache[chapter_id]
+        with self._chapter_briefs_lock:
+            if chapter_id in self._chapter_briefs_cache and not force_reload:
+                return self._chapter_briefs_cache[chapter_id]
 
-        brief_path = self.get_artifact_path("chapter_brief", identifier=chapter_id)
+            brief_path = self.get_artifact_path("chapter_brief", identifier=chapter_id)
 
-        if not os.path.exists(brief_path):
-            return None
+            if not os.path.exists(brief_path):
+                return None
 
-        with open(brief_path, 'r', encoding='utf-8') as f:
-            brief = json.load(f)
-            self._chapter_briefs_cache[chapter_id] = brief
+            with open(brief_path, 'r', encoding='utf-8') as f:
+                brief = json.load(f)
+                self._chapter_briefs_cache[chapter_id] = brief
 
-        return brief
+            return brief
 
     def get_all_chapter_briefs(self, force_reload: bool = False) -> Dict[str, Dict]:
         """Get all chapter briefs, cached."""
@@ -201,10 +213,11 @@ class PipelineContext:
         """Get a compiled regex pattern, cached."""
         cache_key = f"{pattern_name}_{flags}"
 
-        if cache_key not in self._compiled_patterns_cache:
-            self._compiled_patterns_cache[cache_key] = re.compile(pattern, flags)
+        with self._compiled_patterns_lock:
+            if cache_key not in self._compiled_patterns_cache:
+                self._compiled_patterns_cache[cache_key] = re.compile(pattern, flags)
 
-        return self._compiled_patterns_cache[cache_key]
+            return self._compiled_patterns_cache[cache_key]
 
     def get_compiled_patterns(self, patterns: Dict[str, str], flags: int = 0) -> Dict[str, Any]:
         """Get multiple compiled patterns at once."""
@@ -227,32 +240,39 @@ class PipelineContext:
     def invalidate_cache(self, cache_name: Optional[str] = None):
         """Invalidate cached data."""
         if cache_name is None or cache_name == "file_notes":
-            self._file_notes_cache = None
-            print("[PipelineContext] Invalidated file_notes cache")
+            with self._file_notes_lock:
+                self._file_notes_cache = None
+                print("[PipelineContext] Invalidated file_notes cache")
 
         if cache_name is None or cache_name == "corpus_index":
-            self._corpus_index_cache = None
-            print("[PipelineContext] Invalidated corpus_index cache")
+            with self._corpus_index_lock:
+                self._corpus_index_cache = None
+                print("[PipelineContext] Invalidated corpus_index cache")
 
         if cache_name is None or cache_name == "chapter_plan":
-            self._chapter_plan_cache = None
-            print("[PipelineContext] Invalidated chapter_plan cache")
+            with self._chapter_plan_lock:
+                self._chapter_plan_cache = None
+                print("[PipelineContext] Invalidated chapter_plan cache")
 
         if cache_name is None or cache_name == "chapter_briefs":
-            self._chapter_briefs_cache.clear()
-            print("[PipelineContext] Invalidated chapter_briefs cache")
+            with self._chapter_briefs_lock:
+                self._chapter_briefs_cache.clear()
+                print("[PipelineContext] Invalidated chapter_briefs cache")
 
     def get_cache_stats(self) -> Dict[str, Any]:
         """Get statistics about cached data."""
-        return {
-            "file_notes_cached": self._file_notes_cache is not None,
-            "file_notes_count": len(self._file_notes_cache) if self._file_notes_cache else 0,
-            "corpus_index_cached": self._corpus_index_cache is not None,
-            "chapter_plan_cached": self._chapter_plan_cache is not None,
-            "chapter_plan_count": len(self._chapter_plan_cache) if self._chapter_plan_cache else 0,
-            "chapter_briefs_count": len(self._chapter_briefs_cache),
-            "compiled_patterns_count": len(self._compiled_patterns_cache)
-        }
+        # Acquire all locks to ensure consistent snapshot
+        with self._file_notes_lock, self._corpus_index_lock, self._chapter_plan_lock, \
+             self._chapter_briefs_lock, self._compiled_patterns_lock:
+            return {
+                "file_notes_cached": self._file_notes_cache is not None,
+                "file_notes_count": len(self._file_notes_cache) if self._file_notes_cache else 0,
+                "corpus_index_cached": self._corpus_index_cache is not None,
+                "chapter_plan_cached": self._chapter_plan_cache is not None,
+                "chapter_plan_count": len(self._chapter_plan_cache) if self._chapter_plan_cache else 0,
+                "chapter_briefs_count": len(self._chapter_briefs_cache),
+                "compiled_patterns_count": len(self._compiled_patterns_cache)
+            }
 
     def __repr__(self):
         """String representation."""

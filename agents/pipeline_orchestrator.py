@@ -9,6 +9,7 @@ from typing import Dict, List, Optional, Callable, Any
 from dataclasses import dataclass, field
 from enum import Enum
 import json
+from datetime import datetime
 
 from .pipeline_context import PipelineContext
 from .schemas import PipelineLogger, TodoTracker
@@ -117,6 +118,7 @@ class PipelineOrchestrator:
     async def _run_single_task(self, task: AgentTask) -> StageResult:
         """Run a single agent task."""
         start_time = time.time()
+        st_dt = datetime.now()
 
         try:
             # Log start
@@ -151,7 +153,7 @@ class PipelineOrchestrator:
             duration = time.time() - start_time
 
             error_msg = f"Error in {task.agent_name}: {str(e)}"
-            self.logger.log_end(task.agent_name, start_time, [], [error_msg], [error_msg])
+            self.logger.log_end(task.agent_name, st_dt, [], [error_msg], [error_msg])
 
             result = StageResult(
                 stage=task.stage,

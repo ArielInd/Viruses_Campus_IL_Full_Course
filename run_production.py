@@ -2,7 +2,17 @@
 """
 Unified Production Pipeline for Hebrew Virology Ebook
 
-Orchestrates the full multi-agent workflow (Agents A-I) and 
+QUALITY-FIRST EDITION (Round 2):
+- All primary agents use gemini-2.5-pro for deep reasoning
+- Agent D uses 3-wave iterative writing
+- Agent J provides adversarial critique before editing
+- Agent H uses LLM-powered proofreading
+- Agent E performs active rewriting
+- Agent K extracts visual context from transcripts
+- Agent L ensures cross-chapter narrative flow
+- Final cover generation based on actual content
+
+Orchestrates the full multi-agent workflow (Agents A-L) and 
 generates final EPUB and PDF books.
 """
 
@@ -20,10 +30,10 @@ load_dotenv()
 sys.path.insert(0, str(Path(__file__).parent))
 
 try:
-    import google.generativeai as genai
-    print(f"[Diagnostics] google.generativeai version: {genai.__version__}")
+    from google import genai
+    print(f"[Diagnostics] google-genai SDK available")
 except ImportError:
-    print("[Diagnostics] google.generativeai NOT FOUND")
+    print("[Diagnostics] google-genai NOT FOUND")
 
 print(f"[Diagnostics] GEMINI_API_KEY set: {'Yes' if os.environ.get('GEMINI_API_KEY') else 'No'}")
 
@@ -31,22 +41,26 @@ from agents.pipeline_context import PipelineContext
 from agents.pipeline_orchestrator import PipelineOrchestrator, AgentStage, AgentTask
 from agents.schemas import PipelineLogger, TodoTracker
 
-# Import Real Agents
+# Import Real Agents (A-L)
 from agents.agent_a_corpus_librarian import CorpusLibrarian
 from agents.agent_b_curriculum_architect import CurriculumArchitect
 from agents.agent_c_brief_builder import ChapterBriefBuilder
 from agents.agent_d_draft_writer import DraftWriter
-from agents.agent_e_developmental_editor import DevelopmentalEditor
-from agents.agent_f_assessment_designer import AssessmentDesigner
-from agents.agent_g_terminology_keeper import TerminologyConsistencyKeeper
+from agents.agent_e_dev_editor import DevelopmentalEditor
+from agents.agent_f_assessment import AssessmentDesigner
+from agents.agent_g_terminology import TerminologyConsistencyKeeper
 from agents.agent_h_proofreader import CopyeditorProofreader
-from agents.agent_i_safety_reviewer import SafetyScopeReviewer
+from agents.agent_i_safety import SafetyScopeReviewer
+from agents.agent_j_critic import AdversarialCritic
+from agents.agent_k_visuals import VisualChronicler
+from agents.agent_l_narrative import PedagogicalBridge
+from agents.agent_m_verifier import SourceVerifier  # NEW: Anti-Hallucination
 
 async def run_production():
     """Run the complete production pipeline."""
     
     print("\n" + "="*70)
-    print("🚀 HEBREW VIROLOGY EBOOK - PRODUCTION PIPELINE")
+    print("🚀 HEBREW VIROLOGY EBOOK - PRODUCTION PIPELINE (QUALITY-FIRST)")
     print("="*70 + "\n")
 
     # 1. Setup
@@ -70,7 +84,6 @@ async def run_production():
     # 2. Sequential Agents (A & B)
     print("[Production] Starting base analysis...")
     
-    # Agent A: CorpusLibrarian
     async def run_a(ctx):
         agent = CorpusLibrarian(str(TRANSCRIPTS_DIR), str(OPS_DIR), logger, todos)
         return agent.run()
@@ -79,7 +92,6 @@ async def run_production():
         AgentTask("CorpusLibrarian", AgentStage.CORPUS_ANALYSIS, function=run_a)
     ])
 
-    # Agent B: CurriculumArchitect
     async def run_b(ctx):
         agent = CurriculumArchitect(str(OPS_DIR), str(BOOK_DIR), logger, todos)
         return agent.run()
@@ -88,10 +100,9 @@ async def run_production():
         AgentTask("CurriculumArchitect", AgentStage.CURRICULUM_DESIGN, function=run_b)
     ])
 
-    # 3. Parallel Agents (C, D, E)
-    # Note: These are wrapped in orchestrator tasks
+    # 3. Core Generation (C, D, J, E)
+    print("[Production] Generating core content...")
     
-    # Agent C: ChapterBriefBuilder
     async def run_c(ctx):
         agent = ChapterBriefBuilder(str(OPS_DIR), logger, todos)
         return agent.run()
@@ -100,16 +111,22 @@ async def run_production():
         AgentTask("BriefBuilder", AgentStage.BRIEF_GENERATION, function=run_c)
     ])
 
-    # Agent D: DraftWriter
     async def run_d(ctx):
         agent = DraftWriter(str(TRANSCRIPTS_DIR), str(OPS_DIR), logger, todos)
-        return agent.run()
+        return await agent.run()
     
     await orchestrator.run_stage(AgentStage.DRAFT_WRITING, [
         AgentTask("DraftWriter", AgentStage.DRAFT_WRITING, function=run_d)
     ])
 
-    # Agent E: DevelopmentalEditor
+    async def run_j(ctx):
+        agent = AdversarialCritic(str(OPS_DIR), str(BOOK_DIR), logger, todos)
+        return agent.run()
+    
+    await orchestrator.run_stage(AgentStage.VALIDATION, [
+        AgentTask("AdversarialCritic", AgentStage.VALIDATION, function=run_j)
+    ])
+
     async def run_e(ctx):
         agent = DevelopmentalEditor(str(OPS_DIR), str(BOOK_DIR), logger, todos)
         return agent.run()
@@ -118,30 +135,41 @@ async def run_production():
         AgentTask("DevelopmentalEditor", AgentStage.EDITING, function=run_e)
     ])
 
-    # 4. Global Refinement (F, G, H, I)
+    # 4. Pedagogical & Visual Enhancement (K, L)
+    print("\n[Production] Starting Pedagogical & Visual Enhancement (Round 2)...")
+    
+    async def run_k(ctx):
+        agent = VisualChronicler(str(BOOK_DIR), str(OPS_DIR), logger, todos)
+        return agent.run()
+    
+    async def run_l(ctx):
+        agent = PedagogicalBridge(str(BOOK_DIR), str(OPS_DIR), logger, todos)
+        return agent.run()
+
+    await orchestrator.run_stage(AgentStage.VALIDATION, [
+        AgentTask("VisualChronicler", AgentStage.VALIDATION, function=run_k, parallelizable=True),
+        AgentTask("PedagogicalBridge", AgentStage.VALIDATION, function=run_l, parallelizable=True)
+    ])
+
+    # 5. Global Refinement (F, G, H, I)
     print("\n[Production] Starting final refinements...")
 
-    # Agent F: AssessmentDesigner
     async def run_f(ctx):
         agent = AssessmentDesigner(str(BOOK_DIR), str(OPS_DIR), logger, todos)
         return agent.run()
     
-    # Agent G: TerminologyConsistencyKeeper
     async def run_g(ctx):
         agent = TerminologyConsistencyKeeper(str(BOOK_DIR), str(OPS_DIR), logger, todos)
         return agent.run()
 
-    # Agent H: CopyeditorProofreader
     async def run_h(ctx):
         agent = CopyeditorProofreader(str(BOOK_DIR), str(OPS_DIR), logger, todos)
         return agent.run()
 
-    # Agent I: SafetyScopeReviewer
     async def run_i(ctx):
         agent = SafetyScopeReviewer(str(BOOK_DIR), str(OPS_DIR), logger, todos)
         return agent.run()
 
-    # Run F, G, H, I in parallel as allowed by orchestrator
     validation_tasks = [
         AgentTask("AssessmentDesigner", AgentStage.VALIDATION, function=run_f, parallelizable=True),
         AgentTask("TerminologyKeeper", AgentStage.VALIDATION, function=run_g, parallelizable=True),
@@ -151,7 +179,7 @@ async def run_production():
     
     await orchestrator.run_stage(AgentStage.VALIDATION, validation_tasks)
 
-    # 5. Book Build (EPUB & PDF)
+    # 6. Book Build (EPUB & PDF)
     print("\n" + "="*70)
     print("📚 BUILDING FINAL BOOK ARTIFACTS")
     print("="*70 + "\n")
@@ -160,7 +188,6 @@ async def run_production():
     if build_script.exists():
         print(f"[Build] Executing {build_script}...")
         try:
-            # Ensure script is executable
             os.chmod(build_script, 0o755)
             result = subprocess.run([str(build_script)], check=True, capture_output=True, text=True)
             print(result.stdout)
@@ -170,7 +197,23 @@ async def run_production():
     else:
         print("⚠️  build_all.sh not found in book/ directory.")
 
-    # 6. Conclusion
+    # 7. Final Aesthetic Touch: Cover Generation (Last Step)
+    print("\n[Production] Generating final book cover based on content...")
+    try:
+        from llm_utils import generate_cover_from_book
+        chapters_dir = BOOK_DIR / "chapters"
+        full_text = ""
+        # Collect top context for cover
+        chapter_files = sorted(list(chapters_dir.glob("*.md")))
+        for f in chapter_files[:3]:
+            full_text += f.read_text()[:2000]
+        
+        generate_cover_from_book(full_text, str(BOOK_DIR / "cover.png"))
+        print("✅ Final book cover generated.")
+    except Exception as e:
+        print(f"⚠️ Cover generation failed: {e}")
+
+    # 8. Conclusion
     print("\n" + "="*70)
     print("✅ PRODUCTION COMPLETE")
     print("="*70)

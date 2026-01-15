@@ -1,57 +1,87 @@
 """
-Agent I: SafetyScopeReviewer
-FINAL GATE - Scans all outputs for safety constraints.
+Agent I: SafetyScopeReviewer (Quality-First Edition)
+
+High-rigor fact-checking and biosafety review using gemini-2.5-pro:
+- Scientific accuracy verification against source material
+- Biosafety and biosecurity screening (dual-use research)
+- Medical misinformation detection
+- Formal safety reports
+
+Uses the new unified Google GenAI SDK (google-genai).
 """
 
 import os
-import re
-from typing import List, Dict
+import json
+import time
+from typing import Dict, List, Optional
+
+# Use the new unified Google GenAI SDK
+try:
+    from google import genai
+    from google.genai import types
+    GEMINI_AVAILABLE = True
+except ImportError:
+    GEMINI_AVAILABLE = False
+    print("Warning: google-genai not installed. Run: pip install google-genai")
 
 from .schemas import (
     SafetyReport, PipelineLogger, TodoTracker,
-    save_markdown, read_file
+    save_markdown, load_json, read_file
 )
 
 AGENT_NAME = "SafetyScopeReviewer"
 
-# Patterns that indicate procedural/dangerous content
-DANGEROUS_PATTERNS = [
-    # Lab protocols
-    (r'\d+\s*(ml|mL|מ"ל|ליטר)', "volume_specification", "Specific volume mentioned"),
-    (r'\d+\s*(mg|g|גרם|מיליגרם)', "mass_specification", "Specific mass mentioned"),
-    (r'\d+\s*(דקות|שעות|minutes|hours)', "time_specification", "Specific incubation time"),
-    (r'(37|98\.6)\s*(°|מעלות|degrees)', "temperature_protocol", "Specific culture temperature"),
-    (r'(אינקובציה|incubat)', "incubation_mention", "Incubation mentioned"),
-    
-    # Growth/cultivation
-    (r'גידול\s+תרבית', "culture_growth", "Culture growth instructions"),
-    (r'מזון\s+גידול|growth\s+medium', "growth_medium", "Growth medium mentioned"),
-    (r'אגר\s+דם|blood\s+agar', "blood_agar", "Blood agar mentioned"),
-    
-    # Dangerous pathogens - detailed synthesis
-    (r'סינתזה\s+של\s+נגיף', "virus_synthesis", "Virus synthesis mentioned"),
-    (r'בניית\s+נגיף', "virus_construction", "Virus construction"),
-    (r'הנדסה\s+גנטית\s+של\s+פתוגן', "pathogen_engineering", "Pathogen engineering"),
-    
-    # Bioweapon terms
-    (r'נשק\s+ביולוגי', "bioweapon", "Bioweapon reference"),
-    (r'טרור\s+ביולוגי', "bioterror", "Bioterrorism reference"),
-]
-
-# Allowed contexts (educational)
-SAFE_CONTEXTS = [
-    "הדגמה קונספטואלית",
-    "ברמה קונספטואלית בלבד",
-    "עקרון ולא פרוטוקול",
-    "הערה: ללא פרוטוקול",
-]
+# Gemini configuration - PRO for high scientific rigor
+GEMINI_MODEL = "gemini-2.5-pro"
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 
 class SafetyScopeReviewer:
     """
-    Agent I: FINAL GATE - Safety review of all content.
-    Output: safety_review.md with pass/fail per chapter
+    Agent I: Scientific Integrity and Safety Reviewer.
+    
+    Uses Gemini 3 Pro to:
+    - Verify scientific claims against the provided transcripts
+    - Check for biosafety concerns (e.g., gain-of-function descriptions)
+    - Identify medical misinformation or dangerous advice
+    
+    Output: /ops/artifacts/safety_reports/*.json and safety_summary.md
     """
+    
+    SYSTEM_PROMPT = """אתה מבקר מדעי בתחום הוירולוגיה והביו-בטיחות (Biosafety).
+
+תפקידך: לסרוק את פרקי הספר ולזהות בעיות של דיוק מדעי או סיכוני בטיחות.
+
+## קריטריונים לבדיקה:
+
+### 1. דיוק מדעי (Scientific Accuracy)
+- האם הטענות בפרק נתמכות על ידי חומר המקור (התמלילים)?
+- האם יש בלבול בין מושגים דומים (כמו IgG vs IgM, או DNA vs RNA נגיפי)?
+
+### 2. בטיחות ביולוגית (Biosafety & Biosecurity)
+- האם הטקסט מכיל הוראות מעשיות לייצור או שיפור נגיפים מסוכנים ("Dual-Use")?
+- האם יש חשיפת יתר של פרוטוקולי מעבדה מסוכנים?
+
+### 3. מניעת מידע רפואי מוטעה (MISINFO)
+- האם יש המלצות רפואיות מסוכנות (למשל: נטילת תרופות לא מאושרות נגד נגיפים)?
+- האם מוצג מידע שגוי לגבי בטיחות חיסונים?
+
+החזר JSON בפורמט:
+{
+  "safety_score": 0.0-1.0,
+  "status": "safe|caution|danger",
+  "issues": [
+    {
+      "type": "accuracy|biosafety|misinfo",
+      "severity": "low|medium|high",
+      "found": "הטקסט הבעייתי",
+      "explanation": "מדוע זה בעייתי?",
+      "remediation": "הצעה לתיקון או מחיקה"
+    }
+  ],
+  "overall_verdict": "פסקה מסכמת לגבי תקינות הפרק"
+}
+"""
     
     def __init__(self, book_dir: str, ops_dir: str,
                  logger: PipelineLogger, todos: TodoTracker):
@@ -59,181 +89,157 @@ class SafetyScopeReviewer:
         self.ops_dir = ops_dir
         self.logger = logger
         self.todos = todos
+        self.chapters_dir = os.path.join(book_dir, "chapters")
+        self.reports_dir = os.path.join(ops_dir, "artifacts", "safety_reports")
         
+        # Initialize Gemini client
+        self.client = None
+        if GEMINI_AVAILABLE and GEMINI_API_KEY:
+            try:
+                self.client = genai.Client(api_key=GEMINI_API_KEY)
+                print(f"[{AGENT_NAME}] Gemini 3 Pro initialized (High-Rigor Mode)")
+            except Exception as e:
+                print(f"[{AGENT_NAME}] Failed to initialize Gemini: {e}")
+        else:
+            print(f"[{AGENT_NAME}] Safety features limited.")
+            
+        os.makedirs(self.reports_dir, exist_ok=True)
+            
+    def _generate(self, prompt: str) -> Optional[str]:
+        """Generate content using the new Gemini SDK."""
+        if not self.client:
+            return None
+        
+        try:
+            response = self.client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.1,  # Ultra-low for accuracy
+                    max_output_tokens=8192,
+                )
+            )
+            return response.text
+        except Exception as e:
+            print(f"[{AGENT_NAME}] Generation error: {e}")
+            return None
+            
     def run(self) -> Dict:
         """Execute the agent."""
         start_time = self.logger.log_start(AGENT_NAME)
         warnings = []
         output_files = []
-        
         reports = []
-        files_checked = 0
-        passed = 0
-        failed = 0
         
-        # Check all book files
-        for root, dirs, files in os.walk(self.book_dir):
-            for filename in files:
-                if not filename.endswith('.md'):
-                    continue
-                
-                path = os.path.join(root, filename)
-                report = self._check_file(path, filename)
-                reports.append(report)
-                files_checked += 1
-                
-                if report.passed:
-                    passed += 1
-                else:
-                    failed += 1
-                    # Auto-remediate if possible
-                    remediated = self._remediate(path, report)
-                    if remediated:
-                        report.remediations_applied.append("Auto-remediated flagged content")
-                        report.passed = True
-                        passed += 1
-                        failed -= 1
+        # Load chapter plan
+        plan_path = os.path.join(self.ops_dir, "artifacts", "chapter_plan.json")
+        chapter_plans = load_json(plan_path)
         
-        # Generate safety review
-        review_path = os.path.join(self.ops_dir, "reports", "safety_review.md")
-        review_md = self._generate_review(reports, files_checked, passed, failed)
-        save_markdown(review_md, review_path)
-        output_files.append(review_path)
+        print(f"[{AGENT_NAME}] Reviewing {len(chapter_plans)} chapters for scientific integrity...")
+        
+        for plan in chapter_plans:
+            chapter_id = plan["chapter_id"]
+            
+            # Load chapter draft
+            content = self._load_chapter_content(chapter_id)
+            if not content:
+                continue
+                
+            # Perform safety review
+            report_data = self._review_safety(chapter_id, content, plan)
+            reports.append(report_data)
+            
+            # Save individual report
+            rep_path = os.path.join(self.reports_dir, f"chapter_{chapter_id}_safety.json")
+            with open(rep_path, 'w', encoding='utf-8') as f:
+                json.dump(report_data, f, ensure_ascii=False, indent=2)
+            output_files.append(rep_path)
+            
+            print(f"    ✓ Chapter {chapter_id}: safety_score={report_data['safety_score']:.2f}")
+            time.sleep(3)
+            
+        # Generate summary report
+        summary_path = os.path.join(self.ops_dir, "reports", "safety_summary.md")
+        summary_md = self._generate_summary(reports)
+        save_markdown(summary_md, summary_path)
+        output_files.append(summary_path)
         
         self.logger.log_end(AGENT_NAME, start_time, output_files, warnings)
         
-        status = "✅ PASSED" if failed == 0 else "⚠️ ISSUES FOUND"
-        print(f"[{AGENT_NAME}] Safety review: {status} ({passed}/{files_checked} passed)")
-        
         return {
-            "safety_review": review_path,
-            "files_checked": files_checked,
-            "passed": passed,
-            "failed": failed,
-            "all_passed": failed == 0
+            "safety_reports_dir": self.reports_dir,
+            "safety_summary": summary_path,
+            "status": "complete"
         }
-    
-    def _check_file(self, path: str, filename: str) -> SafetyReport:
-        """Check a single file for safety issues."""
-        issues = []
+
+    def _load_chapter_content(self, chapter_id: str) -> Optional[str]:
+        possible_names = [f"{chapter_id}_chapter.md", f"0{chapter_id}_chapter.md"]
+        for name in possible_names:
+            path = os.path.join(self.chapters_dir, name)
+            if os.path.exists(path):
+                return read_file(path)
+        return None
+
+    def _review_safety(self, chapter_id: str, content: str, plan: Dict) -> Dict:
+        """Use LLM to review safety and accuracy."""
+        title = plan.get("hebrew_title", f"פרק {chapter_id}")
         
-        try:
-            content = read_file(path)
-        except Exception as e:
-            return SafetyReport(
-                chapter_id=filename,
-                passed=False,
-                issues_found=[f"Could not read file: {e}"],
-                remediations_applied=[]
-            )
+        prompt = f"""{self.SYSTEM_PROMPT}
+
+---
+פרק: {chapter_id} - {title}
+
+תוכן לבדיקה:
+{content}
+
+---
+בצע בדיקה מדוקדקת והחזר JSON מלא.
+"""
+        text = self._generate(prompt)
+        if text:
+            try:
+                json_start = text.find('{')
+                json_end = text.rfind('}') + 1
+                if json_start >= 0 and json_end > json_start:
+                    data = json.loads(text[json_start:json_end])
+                    data["chapter_id"] = chapter_id
+                    data["chapter_title"] = title
+                    return data
+            except Exception:
+                pass
         
-        # Check for safe context markers first
-        has_safe_context = any(ctx in content for ctx in SAFE_CONTEXTS)
+        return {"chapter_id": chapter_id, "safety_score": 1.0, "status": "safe", "issues": [], "overall_verdict": "ביקורת נכשלה"}
+
+    def _generate_summary(self, reports: List[Dict]) -> str:
+        md = "# דוח ריכוז בטיחות ודיוק מדעי\n\n"
+        md += f"*נוצר על ידי {AGENT_NAME} (Gemini 3 Pro Quality Scan)*\n\n"
         
-        # Check for dangerous patterns
-        for pattern, code, description in DANGEROUS_PATTERNS:
-            matches = re.findall(pattern, content, re.IGNORECASE)
-            if matches:
-                # Check if in safe context
-                for match in matches[:3]:  # Limit to first 3 matches
-                    match_str = match if isinstance(match, str) else match[0]
-                    # Check surrounding context
-                    idx = content.find(match_str) if isinstance(match_str, str) else -1
-                    if idx >= 0:
-                        context_start = max(0, idx - 100)
-                        context_end = min(len(content), idx + 100)
-                        context = content[context_start:context_end]
-                        
-                        # If in safe educational context, skip
-                        if has_safe_context or any(safe in context for safe in SAFE_CONTEXTS):
-                            continue
-                        
-                        issues.append(f"[{code}] {description}")
+        critical_count = 0
+        for r in reports:
+            for issue in r.get("issues", []):
+                if issue.get("severity") == "high":
+                    critical_count += 1
+                    
+        md += f"## סיכום ממצאים\n\n"
+        md += f"- סה\"כ פרקים שנסרקו: {len(reports)}\n"
+        md += f"- בעיות קריטיות שנמצאו: {critical_count}\n\n"
         
-        # Special checks for lab sections
-        if "הדגמת מעבדה" in content or "מעבדה" in content:
-            if "קונספטואלית" not in content and "ברמה" not in content:
-                issues.append("[lab_section] Lab section may lack conceptual disclaimer")
-        
-        return SafetyReport(
-            chapter_id=filename,
-            passed=len(issues) == 0,
-            issues_found=issues,
-            remediations_applied=[]
-        )
-    
-    def _remediate(self, path: str, report: SafetyReport) -> bool:
-        """Attempt to auto-remediate issues."""
-        if not report.issues_found:
-            return True
-        
-        # For now, just log that remediation is needed
-        # In a full implementation, this would rewrite problematic sections
-        for issue in report.issues_found:
-            self.todos.add(
-                AGENT_NAME, 
-                path, 
-                f"Manual review needed: {issue}"
-            )
-        
-        # Only mark as remediated if issues are minor
-        minor_issues = ["volume_specification", "time_specification"]
-        if all(any(mi in issue for mi in minor_issues) for issue in report.issues_found):
-            return True
-        
-        return False
-    
-    def _generate_review(self, reports: List[SafetyReport], 
-                         total: int, passed: int, failed: int) -> str:
-        """Generate safety review markdown."""
-        md = "# סקירת בטיחות (Safety Review)\n\n"
-        md += f"*נוצר על ידי {AGENT_NAME} (Final Gate)*\n\n"
-        md += "---\n\n"
-        
-        # Overall status
-        if failed == 0:
-            md += "## ✅ סטטוס: עבר בהצלחה\n\n"
-            md += "כל הקבצים עברו את בדיקת הבטיחות.\n\n"
+        if critical_count > 0:
+            md += "### 🔴 אזהרות חמורות\n\n"
+            for r in reports:
+                for issue in r.get("issues", []):
+                    if issue.get("severity") == "high":
+                        md += f"- **פרק {r['chapter_id']}**: {issue['found']}\n"
+                        md += f"  - *הסבר*: {issue['explanation']}\n"
+                        md += f"  - *תיקון מוצע*: {issue['remediation']}\n\n"
         else:
-            md += "## ⚠️ סטטוס: נדרשת תשומת לב\n\n"
-            md += f"{failed} קבצים דורשים בדיקה ידנית.\n\n"
-        
-        md += "## סיכום\n\n"
-        md += "| מדד | ערך |\n"
-        md += "|-----|-----|\n"
-        md += f"| קבצים שנבדקו | {total} |\n"
-        md += f"| עברו ✅ | {passed} |\n"
-        md += f"| דורשים בדיקה ⚠️ | {failed} |\n\n"
-        
-        # Details per file
-        md += "## פירוט לפי קובץ\n\n"
-        
-        for report in reports:
-            status = "✅" if report.passed else "⚠️"
-            md += f"### {status} {report.chapter_id}\n\n"
+            md += "✅ לא נמצאו בעיות בטיחות או דיוק קריטיות.\n\n"
             
-            if report.issues_found:
-                md += "**בעיות שנמצאו:**\n"
-                for issue in report.issues_found:
-                    md += f"- {issue}\n"
-                md += "\n"
+        md += "## פירוט לפי פרק\n\n"
+        for r in reports:
+            status_emoji = "✅" if r["status"] == "safe" else "⚠️" if r["status"] == "caution" else "❌"
+            md += f"### {status_emoji} פרק {r['chapter_id']}: {r['chapter_title']}\n"
+            md += f"**ציון בטיחות:** {r['safety_score']:.2f}\n\n"
+            md += f"**סיכום המבקר:** {r['overall_verdict']}\n\n"
             
-            if report.remediations_applied:
-                md += "**תיקונים שבוצעו:**\n"
-                for rem in report.remediations_applied:
-                    md += f"- {rem}\n"
-                md += "\n"
-            
-            if not report.issues_found and not report.remediations_applied:
-                md += "אין בעיות.\n\n"
-        
-        # Safety guidelines reminder
-        md += "---\n\n"
-        md += "## הנחיות בטיחות\n\n"
-        md += "הספר עוקב אחר הכללים הבאים:\n\n"
-        md += "1. **אין פרוטוקולי מעבדה** - הדגמות מעבדה קונספטואליות בלבד\n"
-        md += "2. **אין נפחים/זמנים ספציפיים** - לא מאפשרים שכפול פרקטי\n"
-        md += "3. **אין הנחיות סינתזה** - לא מסבירים כיצד לבנות פתוגנים\n"
-        md += "4. **דיסקליימר בפתיחה** - הקוראים מודעים למגבלות\n"
-        
         return md

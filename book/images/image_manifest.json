@@ -1,0 +1,104 @@
+[
+  {
+    "id": "fig_5_1",
+    "title": "מנגנון זיהוי PAMP-PRR",
+    "path": "book/images/fig_5_1.png",
+    "success": true
+  },
+  {
+    "id": "fig_5_2",
+    "title": "שלבי התגובה הדלקתית",
+    "path": "book/images/fig_5_2.png",
+    "success": true
+  },
+  {
+    "id": "fig_5_3",
+    "title": "תפקיד התאים הדנדריטיים",
+    "path": "book/images/fig_5_3.png",
+    "success": true
+  },
+  {
+    "id": "fig_6_1",
+    "title": "מנגנון הצגת אנטיגן MHC",
+    "path": "book/images/fig_6_1.png",
+    "success": true
+  },
+  {
+    "id": "fig_6_2",
+    "title": "תאי T עוזרים ותאי T ציטוטוקסיים",
+    "path": "book/images/fig_6_2.png",
+    "success": true
+  },
+  {
+    "id": "fig_3_1",
+    "title": "מבנה DNA ו-RNA",
+    "path": "book/images/fig_3_1.png",
+    "success": true
+  },
+  {
+    "id": "fig_3_2",
+    "title": "שכפול ויראלי - Baltimore Classification",
+    "path": "book/images/fig_3_2.png",
+    "success": true
+  },
+  {
+    "id": "fig_4_1",
+    "title": "דרכי העברת נגיפים",
+    "path": "book/images/fig_4_1.png",
+    "success": true
+  },
+  {
+    "id": "fig_4_2",
+    "title": "מבנה נגיף האבעבועות השחורות",
+    "path": "book/images/fig_4_2.png",
+    "success": true
+  },
+  {
+    "id": "fig_4_3",
+    "title": "מפת התפשטות מגפת השפעת 1918",
+    "path": "book/images/fig_4_3.png",
+    "success": true
+  },
+  {
+    "id": "fig_4_4",
+    "title": "סטטיסטיקות פוליו",
+    "path": "book/images/fig_4_4.png",
+    "success": true
+  },
+  {
+    "id": "fig_2_1",
+    "title": "מבנה נגיף הקורונה SARS-CoV-2",
+    "path": "book/images/fig_2_1.png",
+    "success": true
+  },
+  {
+    "id": "fig_2_2",
+    "title": "מחזור שכפול קורונה",
+    "path": "book/images/fig_2_2.png",
+    "success": true
+  },
+  {
+    "id": "fig_2_3",
+    "title": "קולטן ACE2 וקישור הספייק",
+    "path": "book/images/fig_2_3.png",
+    "success": true
+  },
+  {
+    "id": "fig_2_4",
+    "title": "השוואת וריאנטים של COVID-19",
+    "path": "book/images/fig_2_4.png",
+    "success": true
+  },
+  {
+    "id": "fig_8_1",
+    "title": "מנגנון חיסון mRNA",
+    "path": "book/images/fig_8_1.png",
+    "success": true
+  },
+  {
+    "id": "fig_8_2",
+    "title": "השוואת תמותה COVID-19 vs שפעת",
+    "path": "book/images/fig_8_2.png",
+    "success": true
+  }
+]

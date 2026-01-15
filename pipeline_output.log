@@ -1,0 +1,178 @@
+/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/run_production.py:23: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+[Diagnostics] google.generativeai version: 0.8.6
+[Diagnostics] GEMINI_API_KEY set: Yes
+
+======================================================================
+🚀 HEBREW VIROLOGY EBOOK - PRODUCTION PIPELINE
+======================================================================
+
+[Production] Starting base analysis...
+
+============================================================
+STAGE: CORPUS_ANALYSIS
+============================================================
+Running CorpusLibrarian (sequential)...
+[CorpusLibrarian] Found 73 transcript files
+[CorpusLibrarian] Processed 73 files, 43292 total words
+  ✓ CorpusLibrarian completed (0.50s)
+
+Stage completed in 0.50s
+
+============================================================
+STAGE: CURRICULUM_DESIGN
+============================================================
+Running CurriculumArchitect (sequential)...
+[CurriculumArchitect] Loaded 73 file notes
+[CurriculumArchitect] Created 8 chapter plans
+  ✓ CurriculumArchitect completed (0.32s)
+
+Stage completed in 0.32s
+
+============================================================
+STAGE: BRIEF_GENERATION
+============================================================
+Running BriefBuilder (sequential)...
+[ChapterBriefBuilder] Creating briefs for 8 chapters (parallel processing)
+[ChapterBriefBuilder] ✓ Completed brief for chapter 01
+[ChapterBriefBuilder] ✓ Completed brief for chapter 02
+[ChapterBriefBuilder] ✓ Completed brief for chapter 04
+[ChapterBriefBuilder] ✓ Completed brief for chapter 03
+[ChapterBriefBuilder] ✓ Completed brief for chapter 08
+[ChapterBriefBuilder] ✓ Completed brief for chapter 05
+[ChapterBriefBuilder] ✓ Completed brief for chapter 06
+[ChapterBriefBuilder] ✓ Completed brief for chapter 07
+[ChapterBriefBuilder] Created 16 chapter briefs
+  ✓ BriefBuilder completed (0.12s)
+
+Stage completed in 0.12s
+
+============================================================
+STAGE: DRAFT_WRITING
+============================================================
+Running DraftWriter (sequential)...
+[DraftWriter] Gemini API initialized successfully
+[DraftWriter] Version control initialized
+[DraftWriter] Writing drafts for 8 chapters
+[DraftWriter] Gemini error for chapter 01: 403 Your API key was reported as leaked. Please use another API key.
+[DraftWriter] Wrote chapter 01: 457 words
+[DraftWriter] Waiting 20s before next chapter to avoid rate limits...
+[DraftWriter] Gemini error for chapter 02: 403 Your API key was reported as leaked. Please use another API key.
+[DraftWriter] Wrote chapter 02: 466 words
+[DraftWriter] Waiting 20s before next chapter to avoid rate limits...
+[DraftWriter] Gemini error for chapter 03: 403 Your API key was reported as leaked. Please use another API key.
+[DraftWriter] Wrote chapter 03: 411 words
+[DraftWriter] Waiting 20s before next chapter to avoid rate limits...
+[DraftWriter] Gemini error for chapter 04: 403 Your API key was reported as leaked. Please use another API key.
+[DraftWriter] Wrote chapter 04: 364 words
+[DraftWriter] Waiting 20s before next chapter to avoid rate limits...
+[DraftWriter] Gemini error for chapter 05: 403 Your API key was reported as leaked. Please use another API key.
+[DraftWriter] Wrote chapter 05: 357 words
+[DraftWriter] Waiting 20s before next chapter to avoid rate limits...
+[DraftWriter] Gemini error for chapter 06: 403 Your API key was reported as leaked. Please use another API key.
+[DraftWriter] Wrote chapter 06: 395 words
+[DraftWriter] Waiting 20s before next chapter to avoid rate limits...
+[DraftWriter] Gemini error for chapter 07: 403 Your API key was reported as leaked. Please use another API key.
+[DraftWriter] Wrote chapter 07: 336 words
+[DraftWriter] Waiting 20s before next chapter to avoid rate limits...
+[DraftWriter] Gemini error for chapter 08: 403 Your API key was reported as leaked. Please use another API key.
+[DraftWriter] Wrote chapter 08: 310 words
+[DraftWriter] Waiting 20s before next chapter to avoid rate limits...
+  ✓ DraftWriter completed (164.53s)
+
+Stage completed in 164.53s
+
+============================================================
+STAGE: EDITING
+============================================================
+Running DevelopmentalEditor (sequential)...
+[DevelopmentalEditor] Processing 8 chapters
+[DevelopmentalEditor] Processed 8 chapters
+  ✓ DevelopmentalEditor completed (0.09s)
+
+Stage completed in 0.09s
+
+[Production] Starting final refinements...
+
+============================================================
+STAGE: VALIDATION
+============================================================
+Running 4 tasks in parallel...
+[AssessmentDesigner] Collected 28 questions from chapters
+[AssessmentDesigner] Created question bank and exam review
+  ✓ AssessmentDesigner completed (0.10s)
+[TerminologyConsistencyKeeper] Checked 672 terms, found 34 issues
+  ✓ TerminologyKeeper completed (0.19s)
+[CopyeditorProofreader] Checked 51 files, found 1556 issues
+  ✓ Proofreader completed (0.17s)
+[SafetyScopeReviewer] Safety review: ⚠️ ISSUES FOUND (34/51 passed)
+  ✓ SafetyReviewer completed (0.45s)
+
+Stage completed in 0.99s
+
+======================================================================
+📚 BUILDING FINAL BOOK ARTIFACTS
+======================================================================
+
+[Build] Executing /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/build_all.sh...
+=== Building EPUB ===
+Building EPUB from:
+00_front_matter.md 01_study_guide.md chapters/01_chapter.md chapters/02_02_וירוס_הקורנה_–_שאלות_נפוצות.md chapters/02_chapter.md chapters/02_chapter_01.md chapters/03_03_שיעור_1_תאים_הם_יחידות_החיים.md chapters/03_chapter.md chapters/03_chapter_02.md chapters/04_04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים.md chapters/04_chapter.md chapters/04_chapter_03.md chapters/05_05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול.md chapters/05_chapter.md chapters/05_chapter_04.md chapters/06_06_שיעור_4_מחלות_נגיפיות_הומניות.md chapters/06_chapter.md chapters/06_chapter_05.md chapters/07_chapter.md chapters/07_chapter_06.md chapters/08_08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון.md chapters/08_chapter.md chapters/08_chapter_07.md chapters/09_09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב.md chapters/09_chapter_08.md chapters/10_10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות.md chapters/11_11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19.md chapters/12_12_סיכום_הקורס.md chapters/chapter_01.md chapters/chapter_01_draft.md chapters/chapter_02.md chapters/chapter_02_draft.md chapters/chapter_03.md chapters/chapter_03_draft.md chapters/chapter_04.md chapters/chapter_04_draft.md chapters/chapter_05.md chapters/chapter_05_draft.md chapters/chapter_06.md chapters/chapter_06_draft.md chapters/chapter_07.md chapters/chapter_07_draft.md chapters/chapter_08.md chapters/chapter_08_draft.md 89_quick_reference.md 90_glossary.md 91_exam_review.md 92_question_bank.md
+EPUB generated successfully at build/book.epub
+
+=== Building PDF ===
+Building PDF/HTML from:
+00_front_matter.md 01_study_guide.md chapters/01_chapter.md chapters/02_02_וירוס_הקורנה_–_שאלות_נפוצות.md chapters/02_chapter.md chapters/02_chapter_01.md chapters/03_03_שיעור_1_תאים_הם_יחידות_החיים.md chapters/03_chapter.md chapters/03_chapter_02.md chapters/04_04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים.md chapters/04_chapter.md chapters/04_chapter_03.md chapters/05_05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול.md chapters/05_chapter.md chapters/05_chapter_04.md chapters/06_06_שיעור_4_מחלות_נגיפיות_הומניות.md chapters/06_chapter.md chapters/06_chapter_05.md chapters/07_chapter.md chapters/07_chapter_06.md chapters/08_08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון.md chapters/08_chapter.md chapters/08_chapter_07.md chapters/09_09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב.md chapters/09_chapter_08.md chapters/10_10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות.md chapters/11_11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19.md chapters/12_12_סיכום_הקורס.md chapters/chapter_01.md chapters/chapter_01_draft.md chapters/chapter_02.md chapters/chapter_02_draft.md chapters/chapter_03.md chapters/chapter_03_draft.md chapters/chapter_04.md chapters/chapter_04_draft.md chapters/chapter_05.md chapters/chapter_05_draft.md chapters/chapter_06.md chapters/chapter_06_draft.md chapters/chapter_07.md chapters/chapter_07_draft.md chapters/chapter_08.md chapters/chapter_08_draft.md 89_quick_reference.md 90_glossary.md 91_exam_review.md 92_question_bank.md
+Generating intermediate HTML...
+xelatex not found. Using Google Chrome for PDF conversion...
+PDF generated successfully via Chrome at build/book.pdf
+Process complete.
+
+=== Build Summary ===
+-rw-r--r--@ 1 arielindenbaum  staff   258K Jan 15 00:44 build/book.epub
+-rw-r--r--@ 1 arielindenbaum  staff   4.0M Jan 15 00:44 build/book.pdf
+
+
+======================================================================
+✅ PRODUCTION COMPLETE
+======================================================================
+# Pipeline Performance Report
+
+**Total Pipeline Time:** 166.55s
+
+## Stage Breakdown
+
+| Stage | Duration | % of Total |
+|-------|----------|------------|
+| draft_writing | 164.53s | 98.8% |
+| validation | 0.99s | 0.6% |
+| corpus_analysis | 0.50s | 0.3% |
+| curriculum_design | 0.32s | 0.2% |
+| brief_generation | 0.12s | 0.1% |
+| editing | 0.09s | 0.1% |
+
+## Agent Results
+
+- **Successful:** 9/9
+- **Failed:** 0/9
+
+
+## Performance Metrics
+
+- **Sequential execution time estimate:** 166.47s
+- **Actual parallel execution time:** 166.55s
+- **Speedup factor:** 1.00x
+- **Time saved:** -0.08s (-0.0%)
+
+
+📂 Results preserved in:
+- Book:  /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/build/
+- Logs:  /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/pipeline.jsonl
+- TODOs: /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/todos.md

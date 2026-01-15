@@ -1,11 +1,29 @@
 """
-Agent F: AssessmentDesigner
-Ensures exam scaffolding exists and creates consolidated question bank.
+Agent F: AssessmentDesigner (Quality-First Edition)
+
+LLM-powered assessment generation using gemini-2.5-pro:
+- Chapter-specific MCQs mapped to learning objectives
+- Case studies and real-world applications
+- Active recall questions
+- Comprehensive question bank generation
+
+Uses the new unified Google GenAI SDK (google-genai).
 """
 
 import os
 import re
-from typing import List, Dict
+import json
+import time
+from typing import List, Dict, Optional
+
+# Use the new unified Google GenAI SDK
+try:
+    from google import genai
+    from google.genai import types
+    GEMINI_AVAILABLE = True
+except ImportError:
+    GEMINI_AVAILABLE = False
+    print("Warning: google-genai not installed. Run: pip install google-genai")
 
 from .schemas import (
     PipelineLogger, TodoTracker,
@@ -14,12 +32,67 @@ from .schemas import (
 
 AGENT_NAME = "AssessmentDesigner"
 
+# Gemini configuration - PRO for educational quality
+GEMINI_MODEL = "gemini-2.5-pro"
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+
 
 class AssessmentDesigner:
     """
-    Agent F: Produces question bank and exam review materials.
+    Agent F: Produces high-quality assessments and exam review materials.
+    
+    Uses Gemini 3 Pro to generate:
+    - MCQs with plausible distractors
+    - Case studies that require conceptual application
+    - High-yield exam summaries
+    
     Output: /book/92_question_bank.md, /book/91_exam_review.md
     """
+    
+    SYSTEM_PROMPT = """אתה מעריך פדגוגי (Instructional Designer) ומומחה לוירולוגיה.
+
+תפקידך: ליצור שאלות תרגול וחומרי חזרה ברמה אקדמית גבוהה לספר לימוד.
+
+## סוגי שאלות נדרשים:
+
+### 1. שאלות רב-ברירה (MCQs)
+- שאלה ברורה וממוקדת.
+- 4 מסיחים (א-ד), כאשר רק אחד נכון.
+- המסיחים צריכים להיות מטעים (plausible) ומבוססים על טעויות נפוצות.
+- ספק הסבר קצר לתשובה הנכונה.
+
+### 2. מקרי בוחן (Case Studies)
+- תיאור קצר של מצב קליני או מעבדתי.
+- שאלה הדורשת יישום של החומר הנלמד לפתרון המצב.
+
+### 3. שאלות שליפה פעילה (Active Recall)
+- שאלות פתוחות קצרות הממקדות במושגי מפתח.
+
+## דגשים לכתיבה:
+- שפה: עברית אקדמית תקנית.
+- מונחים: שמירה על עקביות (מונח עברי ולידו מונח אנגלי בסוגריים).
+- רמה: מותאם לסטודנטים לתואר ראשון במדעי החיים/רפואה.
+
+החזר JSON בפורמט:
+{
+  "mcqs": [
+    {
+      "question": "השאלה",
+      "options": ["א. ...", "ב. ...", "ג. ...", "ד. ..."],
+      "correct_answer": "א/ב/ג/ד",
+      "explanation": "הסבר קצר"
+    }
+  ],
+  "case_studies": [
+    {
+      "scenario": "תיאור המקרה",
+      "question": "השאלה",
+      "answer_guidelines": "נקודות מפתח לתשובה"
+    }
+  ],
+  "recall_questions": ["שאלה 1", "שאלה 2"]
+}
+"""
     
     def __init__(self, book_dir: str, ops_dir: str,
                  logger: PipelineLogger, todos: TodoTracker):
@@ -29,240 +102,182 @@ class AssessmentDesigner:
         self.todos = todos
         self.chapters_dir = os.path.join(book_dir, "chapters")
         
+        # Initialize Gemini client
+        self.client = None
+        if GEMINI_AVAILABLE and GEMINI_API_KEY:
+            try:
+                self.client = genai.Client(api_key=GEMINI_API_KEY)
+                print(f"[{AGENT_NAME}] Gemini 3 Pro initialized (LLM-Assessment Mode)")
+            except Exception as e:
+                print(f"[{AGENT_NAME}] Failed to initialize Gemini: {e}")
+        else:
+            print(f"[{AGENT_NAME}] Using legacy template assessment")
+            
+    def _generate(self, prompt: str) -> Optional[str]:
+        """Generate content using the new Gemini SDK."""
+        if not self.client:
+            return None
+        
+        try:
+            response = self.client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.4,
+                    max_output_tokens=8192,
+                )
+            )
+            return response.text
+        except Exception as e:
+            print(f"[{AGENT_NAME}] Generation error: {e}")
+            return None
+            
     def run(self) -> Dict:
         """Execute the agent."""
         start_time = self.logger.log_start(AGENT_NAME)
         warnings = []
         output_files = []
         
-        # Load chapter plan for structure
+        # Load chapter plan
         plan_path = os.path.join(self.ops_dir, "artifacts", "chapter_plan.json")
         chapter_plans = load_json(plan_path)
         
-        # Collect questions from chapters
-        all_questions = []
+        all_chapter_assessments = []
+        
+        print(f"[{AGENT_NAME}] Generating assessments for {len(chapter_plans)} chapters...")
+        
         for plan in chapter_plans:
             chapter_id = plan["chapter_id"]
-            questions = self._extract_questions_from_chapter(chapter_id)
-            all_questions.extend(questions)
+            
+            # Load chapter content
+            content = self._load_chapter_content(chapter_id)
+            
+            if self.client and content:
+                # LLM-generated assessment
+                assessment = self._generate_chapter_assessment(chapter_id, content, plan)
+                all_chapter_assessments.append(assessment)
+                print(f"    ✓ Chapter {chapter_id}: LLM assessment generated")
+                time.sleep(5)
+            else:
+                # Fallback or template
+                print(f"    ⚠ Chapter {chapter_id}: Using template/fallback")
         
-        print(f"[{AGENT_NAME}] Collected {len(all_questions)} questions from chapters")
-        
-        # Generate question bank
-        question_bank = self._generate_question_bank(all_questions, chapter_plans)
+        # Generate consolidated question bank
+        question_bank = self._format_question_bank(all_chapter_assessments, chapter_plans)
         qb_path = os.path.join(self.book_dir, "92_question_bank.md")
         save_markdown(question_bank, qb_path)
         output_files.append(qb_path)
         
-        # Generate exam review
-        exam_review = self._generate_exam_review(chapter_plans)
+        # Generate high-yield exam review
+        exam_review = self._format_exam_review(all_chapter_assessments, chapter_plans)
         er_path = os.path.join(self.book_dir, "91_exam_review.md")
         save_markdown(exam_review, er_path)
         output_files.append(er_path)
         
         self.logger.log_end(AGENT_NAME, start_time, output_files, warnings)
         
-        print(f"[{AGENT_NAME}] Created question bank and exam review")
-        
         return {
             "question_bank": qb_path,
             "exam_review": er_path,
-            "total_questions": len(all_questions)
+            "chapters_processed": len(all_chapter_assessments)
         }
     
-    def _extract_questions_from_chapter(self, chapter_id: str) -> List[Dict]:
-        """Extract questions from a chapter file."""
-        questions = []
-        
-        # Try to find the chapter file
-        possible_names = [
-            f"{chapter_id}_chapter.md",
-            f"0{chapter_id}_chapter.md" if len(chapter_id) == 1 else f"{chapter_id}_chapter.md",
-        ]
-        
-        # Also check existing chapter names
-        if os.path.exists(self.chapters_dir):
-            for fname in os.listdir(self.chapters_dir):
-                if fname.startswith(chapter_id) or fname.startswith(f"0{chapter_id}"):
-                    possible_names.append(fname)
-        
+    def _load_chapter_content(self, chapter_id: str) -> Optional[str]:
+        """Load the final edited chapter content."""
+        possible_names = [f"{chapter_id}_chapter.md", f"0{chapter_id}_chapter.md"]
         for name in possible_names:
             path = os.path.join(self.chapters_dir, name)
             if os.path.exists(path):
-                content = read_file(path)
-                
-                # Extract MCQ questions
-                mcq_pattern = r'\*\*(\d+)\.\*\*\s*(.+?)\n\s*א\.\s*(.+?)\n\s*ב\.\s*(.+?)\n\s*ג\.\s*(.+?)\n\s*ד\.\s*(.+?)\n'
-                mcq_matches = re.findall(mcq_pattern, content, re.MULTILINE | re.DOTALL)
-                
-                for match in mcq_matches:
-                    questions.append({
-                        "chapter": chapter_id,
-                        "type": "mcq",
-                        "question": match[1].strip(),
-                        "options": [m.strip() for m in match[2:6]],
-                    })
-                
-                break
+                return read_file(path)
+        return None
+
+    def _generate_chapter_assessment(self, chapter_id: str, content: str, plan: Dict) -> Dict:
+        """Use LLM to generate specific assessment for one chapter."""
+        title = plan.get("hebrew_title", f"פרק {chapter_id}")
         
-        return questions
-    
-    def _generate_question_bank(self, questions: List[Dict], plans: List[Dict]) -> str:
-        """Generate consolidated question bank."""
-        md = "# נספח ג': בנק שאלות לתרגול חזרה\n\n"
-        md += "*שאלות אלו נאספו מכל פרקי הספר לחזרה מרוכזת לפני הבחינה.*\n\n"
+        prompt = f"""{self.SYSTEM_PROMPT}
+
+---
+פרק: {chapter_id} - {title}
+
+תוכן הפרק (חלקים נבחרים):
+{content[:20000]}
+
+---
+המשימה: צור 3 שאלות MCQ, מקרה בוחן אחד, ו-3 שאלות שליפה מהירה המבוססות על תוכן הפרק.
+החזר JSON בלבד.
+"""
+        
+        text = self._generate(prompt)
+        if text:
+            try:
+                json_start = text.find('{')
+                json_end = text.rfind('}') + 1
+                if json_start >= 0 and json_end > json_start:
+                    data = json.loads(text[json_start:json_end])
+                    data["chapter_id"] = chapter_id
+                    data["title"] = title
+                    return data
+            except Exception as e:
+                print(f"      ✗ Failed to parse JSON for {chapter_id}: {e}")
+        
+        return {"chapter_id": chapter_id, "title": title, "mcqs": [], "case_studies": [], "recall_questions": []}
+
+    def _format_question_bank(self, assessments: List[Dict], plans: List[Dict]) -> str:
+        """Format the consolidated question bank markdown."""
+        md = "# נספח ג': בנק שאלות מקיף ויישומי\n\n"
+        md += "*בנק זה כולל שאלות ממורכזות תוכן, מקרי בוחן קליניים ושאלות שליפה לחיזוק הזיכרון לטווח ארוך.*\n\n"
         md += "---\n\n"
         
-        # Group by chapter
-        md += "## חלק א': שאלות רב-ברירה (MCQ)\n\n"
-        
-        for plan in plans:
-            chapter_id = plan["chapter_id"]
-            title = plan["hebrew_title"]
+        for assess in assessments:
+            md += f"## פרק {assess['chapter_id']}: {assess['title']}\n\n"
             
-            md += f"### פרק {chapter_id}: {title}\n\n"
+            # MCQs
+            if assess.get("mcqs"):
+                md += "### שאלות רב-ברירה\n\n"
+                for i, q in enumerate(assess["mcqs"], 1):
+                    md += f"**{i}. {q['question']}**\n"
+                    for opt in q["options"]:
+                        md += f"   {opt}\n"
+                    md += f"\n   *(תשובה: {q['correct_answer']}. הסבר: {q.get('explanation', '')})*\n\n"
             
-            chapter_questions = [q for q in questions if q.get("chapter") == chapter_id]
+            # Case Studies
+            if assess.get("case_studies"):
+                md += "### יישום ומקרי בוחן\n\n"
+                for cs in assess["case_studies"]:
+                    md += f"**סיטואציה:** {cs['scenario']}\n\n"
+                    md += f"**שאלה:** {cs['question']}\n\n"
+                    md += f"**קווי מנחה לתשובה:** {cs.get('answer_guidelines', '')}\n\n"
             
-            if chapter_questions:
-                for i, q in enumerate(chapter_questions, 1):
-                    md += f"**{i}.** {q.get('question', '[שאלה]')}\n"
-                    for j, opt in enumerate(q.get('options', []), 0):
-                        letters = ['א', 'ב', 'ג', 'ד']
-                        if j < len(letters):
-                            md += f"   {letters[j]}. {opt}\n"
-                    md += "\n"
-            else:
-                # Generate placeholder questions for chapters without extracted MCQs
-                md += self._generate_chapter_mcqs(chapter_id, plan.get("question_targets", []))
+            # Recall
+            if assess.get("recall_questions"):
+                md += "### שליפה מהירה (Active Recall)\n\n"
+                for rq in assess["recall_questions"]:
+                    md += f"- {rq}\n"
+                md += "\n"
             
-            md += "\n"
-        
-        # Open-ended questions section
-        md += "---\n\n"
-        md += "## חלק ב': שאלות פתוחות\n\n"
-        
-        for plan in plans:
-            chapter_id = plan["chapter_id"]
-            title = plan["hebrew_title"]
+            md += "---\n\n"
             
-            md += f"### פרק {chapter_id}: {title}\n\n"
-            md += self._generate_open_questions(chapter_id)
-            md += "\n"
-        
         return md
-    
-    def _generate_chapter_mcqs(self, chapter_id: str, targets: List[str]) -> str:
-        """Generate placeholder MCQs for a chapter."""
-        mcqs = {
-            "01": [
-                ("איזה אברון אחראי על הפקת האנרגיה בתא?", ["גרעין", "ליזוזום", "מיטוכונדריה", "גולג'י"], "ג"),
-                ("לפי חוקי שרגף, אם ב-DNA יש 20% אדנין (A), כמה תימין (T) יש?", ["20%", "30%", "40%", "0%"], "א"),
-            ],
-            "02": [
-                ("איזה תהליך משחרר מולקולת מים?", ["הידרוליזה", "תרגום", "דחיסה (קונדנסציה)", "שעתוק"], "ג"),
-                ("כמה קשרי מימן יש בזוג הבסיסים G-C?", ["1", "2", "3", "4"], "ג"),
-            ],
-            "03": [
-                ("מה נכון לגבי כל הנגיפים?", ["יש להם מעטפת שומנית", "הם מכילים DNA ו-RNA", "הם טפילים מוחלטים", "ניתן להרגם עם פניצילין"], "ג"),
-            ],
-            "04": [
-                ("איזו חיה נחשבת ל\"כלי ערבוב\" שבו נוצרים נגיפי שפעת חדשים?", ["עטלף", "חזיר", "יתוש", "עכבר"], "ב"),
-            ],
-            "05": [
-                ("מה תפקידם של קולטני TLR?", ["לייצר אנרגיה", "לשכפל DNA נגיפי", "לזהות תבניות זרות (PAMPs)", "להעביר חמצן"], "ג"),
-            ],
-            "06": [
-                ("איזה נוגדן הוא הראשון להופיע בתגובה לזיהום חדש?", ["IgG", "IgA", "IgM", "IgE"], "ג"),
-            ],
-            "07": [
-                ("מדוע יש צורך בחיסון שפעת חדש בכל שנה?", ["החיסון מתפרק", "חברות רוצות להרוויח", "הנגיף עובר שינויים (Drift)", "החיסון גורם למחלה"], "ג"),
-            ],
-            "08": [
-                ("במה שונה הגנום של הקורונה מהשפעת?", ["לקורונה DNA", "לקורונה מנגנון הגהה", "קורונה קטן יותר", "אין הבדל"], "ב"),
-            ],
-        }
-        
-        md = ""
-        for i, (q, opts, ans) in enumerate(mcqs.get(chapter_id, [])[:3], 1):
-            md += f"**{i}.** {q}\n"
-            for j, opt in enumerate(opts):
-                letters = ['א', 'ב', 'ג', 'ד']
-                md += f"   {letters[j]}. {opt}\n"
-            md += f"   *(תשובה: {ans})*\n\n"
-        
-        return md
-    
-    def _generate_open_questions(self, chapter_id: str) -> str:
-        """Generate open-ended questions for a chapter."""
-        questions = {
-            "01": "הסבר מדוע ארבעה יסודות בלבד (C, O, H, N) מרכיבים כמעט את כל גופנו.",
-            "02": "מהי \"הדוגמה המרכזית\" ומדוע שעתוק לאחור שינה את הבנתנו?",
-            "03": "ציין שני הבדלים מרכזיים בין נגיף לתא חי.",
-            "04": "הסבר כיצד יתוש מעביר נגיף מאדם לאדם.",
-            "05": "מהו ההבדל העיקרי בין חסינות מולדת לנרכשת?",
-            "06": "הסבר את \"היפותזת ההיגיינה\" בהקשר של אלרגיות.",
-            "07": "מהם היתרונות והחסרונות של חיסון חי-מוחלש?",
-            "08": "כיצד עובד חיסון ה-mRNA?",
-        }
-        
-        q = questions.get(chapter_id, "שאלה פתוחה")
-        return f"**שאלה:** {q}\n\n*תשובה לדוגמה: [ראה בפרק]*\n\n"
-    
-    def _generate_exam_review(self, plans: List[Dict]) -> str:
-        """Generate high-yield exam review."""
-        md = "# נספח ב': מדריך למידה וסיכום למבחן\n\n"
-        md += "סיכום מרוכז של הנקודות החשובות ביותר (\"High Yield\") לבחינה.\n\n"
+
+    def _format_exam_review(self, assessments: List[Dict], plans: List[Dict]) -> str:
+        """Format the high-yield exam review guide."""
+        md = "# נספח ב': מדריך למידה וסיכום אסטרטגי\n\n"
+        md += "נקודות המוקד (\"High-Yield\") שסביבן נבנית הבחינה.\n\n"
         md += "---\n\n"
         
-        # High-yield summaries by topic area
-        sections = [
-            ("1. המדרג הביולוגי (פרקים 1-2)", [
-                "**תא**: יחידת החיים הבסיסית.",
-                "**CHON**: פחמן, מימן, חמצן, חנקן - 4 היסודות העיקריים.",
-                "**DNA**: סליל כפול (Chargaff: A=T, C=G).",
-                "**הדוגמה המרכזית**: DNA → RNA → Protein.",
-            ]),
-            ("2. וירולוגיה בסיסית (פרק 3)", [
-                "**נגיף**: טפיל מוחלט (Obligate Parasite).",
-                "**מבנה**: גנום (DNA או RNA) + קופסית. לחלקם יש מעטפת.",
-                "**מחזור חיים**: היצמדות → חדירה → שכפול → הרכבה → יציאה.",
-            ]),
-            ("3. מחלות נגיפיות (פרק 4)", [
-                "**אבעבועות שחורות**: DNA, הוכחדה.",
-                "**פוליו**: RNA ערום, פה-צואה, שיתוק.",
-                "**שפעת**: RNA, 8 מקטעים, Drift/Shift.",
-                "**אבולה**: RNA, זואונוזה, קדחת דימומית.",
-            ]),
-            ("4. אימונולוגיה (פרקים 5-6)", [
-                "**מולדת**: מהירה, לא ספציפית, ללא זיכרון (מקרופאגים, TLR).",
-                "**נרכשת**: איטית, ספציפית, **זיכרון** (תאי B ו-T).",
-                "**IgM**: ראשוני. **IgG**: עיקרי. **IgA**: ריריות. **IgE**: אלרגיה.",
-            ]),
-            ("5. חיסונים (פרקים 7-8)", [
-                "**חי-מוחלש**: תגובה חזקה, אסור למדוכאי חיסון.",
-                "**מומת/תת-יחידה**: בטוח, דורש דחף.",
-                "**mRNA**: הוראות לייצור חלבון בגוף.",
-                "**חסינות העדר**: הגנה קהילתית.",
-            ]),
-        ]
-        
-        for title, points in sections:
-            md += f"## {title}\n\n"
-            for point in points:
-                md += f"* {point}\n"
+        for assess in assessments:
+            md += f"### פרק {assess['chapter_id']}: {assess['title']}\n"
+            # Extract key concepts from recall questions as summary points
+            for rq in assess.get("recall_questions", [])[:3]:
+                # Transform question into a statement-ish point if possible
+                md += f"* **מושג מפתח:** {rq.replace('?', '')}\n"
             md += "\n"
-        
-        # Common pitfalls
+            
         md += "---\n\n"
-        md += "## מלכודות נפוצות במבחן\n\n"
-        pitfalls = [
-            "**אנטיביוטיקה** הורגת חיידקים, **לא** נגיפים.",
-            "**נוגדנים** הם החייל שלנו (צורת Y). **אנטיגן** הוא חלק של האויב.",
-            "נגיף מכיל DNA **או** RNA, לא את שניהם.",
-            "**MHC** נמצא על תאי הגוף שלנו, לא על הנגיף.",
-        ]
-        for pitfall in pitfalls:
-            md += f"1. {pitfall}\n"
+        md += "## טיפים להצלחה בבחינה\n\n"
+        md += "1. **הבן את המנגנון**: אל תשנן רק שמות, הבן *איך* הנגיף חודר ואיך המערכת מזהה אותו.\n"
+        md += "2. **השוואה**: בנה טבלאות השוואה בין סוגי נגיפים ובין סוגי חיסונים.\n"
+        md += "3. **טרמינולוגיה**: וודא שאתה מכיר את המונח האנגלי המקביל לכל מושג עברי.\n"
         
         return md

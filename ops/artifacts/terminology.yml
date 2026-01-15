@@ -1,2 +1,64 @@
-# Canonical terminology
-terms:
+DNA:
+  english: DNA
+  hebrew: DNA
+  variants:
+  - דנ"א
+  - די-אן-איי
+PCR:
+  english: Polymerase Chain Reaction
+  hebrew: PCR
+  variants: []
+RNA:
+  english: RNA
+  hebrew: RNA
+  variants:
+  - רנ"א
+  - אר-אן-איי
+mRNA:
+  english: messenger RNA
+  hebrew: mRNA
+  variants:
+  - אם-אר-אן-איי
+אנטיגן:
+  english: antigen
+  hebrew: אנטיגן
+  variants: []
+חיידק:
+  english: bacterium
+  hebrew: חיידק
+  variants:
+  - בקטריה
+מעטפת:
+  english: envelope
+  hebrew: מעטפת
+  variants:
+  - אנבלופ
+נגיף:
+  english: virus
+  hebrew: נגיף
+  variants:
+  - וירוס
+נוגדן:
+  english: antibody
+  hebrew: נוגדן
+  variants:
+  - אנטיבודי
+קופסית:
+  english: capsid
+  hebrew: קופסית
+  variants:
+  - קפסיד
+שכפול:
+  english: replication
+  hebrew: שכפול
+  variants:
+  - רפליקציה
+שעתוק:
+  english: transcription
+  hebrew: שעתוק
+  variants:
+  - תעתוק
+תרגום:
+  english: translation
+  hebrew: תרגום
+  variants: []

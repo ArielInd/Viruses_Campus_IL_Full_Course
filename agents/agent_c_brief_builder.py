@@ -5,7 +5,7 @@ Produces detailed briefs for each chapter to guide writing.
 
 import os
 import json
-from typing import List, Dict
+from typing import List, Dict, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from .schemas import (
@@ -29,8 +29,14 @@ class ChapterBriefBuilder:
         self.artifacts_dir = os.path.join(ops_dir, "artifacts")
         self.briefs_dir = os.path.join(self.artifacts_dir, "chapter_briefs")
         
-    def run(self) -> Dict:
-        """Execute the agent."""
+    def run(self, chapter_id: Optional[str] = None) -> Dict:
+        """
+        Execute the agent.
+        
+        Args:
+            chapter_id: If provided, generate brief only for this chapter.
+                       If None, generate briefs for all chapters (parallel).
+        """
         start_time = self.logger.log_start(AGENT_NAME)
         warnings = []
         errors = []
@@ -56,29 +62,45 @@ class ChapterBriefBuilder:
             # Load file notes for content details
             file_notes = self._load_file_notes()
 
-            print(f"[{AGENT_NAME}] Creating briefs for {len(chapter_plans)} chapters (parallel processing)")
+            if chapter_id:
+                # Single chapter mode
+                print(f"[{AGENT_NAME}] Creating brief for chapter {chapter_id}")
+                target_plan = next((p for p in chapter_plans if p["chapter_id"] == chapter_id), None)
+                
+                if not target_plan:
+                    error_msg = f"Chapter ID {chapter_id} not found in chapter plan"
+                    errors.append(error_msg)
+                    self.logger.log_end(AGENT_NAME, start_time, output_files, warnings, errors)
+                    raise ValueError(error_msg)
+                
+                output_files = self._process_single_brief(target_plan, file_notes)
+                print(f"[{AGENT_NAME}] ✓ Completed brief for chapter {chapter_id}")
+                
+            else:
+                # Batch mode (Parallel)
+                print(f"[{AGENT_NAME}] Creating briefs for {len(chapter_plans)} chapters (parallel processing)")
 
-            # Process chapter briefs in parallel
-            with ThreadPoolExecutor(max_workers=min(len(chapter_plans), 4)) as executor:
-                # Submit all tasks
-                future_to_plan = {
-                    executor.submit(self._process_single_brief, plan, file_notes): plan
-                    for plan in chapter_plans
-                }
+                # Process chapter briefs in parallel
+                with ThreadPoolExecutor(max_workers=min(len(chapter_plans), 4)) as executor:
+                    # Submit all tasks
+                    future_to_plan = {
+                        executor.submit(self._process_single_brief, plan, file_notes): plan
+                        for plan in chapter_plans
+                    }
 
-                # Collect results as they complete
-                for future in as_completed(future_to_plan):
-                    plan = future_to_plan[future]
-                    chapter_id = plan.get('chapter_id', 'unknown')
-                    try:
-                        brief_files = future.result()
-                        output_files.extend(brief_files)
-                        print(f"[{AGENT_NAME}] ✓ Completed brief for chapter {chapter_id}")
-                    except Exception as e:
-                        error_msg = f"Failed to create brief for chapter {chapter_id}: {str(e)}"
-                        warnings.append(error_msg)
-                        self.todos.add(AGENT_NAME, f"Chapter {chapter_id}", error_msg)
-                        print(f"[{AGENT_NAME}] ✗ Warning: {error_msg}")
+                    # Collect results as they complete
+                    for future in as_completed(future_to_plan):
+                        plan = future_to_plan[future]
+                        cid = plan.get('chapter_id', 'unknown')
+                        try:
+                            brief_files = future.result()
+                            output_files.extend(brief_files)
+                            print(f"[{AGENT_NAME}] ✓ Completed brief for chapter {cid}")
+                        except Exception as e:
+                            error_msg = f"Failed to create brief for chapter {cid}: {str(e)}"
+                            warnings.append(error_msg)
+                            self.todos.add(AGENT_NAME, f"Chapter {cid}", error_msg)
+                            print(f"[{AGENT_NAME}] ✗ Warning: {error_msg}")
 
         except Exception as e:
             error_msg = f"Critical error in {AGENT_NAME}: {str(e)}"
@@ -88,11 +110,13 @@ class ChapterBriefBuilder:
 
         self.logger.log_end(AGENT_NAME, start_time, output_files, warnings, errors)
 
-        print(f"[{AGENT_NAME}] Created {len(output_files)} chapter briefs")
+        if not chapter_id:
+            print(f"[{AGENT_NAME}] Created {len(output_files) // 2} chapter briefs") # Divide by 2 because .md and .json
 
         return {
             "briefs_dir": self.briefs_dir,
-            "num_briefs": len(chapter_plans)
+            "generated_files": output_files,
+            "num_briefs": 1 if chapter_id else len(chapter_plans)
         }
     
     def _process_single_brief(self, plan: Dict, file_notes: Dict) -> List[str]:

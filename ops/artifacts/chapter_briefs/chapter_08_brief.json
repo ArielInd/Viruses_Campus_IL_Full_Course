@@ -42,18 +42,18 @@
     }
   ],
   "definitions_to_bold": [
-    "Quartets",
-    "world",
-    "post",
-    "covid",
-    "ובקוביד",
-    "SARS",
-    "pre",
     "multi",
-    "אקזו",
+    "world",
     "Covid",
     "long",
-    "men"
+    "SARS",
+    "Quartets",
+    "pre",
+    "men",
+    "אקזו",
+    "post",
+    "covid",
+    "ובקוביד"
   ],
   "tables_to_create": [
     {

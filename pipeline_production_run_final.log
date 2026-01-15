@@ -1,0 +1,420 @@
+[Diagnostics] google-genai SDK available
+[Diagnostics] GEMINI_API_KEY set: Yes
+
+======================================================================
+🚀 HEBREW VIROLOGY EBOOK - PRODUCTION PIPELINE (QUALITY-FIRST)
+======================================================================
+
+[Production] Starting base analysis...
+
+============================================================
+STAGE: CORPUS_ANALYSIS
+============================================================
+Running CorpusLibrarian (sequential)...
+[CorpusLibrarian] Found 73 transcript files
+[CorpusLibrarian] Processed 73 files, 43292 total words
+  ✓ CorpusLibrarian completed (0.09s)
+
+Stage completed in 0.09s
+
+============================================================
+STAGE: CURRICULUM_DESIGN
+============================================================
+Running CurriculumArchitect (sequential)...
+[CurriculumArchitect] Loaded 73 file notes
+[CurriculumArchitect] Created 8 chapter plans
+  ✓ CurriculumArchitect completed (0.01s)
+
+Stage completed in 0.01s
+[Production] Generating core content...
+
+============================================================
+STAGE: BRIEF_GENERATION
+============================================================
+Running BriefBuilder (sequential)...
+[ChapterBriefBuilder] Creating briefs for 8 chapters (parallel processing)
+[ChapterBriefBuilder] ✓ Completed brief for chapter 02
+[ChapterBriefBuilder] ✓ Completed brief for chapter 04
+[ChapterBriefBuilder] ✓ Completed brief for chapter 03
+[ChapterBriefBuilder] ✓ Completed brief for chapter 01
+[ChapterBriefBuilder] ✓ Completed brief for chapter 05
+[ChapterBriefBuilder] ✓ Completed brief for chapter 06
+[ChapterBriefBuilder] ✓ Completed brief for chapter 07
+[ChapterBriefBuilder] ✓ Completed brief for chapter 08
+[ChapterBriefBuilder] Created 8 chapter briefs
+  ✓ BriefBuilder completed (0.01s)
+
+Stage completed in 0.01s
+
+============================================================
+STAGE: DRAFT_WRITING
+============================================================
+Running DraftWriter (sequential)...
+[DraftWriter] Gemini 3 Pro initialized (Quality-First Mode)
+[DraftWriter] Writing drafts for 8 chapters (Parallel Quality-First)
+[DraftWriter] Loading sources for chapter 01...
+[DraftWriter] Loaded 9 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 01...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Loading sources for chapter 02...
+[DraftWriter] Loaded 9 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 02...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Wave 2: Writing 12 sections...
+[DraftWriter] Wave 2: Writing 12 sections...
+    ✓ Section 1/12: מטרות למידה
+    ✓ Section 1/12: מטרות למידה
+    ✓ Section 2/12: מפת דרכים ומבוא: מהו החומר שממנו עשויים החיים?
+    ✓ Section 2/12: מפת דרכים: מהיסודות הכימיים ועד למורכבות התא
+    ✓ Section 3/12: פולימרים: אבני הבניין של החיים
+    ✓ Section 3/12: 1.1: מהם החיים? מבנה, תפקוד ומטרה
+    ✓ Section 4/12: DNA: מולקולת התורשה
+    ✓ Section 4/12: 1.2: אבני הבניין של החומר: יסודות, אטומים ומולקולות
+    ✓ Section 5/12: מבנה הסליל הכפול: פענוח סוד החיים
+    ✓ Section 5/12: 1.3: מים – המולקולה המיוחדת של החיים
+    ✓ Section 6/12: שכפול DNA: העתקה מדויקת מדור לדור
+    ✓ Section 6/12: 1.4: סוכרים ורב-סוכרים: מאנרגיה זמינה ועד מבנה
+    ✓ Section 7/12: הדוגמה המרכזית: זרימת המידע הגנטי
+    ✓ Section 7/12: 1.5: גילוי התא – יחידת החיים הבסיסית
+    ✓ Section 8/12: חלבונים והקוד הגנטי: השפה הופכת למציאות
+    ✓ Section 8/12: 1.6: סיור בתא האאוקריוטי: מבוא לאברונים
+    ✓ Section 9/12: טעויות נפוצות והבהרות
+    ✓ Section 9/12: טעויות נפוצות והבהרות
+    ✓ Section 10/12: סיכום מהיר
+    ✓ Section 10/12: סיכום מהיר ומפת מושגים
+    ✓ Section 11/12: מושגי מפתח
+    ✓ Section 11/12: מושגי מפתח
+    ✓ Section 12/12: שאלות לתרגול וחשיבה
+[DraftWriter] Wave 3: Synthesizing and polishing...
+    ✓ Section 12/12: שאלות לתרגול וחשיבה
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] ✓ Chapter 01: 2411 words (Quality-First)
+[DraftWriter] Loading sources for chapter 03...
+[DraftWriter] Loaded 8 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 03...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] ✓ Chapter 02: 3131 words (Quality-First)
+[DraftWriter] Loading sources for chapter 04...
+[DraftWriter] Loaded 8 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 04...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Wave 2: Writing 12 sections...
+[DraftWriter] Wave 2: Writing 12 sections...
+    ✓ Section 1/12: מטרות למידה
+    ✓ Section 1/12: מטרות למידה
+    ✓ Section 2/12: מפת דרכים: מסע בזמן עם נגיפים
+    ✓ Section 2/12: מבוא: כשהבריאות מתערערת – עולם המחלות
+    ✓ Section 3/12: יסודות ההדבקה: כיצד נגיפים מתפשטים
+    ✓ Section 3/12: זיהוי האויב: העיקרים של קוך
+    ✓ Section 4/12: אבעבועות שחורות: הנשק הביולוגי של הכיבוש
+    ✓ Section 4/12: מהו נגיף? הטפיל המושלם
+    ✓ Section 5/12: קדחת צהובה: היתוש שעיצב את מפת אמריקה
+    ✓ Section 5/12: אנטומיה של נגיף: גנום, קופסית ומעטפת
+    ✓ Section 6/12: שפעת: הפנדמיה שלא נגמרת
+    ✓ Section 6/12: סיווג נגיפים: שיטת בולטימור
+    ✓ Section 7/12: כיצד חוקרים נגיפים? תרביות תאים והאפקט הציטופתי (CPE)
+    ✓ Section 7/12: פוליו: המלחמה הלאומית בשיתוק ילדים
+    ✓ Section 8/12: אבולה: הופעתה של קדחת דימומית מודרנית
+    ✓ Section 8/12: מחזור החיים של הנגיף: השתלטות עוינת
+    ✓ Section 9/12: טעויות נפוצות והבהרות
+    ✓ Section 9/12: טעויות נפוצות והפרכת מיתוסים
+    ✓ Section 10/12: סיכום מהיר
+    ✓ Section 10/12: סיכום מהיר: לקחים מההיסטוריה
+    ✓ Section 11/12: מושגי מפתח
+    ✓ Section 11/12: מושגי מפתח
+    ✓ Section 12/12: שאלות לתרגול וחשיבה
+    ✓ Section 12/12: שאלות לתרגול וחשיבה
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] ✓ Chapter 03: 2996 words (Quality-First)
+[DraftWriter] Loading sources for chapter 05...
+[DraftWriter] Loaded 8 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 05...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] ✓ Chapter 04: 3816 words (Quality-First)
+[DraftWriter] Loading sources for chapter 06...
+[DraftWriter] Loaded 8 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 06...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Wave 2: Writing 13 sections...
+    ✓ Section 1/13: מטרות למידה
+[DraftWriter] Wave 2: Writing 14 sections...
+    ✓ Section 2/13: מפת דרכים: קו ההגנה הראשון
+    ✓ Section 1/14: מטרות למידה
+    ✓ Section 3/13: 1. מבוא: הצבא שבתוכנו
+    ✓ Section 2/14: מפת דרכים: יחידת הקומנדו של הגוף
+    ✓ Section 4/13: 2. חומות המבצר: מחסומים פיזיים וכימיים
+    ✓ Section 3/14: מבוא לחסינות נרכשת: דיוק וזיכרון
+    ✓ Section 5/13: 3. זיהוי האויב: שפת ה-PAMPs וה-PRRs
+    ✓ Section 4/14: הזרוע ההומורלית: תאי B ונוגדנים
+    ✓ Section 6/13: 4. זרקור על חוקר: ברוס בויטלר וגילוי ה-TLRs
+    ✓ Section 5/14: סוגי הנוגדנים ותפקידיהם (איזוטיפים)
+    ✓ Section 7/13: 5. קריאה לתגבורת: תהליך הדלקת
+    ✓ Section 6/14: הזרוע התאית: תאי T ומערכת ה-MHC
+    ✓ Section 8/13: 6. השותפים השקטים: תפקיד המיקרוביום
+    ✓ Section 7/14: כשהמערכת טועה: אלרגיות ותגובות יתר
+    ✓ Section 9/13: 7. חסינות מולדת מול נרכשת: מהירות לעומת זיכרון
+    ✓ Section 8/14: כשל חיסוני: כשההגנה קורסת
+    ✓ Section 10/13: טעויות נפוצות והבהרות
+    ✓ Section 9/14: יישום במעבדה: בדיקת ELISA לאיתור נוגדנים
+    ✓ Section 11/13: סיכום מהיר
+    ✓ Section 10/14: נקודת מבט של מומחה: פרופ' רוברט גאלו על חשיבות בדיקת הדם ל-HIV
+    ✓ Section 12/13: מושגי מפתח
+    ✓ Section 11/14: טעויות נפוצות והבהרות
+    ✓ Section 13/13: שאלות לתרגול וחשיבה
+[DraftWriter] Wave 3: Synthesizing and polishing...
+    ✓ Section 12/14: סיכום מהיר
+    ✓ Section 13/14: מושגי מפתח
+    ✓ Section 14/14: שאלות לתרגול וחשיבה
+[DraftWriter] ✓ Chapter 05: 2863 words (Quality-First)
+[DraftWriter] Loading sources for chapter 07...
+[DraftWriter] Loaded 10 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 07...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] Wave 2: Writing 12 sections...
+    ✓ Section 1/12: מטרות למידה
+[DraftWriter] ✓ Chapter 06: 2798 words (Quality-First)
+[DraftWriter] Loading sources for chapter 08...
+[DraftWriter] Loaded 11 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 08...
+[DraftWriter] Wave 1: Generating detailed outline...
+    ✓ Section 2/12: מפת דרכים: חיסונים כ'רפואה עליונה'
+    ✓ Section 3/12: לידת החיסון: אדוארד ג'נר והמאבק באבעבועות השחורות
+[DraftWriter] Wave 2: Writing 12 sections...
+    ✓ Section 4/12: עקרון הפעולה: אימון מערכת החיסון
+    ✓ Section 1/12: מטרות למידה
+    ✓ Section 2/12: מפת דרכים
+    ✓ Section 5/12: סוגי חיסונים: ארסנל הכלים
+    ✓ Section 3/12: מבוא: משפחת ה-Coronaviridae - היכרות עם ענקים
+    ✓ Section 6/12: נגיפים סרבנים: אתגר ה-HIV והשפעת
+    ✓ Section 4/12: היסטוריה של התפרצויות: מצינון ועד SARS ו-MERS
+    ✓ Section 7/12: בטיחות חיסונים: ניתוח המרכיבים והפרכת מיתוסים
+    ✓ Section 5/12: הופעתה של מגפה עולמית: SARS-CoV-2 ומחלת COVID-19
+    ✓ Section 8/12: חסינות העדר: הגנה קהילתית
+    ✓ Section 6/12: אבחון המגפה: PCR, אנטיגן וסרולוגיה
+    ✓ Section 9/12: סיכום מהיר
+    ✓ Section 7/12: מהפכת החיסונים: טכנולוגיית mRNA
+    ✓ Section 10/12: מושגי מפתח
+    ✓ Section 8/12: אתגרים ולקחים: וריאנטים, דעיכת חסינות ועתיד המגפות
+    ✓ Section 11/12: טעויות נפוצות
+    ✓ Section 9/12: טעויות נפוצות והבהרות
+    ✓ Section 12/12: שאלות לתרגול
+[DraftWriter] Wave 3: Synthesizing and polishing...
+    ✓ Section 10/12: סיכום מהיר
+    ✓ Section 11/12: מושגי מפתח
+    ✓ Section 12/12: שאלות לתרגול
+[DraftWriter] Wave 3: Synthesizing and polishing...
+[DraftWriter] ✓ Chapter 07: 2887 words (Quality-First)
+[DraftWriter] ✓ Chapter 08: 3051 words (Quality-First)
+  ✓ DraftWriter completed (2380.77s)
+
+Stage completed in 2380.77s
+
+============================================================
+STAGE: VALIDATION
+============================================================
+Running AdversarialCritic (sequential)...
+[AdversarialCritic] Gemini 3 Pro initialized (Adversarial Mode)
+[AdversarialCritic] Critiquing 8 drafts...
+[AdversarialCritic] ⚠ Chapter 01: needs_revision (7 issues, 2 critical)
+[AdversarialCritic] ⚠ Chapter 02: needs_revision (5 issues, 0 critical)
+[AdversarialCritic] ⚠ Chapter 03: needs_revision (5 issues, 1 critical)
+[AdversarialCritic] ⚠ Chapter 04: needs_revision (6 issues, 1 critical)
+[AdversarialCritic] ⚠ Chapter 05: needs_revision (7 issues, 2 critical)
+[AdversarialCritic] ✗ Chapter 06: reject (5 issues, 2 critical)
+[AdversarialCritic] ⚠ Chapter 07: needs_revision (6 issues, 1 critical)
+[AdversarialCritic] ⚠ Chapter 08: needs_revision (7 issues, 1 critical)
+  ✓ AdversarialCritic completed (396.54s)
+
+Stage completed in 396.54s
+
+============================================================
+STAGE: EDITING
+============================================================
+Running DevelopmentalEditor (sequential)...
+[DevelopmentalEditor] Gemini 3 Pro initialized (Active Editing Mode)
+[DevelopmentalEditor] Processing 8 chapters (Active Editing Mode)
+[DevelopmentalEditor] ✓ Chapter 01: score=90%
+[DevelopmentalEditor] ✓ Chapter 02: score=85%
+[DevelopmentalEditor] ✓ Chapter 03: score=80%
+[DevelopmentalEditor] ✓ Chapter 04: score=88%
+[DevelopmentalEditor] ✓ Chapter 05: score=80%
+[DevelopmentalEditor] ✓ Chapter 06: score=85%
+[DevelopmentalEditor] ✓ Chapter 07: score=88%
+[DevelopmentalEditor] ✓ Chapter 08: score=82%
+  ✓ DevelopmentalEditor completed (839.06s)
+
+Stage completed in 839.06s
+
+[Production] Starting Pedagogical & Visual Enhancement (Round 2)...
+
+============================================================
+STAGE: VALIDATION
+============================================================
+Running 2 tasks in parallel...
+[VisualChronicler] ✓ Enhanced Chapter 01 with 8 visual insights
+[VisualChronicler] ✓ Enhanced Chapter 02 with 7 visual insights
+[VisualChronicler] ✓ Enhanced Chapter 03 with 9 visual insights
+[VisualChronicler] ✓ Enhanced Chapter 04 with 7 visual insights
+[VisualChronicler] ✓ Enhanced Chapter 05 with 5 visual insights
+[VisualChronicler] ✓ Enhanced Chapter 06 with 7 visual insights
+[VisualChronicler] ✓ Enhanced Chapter 07 with 7 visual insights
+[VisualChronicler] ✓ Enhanced Chapter 08 with 6 visual insights
+  ✓ VisualChronicler completed (423.29s)
+[PedagogicalBridge] Linking chapters for narrative continuity...
+    ✓ Linked Chapter 01
+    ✓ Linked Chapter 02
+    ✓ Linked Chapter 03
+    ✓ Linked Chapter 04
+    ✓ Linked Chapter 05
+    ✓ Linked Chapter 06
+    ✓ Linked Chapter 07
+    ✓ Linked Chapter 08
+  ✓ PedagogicalBridge completed (635.21s)
+
+Stage completed in 1058.60s
+
+[Production] Starting final refinements...
+
+============================================================
+STAGE: VALIDATION
+============================================================
+Running 4 tasks in parallel...
+[AssessmentDesigner] Gemini 3 Pro initialized (LLM-Assessment Mode)
+[AssessmentDesigner] Generating assessments for 8 chapters...
+    ✓ Chapter 01: LLM assessment generated
+    ✓ Chapter 02: LLM assessment generated
+    ✓ Chapter 03: LLM assessment generated
+    ✓ Chapter 04: LLM assessment generated
+    ✓ Chapter 05: LLM assessment generated
+    ✓ Chapter 06: LLM assessment generated
+    ✓ Chapter 07: LLM assessment generated
+    ✓ Chapter 08: LLM assessment generated
+  ✓ AssessmentDesigner completed (301.51s)
+[TerminologyConsistencyKeeper] Gemini 3 Pro initialized (Grammar-Aware Mode)
+  ✓ TerminologyKeeper completed (3644.06s)
+[CopyeditorProofreader] Gemini 3 Pro initialized (LLM-Powered Mode)
+    ✓ Corrected: 90_glossary.md
+    ✓ Corrected: 00_front_matter.md
+    ✓ Corrected: README.md
+    ✗ JSON parsing error for 01_study_guide.md: Expecting ',' delimiter: line 50 column 6 (char 1712)
+    ✗ JSON parsing error for 92_question_bank.md: Expecting ',' delimiter: line 104 column 4 (char 5181)
+    ✓ Corrected: 01_outline.md
+    ✗ JSON parsing error for chapter_01.md: Expecting ',' delimiter: line 72 column 4 (char 2653)
+    ✗ JSON parsing error for 02_02_וירוס_הקורנה_–_שאלות_נפוצות.md: Expecting ',' delimiter: line 136 column 4 (char 6184)
+    ✗ JSON parsing error for chapter_05.md: Expecting ',' delimiter: line 104 column 4 (char 3878)
+    ✗ JSON parsing error for 06_06_שיעור_4_מחלות_נגיפיות_הומניות.md: Expecting ',' delimiter: line 128 column 4 (char 4308)
+    ✗ JSON parsing error for 04_04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים.md: Expecting ',' delimiter: line 80 column 4 (char 3756)
+    ✗ JSON parsing error for 06_chapter.md: Expecting ',' delimiter: line 80 column 4 (char 3828)
+    ✗ JSON parsing error for chapter_05_draft.md: Expecting ',' delimiter: line 96 column 4 (char 4059)
+    ✗ JSON parsing error for chapter_04_draft.md: Expecting ',' delimiter: line 48 column 4 (char 2160)
+    ✗ JSON parsing error for chapter_04.md: Expecting ',' delimiter: line 136 column 4 (char 4513)
+    ✗ JSON parsing error for 05_05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול.md: Expecting ',' delimiter: line 160 column 4 (char 6394)
+    ✗ JSON parsing error for 03_chapter.md: Expecting ',' delimiter: line 72 column 4 (char 2766)
+    ✗ JSON parsing error for 12_12_סיכום_הקורס.md: Expecting ',' delimiter: line 136 column 4 (char 6410)
+    ✗ JSON parsing error for 09_chapter_08.md: Expecting ',' delimiter: line 72 column 4 (char 3094)
+    ✗ JSON parsing error for chapter_02_draft.md: Expecting ',' delimiter: line 56 column 4 (char 2006)
+    ✗ JSON parsing error for chapter_03_draft.md: Expecting ',' delimiter: line 80 column 4 (char 4831)
+    ✗ JSON parsing error for chapter_08_draft.md: Expecting ',' delimiter: line 96 column 4 (char 3750)
+    ✗ JSON parsing error for 07_chapter_06.md: Expecting ',' delimiter: line 48 column 4 (char 2595)
+    ✗ JSON parsing error for 05_chapter_04.md: Expecting ',' delimiter: line 72 column 4 (char 2926)
+    ✗ JSON parsing error for 06_chapter_05.md: Expecting ',' delimiter: line 112 column 4 (char 4620)
+    ✗ JSON parsing error for 10_10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות.md: Expecting ',' delimiter: line 96 column 4 (char 2981)
+    ✗ JSON parsing error for 02_chapter_01.md: Expecting ',' delimiter: line 80 column 4 (char 3406)
+    ✗ JSON parsing error for 04_chapter_03.md: Expecting ',' delimiter: line 88 column 4 (char 3526)
+    ✗ JSON parsing error for 03_chapter_02.md: Expecting ',' delimiter: line 56 column 4 (char 2375)
+    ✗ JSON parsing error for 08_08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון.md: Expecting ',' delimiter: line 88 column 4 (char 3877)
+    ✗ JSON parsing error for 02_chapter.md: Expecting ',' delimiter: line 72 column 4 (char 2910)
+    ✗ JSON parsing error for chapter_06_draft.md: Expecting ',' delimiter: line 64 column 4 (char 3530)
+    ✗ JSON parsing error for chapter_08.md: Expecting ',' delimiter: line 112 column 4 (char 4351)
+    ✗ JSON parsing error for 07_chapter.md: Expecting ',' delimiter: line 64 column 4 (char 2330)
+    ✗ JSON parsing error for 11_11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19.md: Expecting ',' delimiter: line 120 column 4 (char 4523)
+    ✗ JSON parsing error for 08_chapter_07.md: Expecting ',' delimiter: line 58 column 6 (char 3077)
+    ✗ JSON parsing error for chapter_03.md: Expecting ',' delimiter: line 96 column 4 (char 4841)
+    ✗ JSON parsing error for 03_03_שיעור_1_תאים_הם_יחידות_החיים.md: Expecting ',' delimiter: line 112 column 4 (char 5029)
+    ✗ JSON parsing error for chapter_02.md: Expecting ',' delimiter: line 48 column 4 (char 2327)
+    ✗ JSON parsing error for 08_chapter.md: Expecting ',' delimiter: line 104 column 4 (char 4508)
+    ✗ JSON parsing error for 05_chapter.md: Expecting ',' delimiter: line 120 column 4 (char 4358)
+    ✗ JSON parsing error for chapter_06.md: Expecting ',' delimiter: line 48 column 4 (char 3178)
+    ✗ JSON parsing error for chapter_01_draft.md: Expecting ',' delimiter: line 104 column 4 (char 4301)
+[CopyeditorProofreader] Checked 51 files, found 24 issues, corrected 4
+  ✓ Proofreader completed (3015.71s)
+[SafetyScopeReviewer] Gemini 3 Pro initialized (High-Rigor Mode)
+[SafetyScopeReviewer] Reviewing 8 chapters for scientific integrity...
+    ✓ Chapter 01: safety_score=1.00
+    ✓ Chapter 02: safety_score=1.00
+    ✓ Chapter 03: safety_score=0.95
+    ✓ Chapter 04: safety_score=0.95
+    ✓ Chapter 05: safety_score=1.00
+    ✓ Chapter 06: safety_score=1.00
+    ✓ Chapter 07: safety_score=0.95
+    ✓ Chapter 08: safety_score=0.95
+  ✓ SafetyReviewer completed (200.65s)
+
+Stage completed in 7161.95s
+
+======================================================================
+📚 BUILDING FINAL BOOK ARTIFACTS
+======================================================================
+
+[Build] Executing /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/build_all.sh...
+=== Building EPUB ===
+Building EPUB from:
+00_front_matter.md 01_study_guide.md chapters/01_chapter.md chapters/02_02_וירוס_הקורנה_–_שאלות_נפוצות.md chapters/02_chapter.md chapters/02_chapter_01.md chapters/03_03_שיעור_1_תאים_הם_יחידות_החיים.md chapters/03_chapter.md chapters/03_chapter_02.md chapters/04_04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים.md chapters/04_chapter.md chapters/04_chapter_03.md chapters/05_05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול.md chapters/05_chapter.md chapters/05_chapter_04.md chapters/06_06_שיעור_4_מחלות_נגיפיות_הומניות.md chapters/06_chapter.md chapters/06_chapter_05.md chapters/07_chapter.md chapters/07_chapter_06.md chapters/08_08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון.md chapters/08_chapter.md chapters/08_chapter_07.md chapters/09_09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב.md chapters/09_chapter_08.md chapters/10_10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות.md chapters/11_11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19.md chapters/12_12_סיכום_הקורס.md chapters/chapter_01.md chapters/chapter_01_draft.md chapters/chapter_02.md chapters/chapter_02_draft.md chapters/chapter_03.md chapters/chapter_03_draft.md chapters/chapter_04.md chapters/chapter_04_draft.md chapters/chapter_05.md chapters/chapter_05_draft.md chapters/chapter_06.md chapters/chapter_06_draft.md chapters/chapter_07.md chapters/chapter_07_draft.md chapters/chapter_08.md chapters/chapter_08_draft.md 89_quick_reference.md 90_glossary.md 91_exam_review.md 92_question_bank.md
+EPUB generated successfully at build/book.epub
+
+=== Building PDF ===
+Building PDF/HTML from:
+00_front_matter.md 01_study_guide.md chapters/01_chapter.md chapters/02_02_וירוס_הקורנה_–_שאלות_נפוצות.md chapters/02_chapter.md chapters/02_chapter_01.md chapters/03_03_שיעור_1_תאים_הם_יחידות_החיים.md chapters/03_chapter.md chapters/03_chapter_02.md chapters/04_04_שיעור_2_מקרומולקולות_–_מ-DNA_(דנ_א)_לחלבונים.md chapters/04_chapter.md chapters/04_chapter_03.md chapters/05_05_שיעור_3_נגיפים_-_מבנה,_תפקוד,_הדבקה_ושכפול.md chapters/05_chapter.md chapters/05_chapter_04.md chapters/06_06_שיעור_4_מחלות_נגיפיות_הומניות.md chapters/06_chapter.md chapters/06_chapter_05.md chapters/07_chapter.md chapters/07_chapter_06.md chapters/08_08_שיעור_5_חסינות_מולדת_–_קו_ההגנה_הראשון.md chapters/08_chapter.md chapters/08_chapter_07.md chapters/09_09_שיעור_6_חסינות_נרכשת_–_מחסלים_את_האויב.md chapters/09_chapter_08.md chapters/10_10_שיעור_7_חיסונים_–_כיצד_הם_פועלים_יתרונות_וחסרונות.md chapters/11_11_שיעור_8_משפחת_נגיפי_הקורונה_ומגפת_COVID-19.md chapters/12_12_סיכום_הקורס.md chapters/chapter_01.md chapters/chapter_01_draft.md chapters/chapter_02.md chapters/chapter_02_draft.md chapters/chapter_03.md chapters/chapter_03_draft.md chapters/chapter_04.md chapters/chapter_04_draft.md chapters/chapter_05.md chapters/chapter_05_draft.md chapters/chapter_06.md chapters/chapter_06_draft.md chapters/chapter_07.md chapters/chapter_07_draft.md chapters/chapter_08.md chapters/chapter_08_draft.md 89_quick_reference.md 90_glossary.md 91_exam_review.md 92_question_bank.md
+Generating intermediate HTML...
+xelatex not found. Using Google Chrome for PDF conversion...
+PDF generated successfully via Chrome at build/book.pdf
+Process complete.
+
+=== Build Summary ===
+-rw-r--r--@ 2 arielindenbaum  staff   333K Jan 15 05:18 build/book.epub
+-rw-r--r--@ 1 arielindenbaum  staff   4.9M Jan 15 05:18 build/book.pdf
+
+
+[Production] Generating final book cover based on content...
+[LLM Utils] Analyzing book content to generate cover prompt...
+⚠️ Failed to generate cover prompt: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-3-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+✅ Final book cover generated.
+
+======================================================================
+✅ PRODUCTION COMPLETE
+======================================================================
+# Pipeline Performance Report
+
+**Total Pipeline Time:** 10381.89s
+
+## Stage Breakdown
+
+| Stage | Duration | % of Total |
+|-------|----------|------------|
+| validation | 7161.95s | 69.0% |
+| draft_writing | 2380.77s | 22.9% |
+| editing | 839.06s | 8.1% |
+| corpus_analysis | 0.09s | 0.0% |
+| brief_generation | 0.01s | 0.0% |
+| curriculum_design | 0.01s | 0.0% |
+
+## Agent Results
+
+- **Successful:** 12/12
+- **Failed:** 0/12
+
+
+## Performance Metrics
+
+- **Sequential execution time estimate:** 11836.91s
+- **Actual parallel execution time:** 10381.89s
+- **Speedup factor:** 1.14x
+- **Time saved:** 1455.02s (12.3%)
+
+
+📂 Results preserved in:
+- Book:  /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/book/build/
+- Logs:  /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/pipeline.jsonl
+- TODOs: /Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/ops/todos.md

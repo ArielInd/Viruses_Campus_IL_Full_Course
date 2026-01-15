@@ -1,0 +1,62 @@
+[Diagnostics] google-genai SDK available
+[Diagnostics] GEMINI_API_KEY set: Yes
+
+======================================================================
+🚀 HEBREW VIROLOGY EBOOK - PRODUCTION PIPELINE (QUALITY-FIRST)
+======================================================================
+
+[Production] Starting base analysis...
+
+============================================================
+STAGE: CORPUS_ANALYSIS
+============================================================
+Running CorpusLibrarian (sequential)...
+[CorpusLibrarian] Found 73 transcript files
+[CorpusLibrarian] Processed 73 files, 43292 total words
+  ✓ CorpusLibrarian completed (0.09s)
+
+Stage completed in 0.09s
+
+============================================================
+STAGE: CURRICULUM_DESIGN
+============================================================
+Running CurriculumArchitect (sequential)...
+[CurriculumArchitect] Loaded 73 file notes
+[CurriculumArchitect] Created 8 chapter plans
+  ✓ CurriculumArchitect completed (0.01s)
+
+Stage completed in 0.01s
+[Production] Generating core content...
+
+============================================================
+STAGE: BRIEF_GENERATION
+============================================================
+Running BriefBuilder (sequential)...
+[ChapterBriefBuilder] Creating briefs for 8 chapters (parallel processing)
+[ChapterBriefBuilder] ✓ Completed brief for chapter 02
+[ChapterBriefBuilder] ✓ Completed brief for chapter 03
+[ChapterBriefBuilder] ✓ Completed brief for chapter 01
+[ChapterBriefBuilder] ✓ Completed brief for chapter 04
+[ChapterBriefBuilder] ✓ Completed brief for chapter 06
+[ChapterBriefBuilder] ✓ Completed brief for chapter 05
+[ChapterBriefBuilder] ✓ Completed brief for chapter 07
+[ChapterBriefBuilder] ✓ Completed brief for chapter 08
+[ChapterBriefBuilder] Created 8 chapter briefs
+  ✓ BriefBuilder completed (0.01s)
+
+Stage completed in 0.01s
+
+============================================================
+STAGE: DRAFT_WRITING
+============================================================
+Running DraftWriter (sequential)...
+[DraftWriter] Gemini 3 Pro initialized (Quality-First Mode)
+[DraftWriter] Writing drafts for 8 chapters (Quality-First Mode)
+[DraftWriter] Loading sources for chapter 01...
+[DraftWriter] Loaded 9 source chunks for citation
+[DraftWriter] Starting 3-wave generation for chapter 01...
+[DraftWriter] Wave 1: Generating detailed outline...
+[DraftWriter] Wave 2: Writing 12 sections...
+    ✓ Section 1/12: מטרות למידה
+    ✓ Section 2/12: מפת דרכים: מהחיים ועד לתא
+    ✓ Section 3/12: 1.1 מהם החיים? מטרה, מבנה ותפקוד

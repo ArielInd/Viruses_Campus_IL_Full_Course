@@ -1,0 +1,97 @@
+[Diagnostics] google-genai SDK available
+[Diagnostics] GEMINI_API_KEY set: Yes
+
+======================================================================
+🚀 HEBREW VIROLOGY EBOOK - PRODUCTION PIPELINE (QUALITY-FIRST)
+======================================================================
+
+[Production] Starting base analysis...
+
+============================================================
+STAGE: CORPUS_ANALYSIS
+============================================================
+Running CorpusLibrarian (sequential)...
+[CorpusLibrarian] Found 73 transcript files
+[CorpusLibrarian] Processed 73 files, 43292 total words
+  ✓ CorpusLibrarian completed (0.12s)
+
+Stage completed in 0.12s
+
+============================================================
+STAGE: CURRICULUM_DESIGN
+============================================================
+Running CurriculumArchitect (sequential)...
+[CurriculumArchitect] Loaded 73 file notes
+[CurriculumArchitect] Created 8 chapter plans
+  ✓ CurriculumArchitect completed (0.01s)
+
+Stage completed in 0.01s
+[Production] Generating core content...
+
+============================================================
+STAGE: BRIEF_GENERATION
+============================================================
+Running BriefBuilder (sequential)...
+[ChapterBriefBuilder] Creating briefs for 8 chapters (parallel processing)
+[ChapterBriefBuilder] ✓ Completed brief for chapter 03
+[ChapterBriefBuilder] ✓ Completed brief for chapter 02
+[ChapterBriefBuilder] ✓ Completed brief for chapter 01
+[ChapterBriefBuilder] ✓ Completed brief for chapter 04
+[ChapterBriefBuilder] ✓ Completed brief for chapter 07
+[ChapterBriefBuilder] ✓ Completed brief for chapter 08
+[ChapterBriefBuilder] ✓ Completed brief for chapter 06
+[ChapterBriefBuilder] ✓ Completed brief for chapter 05
+[ChapterBriefBuilder] Created 8 chapter briefs
+  ✓ BriefBuilder completed (0.01s)
+
+Stage completed in 0.01s
+
+============================================================
+STAGE: DRAFT_WRITING
+============================================================
+Running DraftWriter (sequential)...
+[DraftWriter] Gemini 3 Pro initialized (Quality-First Mode)
+[DraftWriter] Writing drafts for 8 chapters (Parallel Quality-First)
+
+Pipeline Failed: unsupported operand type(s) for -: 'datetime.datetime' and 'float'
+Traceback (most recent call last):
+  File "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/agents/pipeline_orchestrator.py", line 127, in _run_single_task
+    output = await task.function(self.context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/run_production.py", line 116, in run_d
+    return await agent.run()
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/agents/agent_d_draft_writer.py", line 135, in run
+    semaphore = asyncio.Semaphore(2)  # Process 2 chapters at a time
+                ^^^^^^^
+NameError: name 'asyncio' is not defined. Did you forget to import 'asyncio'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/run_production.py", line 232, in <module>
+    asyncio.run(run_production())
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/run_production.py", line 118, in run_production
+    await orchestrator.run_stage(AgentStage.DRAFT_WRITING, [
+        AgentTask("DraftWriter", AgentStage.DRAFT_WRITING, function=run_d)
+    ])
+  File "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/agents/pipeline_orchestrator.py", line 102, in run_stage
+    result = await self._run_single_task(task)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/agents/pipeline_orchestrator.py", line 154, in _run_single_task
+    self.logger.log_end(task.agent_name, start_time, [], [error_msg], [error_msg])
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arielindenbaum/Downloads/Viruses_Campus_IL_Full_Course/agents/schemas.py", line 163, in log_end
+    duration = (datetime.now() - start_time).total_seconds()
+                ~~~~~~~~~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'float'
